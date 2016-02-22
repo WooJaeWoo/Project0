@@ -1,13 +1,24 @@
 $(document).on("ready", function () {
 	console.log("Welcome to Project0!");
-	new Scroll().init();
-	new Swipe().init();
 	Page.init();
+	//scroll = new Scroll();
+	//swipe = new Swipe();
+	$("#getResultBtn").on("click", getResult);
 });
 
 $(window).on("load", function () {
 	
 });
+var Answer = {
+	a1: "M",
+	a2: 10,
+	a3: true,
+	a4: 5,
+	a5: ["A", "B"],
+	a6: 20,
+	a7: "red",
+	a8: ["C", "D", "E"]
+};
 
 var Page =  {
 	currentPage: null,
@@ -31,20 +42,37 @@ var Page =  {
 	fillContents: function() {
 		$("main").find("h1").text(this.pageInfo[this.currentPage]);
 	}
+};
+
+function getResult() {
+	$.ajax({
+		url: "/result",
+		type: "POST",
+		data: Answer,
+		dataType: "json",
+		success: function(res) {
+			console.log(res);
+		},
+		error: function() {
+			console.log("great!!!");
+		}
+	});
 }
 
-
+/*
 var Scroll = function () {};
 Scroll.prototype = {
 	init: function () {
-		$(window).on("mousewheel", this.scrollHandler.bind(this));
+		$(window).one("mousewheel", this.scrollHandler.bind(this));
 	},
 	scrollHandler: function (event) {
-		if (event.originalEvent.wheelDelta >= 0) {
+		if (event.originalEvent.wheelDelta > 0) {
 			console.log('Scroll up');
+			Page.goPrev();
 		}
 		else {
 			console.log('Scroll down');
+			Page.goNext();
 		}
 	}
 };
@@ -69,4 +97,5 @@ Swipe.prototype = {
 	panDownHandler: function() {
 		Page.goPrev();
 	}
-}
+};
+*/
