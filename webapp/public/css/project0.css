@@ -2,7 +2,20 @@ main {
 	width: 100%;
 	height: 100%;
 }
-
+section {
+	margin-bottom: 40px;
+}
+section p {
+	margin-bottom: 10px;
+}
+section button {
+	width: 65px;
+	height: 45px;
+	border: 2px solid #555;
+}
+section button.on {
+	background-color: darkorange;
+}
 #getResultBtn {
 	width: 200px;
 	height: 60px;

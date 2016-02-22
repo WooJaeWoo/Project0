@@ -5,8 +5,64 @@
 </head>
 <body>
 	<main id="main">
-		<h1></h1>
-		<button type="button" id="getResultBtn">결과보기</button>
+		<section class="intro"></section>
+		<section class="q1">
+			<p>남? 여?</p>
+			<button type="button" value="M">M</button>
+			<button type="button" value="F">F</button>
+		</section>
+		<section class="q2">
+			<p>나이?</p>
+			<select name="age" id="age">
+				<option value="10">10대</option>
+				<option value="20" selected>20대</option>
+				<option value="30">30대</option>
+				<option value="40">40대</option>
+				<option value="50">50대</option>
+				<option value="60">60대</option>
+			</select>
+		</section>
+		<section class="q3">
+			<p>결혼?</p>
+			<button type="button" value="false">Not married</button>
+		</section>
+		<section class="q4">
+			<p>집에 있는 시간</p>
+			<input type="text"> 시간 (0 ~ 24시간)
+		</section>
+		<section class="q5">
+			<p>필요</p>
+			<button type="button" value="book">book</button>
+			<button type="button" value="bag">bag</button>
+			<button type="button" value="money">money</button>
+			<button type="button" value="friend">friend</button>
+			<button type="button" value="love">love</button>
+		</section>
+		<section class="q6">
+			<p>인테리어 비용</p>
+			<input type="text"> % (0 ~ 100%)
+		</section>
+		<section class="q7">
+			<p>색깔</p>
+			<button type="button" value="red">red</button>
+			<button type="button" value="yellow">yellow</button>
+			<button type="button" value="green">green</button>
+			<button type="button" value="blue">blue</button>
+			<button type="button" value="purple">purple</button>
+		</section>
+		<section class="q8">
+			<p>문화 / 여가 생활</p>
+			<button type="button" value="DIY">DIY</button>
+			<button type="button" value="cook">요리</button>
+			<button type="button" value="travel">여행</button>
+			<button type="button" value="exercise">운동</button>
+			<button type="button" value="exhibition">여행</button>
+		</section>
+		<nav>
+			<button type="button" id="getResultBtn">결과보기</button>
+			<!--<button type="button" id="goPrev">PREV</button>
+			<button type="button" id="goNext">NEXT</button>-->
+		</nav>
 	</main>
 	<%- include('./common/footer') %>
 	<script src="/js/project0.js"></script>
