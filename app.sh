@@ -10,7 +10,7 @@ case "$1" in
 		forever restart ./app.js
 		;;
 	*)
-		echo ###partial###F878D52C-4618-4687-B80C-93A0D186A419quot;Usage: $0 {start|stop|restart|list}"
+		echo ###partial###F878D52C-4618-4687-B80C-93A0D186A419quot;Usage: $0 {start|stop|restart}"
 		exit 1
 esac
 exit 0
