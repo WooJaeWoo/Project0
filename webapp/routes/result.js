@@ -21,14 +21,13 @@ function saveAnswer(ua, answers) {
 		}
 	});
 }
-
 router.post("/", function(req, res, next) {
 	
 	// Calculating score
 	var score = new scoreMod();
 	// calculate
 	score.calculate(req.body);
-	
+	var myscore = score.getScore();
 	var result = score.getResult();
 	
 	// TODO: result first와 second 값으로 결과 페이지 구성하기!
@@ -39,8 +38,12 @@ router.post("/", function(req, res, next) {
 	// TODO: uncomment to save answer to DB
 	//saveAnswer(req.headers['user-agent'], req.body);
 	
+	res.render("result", {
+		score: myscore,
+		first: result.first,
+		second: result.second
+	});
 	
-	res.send(req.body);
 });
 
 module.exports = router;
