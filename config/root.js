@@ -7,5 +7,6 @@ module.exports = {
 	MODEL_ROOT: path.join(app_root, 'webapp/models'),
 	VIEW_ROOT: path.join(app_root, 'webapp/views'),
 	ROUTER_ROOT: path.join(app_root, 'webapp/routes/router'),
-	PUBLIC_ROOT: path.join(app_root, 'webapp/public')
+	PUBLIC_ROOT: path.join(app_root, 'webapp/public'),
+	MODULE_ROOT: path.join(app_root, 'webapp/modules')
 };

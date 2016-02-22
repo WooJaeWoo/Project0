@@ -14,10 +14,10 @@ var Answer = {
 	a2: 10,
 	a3: true,
 	a4: 5,
-	a5: ["A", "B"],
+	a5: ["money", "bag"],
 	a6: 20,
 	a7: "red",
-	a8: ["C", "D", "E"]
+	a8: ["DIY", "cook", "travel"]
 };
 
 var Page =  {
@@ -49,7 +49,7 @@ function getResult() {
 		url: "/result",
 		type: "POST",
 		data: Answer,
-		dataType: "json",
+		dataType: "html",
 		success: function(res) {
 			console.log(res);
 		},

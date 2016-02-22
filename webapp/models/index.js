@@ -1,5 +1,5 @@
 module.exports = {
 
-//	user: require('./user');
+	answer: require('./answer')
 
 }

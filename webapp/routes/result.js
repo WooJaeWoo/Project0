@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var Answer = require(config.root.MODEL_ROOT + '/answer');
+var Answer = require(config.root.MODEL_ROOT).answer;
+var scoreMod = require(config.root.MODULE_ROOT).score;
 
 function saveAnswer(ua, answers) {
 	var answer = new Answer();
@@ -23,10 +24,20 @@ function saveAnswer(ua, answers) {
 
 router.post("/", function(req, res, next) {
 	
-	// DB: save answer
-	saveAnswer(req.headers['user-agent'], req.body);
-	
 	// Calculating score
+	var score = new scoreMod();
+	// calculate
+	score.calculate(req.body);
+	
+	var result = score.getResult();
+	
+	// TODO: result first와 second 값으로 결과 페이지 구성하기!
+	// console.log(result.first);
+	// console.log(result.second);
+	
+	// DB: save answer
+	// TODO: uncomment to save answer to DB
+	//saveAnswer(req.headers['user-agent'], req.body);
 	
 	
 	res.send(req.body);
