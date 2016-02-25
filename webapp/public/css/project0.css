@@ -1,6 +1,23 @@
-main {
+html, body, main {
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
+	background-color: #FF93AC;
+}
+svg {
+	width: 100%;
+	height: 100%;
+}
+#svgDefs {
+	position: absolute;
+	height: 0px;
+	overflow: hidden;
+}
+#spotLight {
+	-webkit-clip-path: url(#clipCircle);
+	-moz-clip-path: url(#clipCircle);
+	-ms-clip-path: url(#clipCircle);
+	clip-path: url(#clipCircle);
 }
 section {
 	margin-bottom: 40px;
