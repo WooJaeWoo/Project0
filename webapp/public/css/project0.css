@@ -1,9 +1,40 @@
 html, body, main {
+	position: relative;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 	background-color: #FF93AC;
+	font-size: 1em;
 }
+.spotlight {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 30em;
+	color: #FF93AC;
+	background: -webkit-linear-gradient(transparent, transparent), url("../img/stripe.jpg") repeat;
+	background: -o-linear-gradient(transparent, transparent);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+svg text {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+/*
+background-color: #FF93AC;
 svg {
 	width: 100%;
 	height: 100%;
