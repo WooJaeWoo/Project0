@@ -179,45 +179,51 @@ var Project0 = {
 			$("#browserRecommend").css("display", "block");
 		}
 		
-		Page.init();
-		
-		// 시작!!!
+		// Start!!!
 		$("#startButton").on("touchClick", this.start.bind(this));
 	},
 	start: function() {
-		// index page 올리고 성능을 위해서 삭제
+		// move index page up and remove itself for performance
 		$("#index").addClass("up");
 		$("#index").one("transitionend", function() {
 			$(this).remove();
 		});
-
-		Page.currentPage++;
+		Page.init();
 	}
 }
 
 
 var Page =  {
-	currentPage: 0,
+	currentPage: 1,
 	frameColor: [ "#aaa", "#333", "#fff", "#000", "#777", "#ddd", "#111", "#ccc" ],
 	init: function() {
-		// index page = 0
-		this.currentPage = 0;
+		this.currentPage = 1;
 		
 		$("#nav").on("touchClick", ".dot", function(event) {
 			var page = $(event.currentTarget).data("page");
-			this.goPage(page);
+			if (page !== this.currentPage) {
+				this.goPage(page);
+			}
 		}.bind(this));
 	},
-	changeFrameColor: function() {
-		
-	},
 	goNext: function() {
+		// TODO: Next button validation
 		if (this.currentPage < this.pageInfo.length) {
-			this.currentPage++;
+			this.goPage(this.currentPage + 1);
 		}
 	},
 	goPage: function(page) {
-		console.log(page);
+		// page range check
+		if (page < 1 || page > 8) return;
+		
+		// move main element and then render page contents
+		var left = (page - 1) * (-100);
+		$("#main").css("left", left + "%").one("transitionend", function() {
+			
+		});
+	},
+	changeFrameColor: function() {
+		
 	}
 };
 
