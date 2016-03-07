@@ -1,4 +1,10 @@
-html, body, main {
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#index {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -6,75 +12,87 @@ html, body, main {
 	background-color: #FF93AC;
 	font-size: 1em;
 }
-.spotlight {
+#index .spotlight {
 	position: absolute;
 	top: -50%;
 	left: 0;
 	width: 100%;
 	height: 150%;
 	text-align: center;
-	font-size: 40em;
 	color: #FF93AC;
 	background: -webkit-linear-gradient(transparent, transparent), url("../img/stripe.jpg") repeat;
 	background: -o-linear-gradient(transparent, transparent);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-}
-#spotlight {
-	animation-name: spotlighting;
+	
 	animation-duration: 18s;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 	animation-timing-function: linear;
 }
-
-@keyframes spotlighting {
-	0% {
-		text-indent: -150%;
-		line-height: 100%;
-	}
-	15% {
-		text-indent: -30%;
-		line-height: 420%;
-	}
-	27% {
-		text-indent: 60%;
-		line-height: 140%;
-	}
-	40% {
-		text-indent: 100%;
-		line-height: 370%;
-	}
-	60% {
-		text-indent: -110%;
-		line-height: 280%;
-	}
-	70% {
-		text-indent: 10%;
-		line-height: 100%;
-	}
-	80% {
-		text-indent: 90%;
-		line-height: 280%;
-	}
-	100% {
-		text-indent: -100%;
-		line-height: 550%;
-	}
+#index #spotlight1 {
+	font-size: 40em;
+	animation-name: spotlighting1;
 }
 
-svg {
+#index #spotlight2 {
+	font-size: 20em;
+	animation-name: spotlighting2;
+}
+
+@keyframes spotlighting1 {
+	0% { text-indent: -150%; line-height: 100%;	}
+	15% { text-indent: -30%; line-height: 420%;	}
+	27% { text-indent: 60%; line-height: 140%; }
+	40% { text-indent: 100%; line-height: 370%;	}
+	60% { text-indent: -110%; line-height: 280%; }
+	70% { text-indent: 10%;	line-height: 100%; }
+	80% { text-indent: 90%;	line-height: 280%; }
+	100% { text-indent: -100%; line-height: 550%; }
+}
+
+@keyframes spotlighting2 {
+	0% { text-indent: 150%; line-height: 100%;	}
+	15% { text-indent: 30%; line-height: 420%;	}
+	27% { text-indent: -60%; line-height: 140%; }
+	40% { text-indent: -100%; line-height: 370%;	}
+	60% { text-indent: 110%; line-height: 280%; }
+	70% { text-indent: -10%;	line-height: 100%; }
+	80% { text-indent: -90%;	line-height: 280%; }
+	100% { text-indent: 100%; line-height: 550%; }
+}
+
+#index svg {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 }
-svg text {
+#index svg text {
 	width: 100%;
 	height: 100%;
 	text-align: center;
 }
+
+#index .start {
+	position: absolute;
+	top: 70%;
+	width: 100%;
+	text-align: center;
+}
+
+#index #startButton {
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	background-color: blue;
+	color: #fff;
+	font-size: 25px;
+}
+
+
+
 /*
 background-color: #FF93AC;
 svg {
