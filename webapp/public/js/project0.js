@@ -158,8 +158,6 @@ var Util = {
 
 $(document).on("ready", function () {
 	console.log("Welcome to Project0!");
-	//Question.init();
-	//$("#getResultBtn").on("click", getResult);
 	Project0.init();
 });
 
@@ -198,8 +196,8 @@ var Page =  {
 		this.setCurrentPage(1);
 		this.goPage(this.currentPage);
 		
-		$("#nav").on("touchClick", ".dot", function(event) {
-			var page = $(event.currentTarget).data("page");
+		$("#nav").on("touchClick", "li", function(event) {
+			var page = $(event.currentTarget).find(".dot").data("page");
 			if (page !== this.currentPage) {
 				this.goPage(page);
 				this.setCurrentPage(page);
@@ -227,11 +225,17 @@ var Page =  {
 		// move main element and then render page contents
 		var left = ((page - 1) * (-100)) + "%";
 		$("#main").css("left", left).one("transitionend", function() {
+			this.dottingAnimation(page);
 			this.changeFrameColor(page);
 		}.bind(this));
 	},
 	changeFrameColor: function(page) {
 		$("#frame").css("borderColor", this.frameColor[page - 1]);
+	},
+	dottingAnimation: function(page) {
+		var dots = $("#nav").find("li");
+		dots.find(".dot").removeClass("on");
+		dots.eq(page - 1).find(".dot").addClass("on");
 	}
 };
 

@@ -39,19 +39,8 @@ html, body {
 	overflow: hidden;
 	font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
 }
-#frame {
-	position: fixed;
-	top: 0;
-	left: 0;
-	box-sizing: border-box;
-	width: 100%;
-	height: 100%;
-	border: 20px solid;
-	border-color: transparent;
-	transition: 1.5s;
-	z-index: 888;
-	pointer-events: none;
-}
+
+/** index page **/
 #index {
 	position: absolute;
 	top: 0;
@@ -115,8 +104,6 @@ html, body {
 	80% { text-indent: -90%; line-height: 280%; }
 	100% { text-indent: 100%; line-height: 550%; }
 }
-
-
 #index .start {
 	position: absolute;
 	top: 70%;
@@ -141,6 +128,21 @@ html, body {
 	font-size: 12px;
 }
 
+
+/** main **/
+#frame {
+	position: fixed;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	border: 20px solid;
+	border-color: transparent;
+	transition: 1.5s;
+	z-index: 888;
+	pointer-events: none;
+}
 #main {
 	position: relative;
 	left: 0px;
@@ -167,6 +169,8 @@ html, body {
 #question7 { background-color: darkgoldenrod; }
 #question8 { background-color: teal; }
 
+
+/** nav **/
 #nav {
 	position: fixed;
 	bottom: 45px;
@@ -174,12 +178,22 @@ html, body {
 	text-align: center;
 }
 #nav li {
+	position: relative;
 	display: inline-block;
 	vertical-align: middle;
-	margin: 0 8px;
+	margin: 0 5px;
 	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
 }
 #nav .dot {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
@@ -190,19 +204,18 @@ html, body {
 	background-color: #ff93ac;
 }
 #nav .dot.on {
-	border: 0px solid rgba(0, 0, 0, 0.2);
+	background-color: red;
+	border: 4px solid #333;
 	
 	animation-name: dotting;
-	animation-iteration-count: infinite;
+	animation-timing-function: ease;
+	animation-duration: .5s;
 	animation-direction: alternate;
-	animation-timing-function: linear;
-	animation-duration: 12s;
 }
-
-
 @keyframes dotting {
-	0% { border: 0px; }
-	100% { border: 10px; }
+	0% { border: 0px solid #333; }
+	70% { border: 9px solid #333; }
+	100% { border: 5px solid #333; }
 }
 
 
