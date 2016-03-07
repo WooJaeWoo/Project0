@@ -18,7 +18,7 @@ var Util = {
 			}.bind(this))()
 		};
 	},
-	extendScrollMove : function() {
+	extendScrollMove : function () {
 		$.fn.scrollMove = function () {
 			return this.each(function () {
 				$("html, body").animate({
@@ -176,6 +176,10 @@ var Project0 = {
 	init: function() {
 		Util.extendClickEvent();
 		//Util.extendBgClip();
+		if (!Util.backgroundClipCheck()) {
+			$("#browserRecommend").css("display", "block");
+		}
+		
 		
 		this.currentPage = 0;
 		
