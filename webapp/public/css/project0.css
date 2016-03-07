@@ -160,14 +160,14 @@ html, body {
 	box-sizing: border-box;
 }
 
-#question1 { background-color: blue; }
-#question2 { background-color: brown; }
-#question3 { background-color: chartreuse; }
-#question4 { background-color: coral; }
+#question1 { background-color: bisque; }
+#question2 { background-color: skyblue; }
+#question3 { background-color: lightgreen; }
+#question4 { background-color: thistle; }
 #question5 { background-color: mediumaquamarine; }
-#question6 { background-color: cadetblue; }
-#question7 { background-color: darkgoldenrod; }
-#question8 { background-color: teal; }
+#question6 { background-color: lightcoral; }
+#question7 { background-color: lightcyan; }
+#question8 { background-color: lightgoldenrodyellow; }
 
 
 /** nav **/
