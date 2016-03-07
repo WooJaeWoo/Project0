@@ -129,6 +129,22 @@ html, body {
 	height: 100%;
 }
 
+.question {
+	position: relative;
+	float: left;
+	width: 12.5%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+#question1 { background-color: blue; }
+#question2 { background-color: brown; }
+#question3 { background-color: chartreuse; }
+#question4 { background-color: coral; }
+#question5 { background-color: mediumaquamarine; }
+#question6 { background-color: cadetblue; }
+#question7 { background-color: darkgoldenrod; }
+#question8 { background-color: teal; }
 /*
 
 #index svg {
