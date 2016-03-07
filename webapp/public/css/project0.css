@@ -1,19 +1,36 @@
 @font-face {
 	font-family: 'Noto Sans KR';
 	font-style: normal;
+	font-weight: 300;
+	src: url(./font/NotoSansKR-Light.woff2) format('woff2'),
+		 url(./font/NotoSansKR-Light.woff) format('woff'),
+		 url(./font/NotoSansKR-Light.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
 	font-weight: 400;
 	src: url(./font/NotoSansKR-Regular.woff2) format('woff2'),
-	url(./font/NotoSansKR-Regular.woff) format('woff'),
-	url(./font/NotoSansKR-Regular.otf) format('opentype');
+		 url(./font/NotoSansKR-Regular.woff) format('woff'),
+		 url(./font/NotoSansKR-Regular.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 500;
+	src: url(./font/NotoSansKR-Medium.woff2) format('woff2'),
+		 url(./font/NotoSansKR-Medium.woff) format('woff'),
+		 url(./font/NotoSansKR-Medium.otf) format('opentype');
 }
 @font-face {
 	font-family: 'Noto Sans KR';
 	font-style: normal;
 	font-weight: 800;
 	src: url(./font/NotoSansKR-Bold.woff2) format('woff2'),
-	url(./font/NotoSansKR-Bold.woff) format('woff'),
-	url(./font/NotoSansKR-Bold.otf) format('opentype');
+		 url(./font/NotoSansKR-Bold.woff) format('woff'),
+		 url(./font/NotoSansKR-Bold.otf) format('opentype');
 }
+
 html, body {
 	position: relative;
 	width: 100%;
@@ -125,8 +142,10 @@ html, body {
 
 #main {
 	position: relative;
+	left: 0px;
 	width: 800%;
 	height: 100%;
+	transition: 2s;
 }
 
 .question {
