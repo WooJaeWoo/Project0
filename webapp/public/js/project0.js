@@ -184,10 +184,10 @@ var Project0 = {
 	},
 	start: function() {
 		// move index page up and remove itself for performance
-		$("#index").addClass("up");
-		$("#index").one("transitionend", function() {
+		$("#index").addClass("up").one("transitionend", function() {
 			$(this).remove();
 		});
+		
 		Page.init();
 	}
 }
@@ -198,6 +198,7 @@ var Page =  {
 	frameColor: [ "#aaa", "#333", "#fff", "#000", "#777", "#ddd", "#111", "#ccc" ],
 	init: function() {
 		this.currentPage = 1;
+		this.goPage(this.currentPage);
 		
 		$("#nav").on("touchClick", ".dot", function(event) {
 			var page = $(event.currentTarget).data("page");
@@ -217,13 +218,13 @@ var Page =  {
 		if (page < 1 || page > 8) return;
 		
 		// move main element and then render page contents
-		var left = (page - 1) * (-100);
-		$("#main").css("left", left + "%").one("transitionend", function() {
-			
-		});
+		var left = ((page - 1) * (-100)) + "%";
+		$("#main").css("left", left).one("transitionend", function() {
+			this.changeFrameColor(page);
+		}.bind(this));
 	},
-	changeFrameColor: function() {
-		
+	changeFrameColor: function(page) {
+		$("#frame").css("borderColor", this.frameColor[page - 1]);
 	}
 };
 
@@ -238,7 +239,7 @@ var Answer = { //dummy
 	a7: null,
 	a8: []
 };
-
+/*
 var Question = {
 	init: function() {
 		$(".q1").on("click", "button", function(event) {
@@ -327,7 +328,7 @@ function getResult() {
 		}
 	});
 }
-
+*/
 /*
 var Scroll = function () {};
 Scroll.prototype = {
