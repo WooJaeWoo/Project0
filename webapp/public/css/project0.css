@@ -164,6 +164,46 @@ html, body {
 #question6 { background-color: cadetblue; }
 #question7 { background-color: darkgoldenrod; }
 #question8 { background-color: teal; }
+
+#nav {
+	position: fixed;
+	bottom: 45px;
+	width: 100%;
+	text-align: center;
+}
+#nav li {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 8px;
+	cursor: pointer;
+}
+#nav .dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background-color: #999;
+	transition: .5s;
+}
+#nav .dot:hover {
+	background-color: #ff93ac;
+}
+#nav .dot.on {
+	border: 0px solid rgba(0, 0, 0, 0.2);
+	
+	animation-name: dotting;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+	animation-duration: 12s;
+}
+
+
+@keyframes dotting {
+	0% { border: 0px; }
+	100% { border: 10px; }
+}
+
+
 /*
 
 #index svg {

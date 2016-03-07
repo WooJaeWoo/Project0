@@ -172,7 +172,6 @@ $(window).on("load", function () {
 
 
 var Project0 = {
-	currentPage: null,
 	init: function() {
 		Util.extendClickEvent();
 		//Util.extendBgClip();
@@ -180,8 +179,7 @@ var Project0 = {
 			$("#browserRecommend").css("display", "block");
 		}
 		
-		// index page = 0
-		this.currentPage = 0;
+		Page.init();
 		
 		// 시작!!!
 		$("#startButton").on("touchClick", this.start.bind(this));
@@ -193,11 +191,35 @@ var Project0 = {
 			$(this).remove();
 		});
 
-		this.currentPage++;
+		Page.currentPage++;
 	}
 }
 
 
+var Page =  {
+	currentPage: 0,
+	frameColor: [ "#aaa", "#333", "#fff", "#000", "#777", "#ddd", "#111", "#ccc" ],
+	init: function() {
+		// index page = 0
+		this.currentPage = 0;
+		
+		$("#nav").on("touchClick", ".dot", function(event) {
+			var page = $(event.currentTarget).data("page");
+			this.goPage(page);
+		}.bind(this));
+	},
+	changeFrameColor: function() {
+		
+	},
+	goNext: function() {
+		if (this.currentPage < this.pageInfo.length) {
+			this.currentPage++;
+		}
+	},
+	goPage: function(page) {
+		console.log(page);
+	}
+};
 
 
 var Answer = { //dummy
@@ -284,29 +306,6 @@ var Question = {
 	}
 }
 
-var Page =  {
-	currentPage: null,
-	//pageInfo: [ "hello", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "result" ],
-	init: function() {
-		this.currentPage = 0;
-		this.fillContents();
-	},
-	goPrev: function() {
-		if (this.currentPage > 0) {
-			this.currentPage--;
-			this.fillContents();
-		}
-	},
-	goNext: function() {
-		if (this.currentPage < this.pageInfo.length) {
-			this.currentPage++;
-			this.fillContents();
-		}
-	},
-	fillContents: function() {
-		//$("main").find("h1").text(this.pageInfo[this.currentPage]);
-	}
-};
 
 function getResult() {
 	$.ajax({
