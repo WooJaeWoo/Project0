@@ -158,10 +158,7 @@ var Util = {
 
 $(document).on("ready", function () {
 	console.log("Welcome to Project0!");
-	//Page.init();
 	//Question.init();
-	//scroll = new Scroll();
-	//swipe = new Swipe();
 	//$("#getResultBtn").on("click", getResult);
 	Project0.init();
 });
@@ -175,7 +172,7 @@ var Project0 = {
 	init: function() {
 		Util.extendClickEvent();
 		//Util.extendBgClip();
-		if (!Util.backgroundClipCheck()) {
+		if (!Util.backgroundClipCheck() || !Util.transitionendCheck()) {
 			$("#browserRecommend").css("display", "block");
 		}
 		
@@ -195,28 +192,38 @@ var Project0 = {
 
 var Page =  {
 	currentPage: 1,
+	setCurrentPage: function(page) { this.currentPage = page; },
 	frameColor: [ "#aaa", "#333", "#fff", "#000", "#777", "#ddd", "#111", "#ccc" ],
 	init: function() {
-		this.currentPage = 1;
+		this.setCurrentPage(1);
 		this.goPage(this.currentPage);
 		
 		$("#nav").on("touchClick", ".dot", function(event) {
 			var page = $(event.currentTarget).data("page");
 			if (page !== this.currentPage) {
 				this.goPage(page);
+				this.setCurrentPage(page);
+			}
+		}.bind(this));
+		
+		$("#nextButton").on("touchClick", function(event) {
+			if (this.currentPage === 8) {
+				console.log("send answer!");
+			} else {
+				this.goNext();
 			}
 		}.bind(this));
 	},
 	goNext: function() {
-		// TODO: Next button validation
-		if (this.currentPage < this.pageInfo.length) {
-			this.goPage(this.currentPage + 1);
+		if (this.currentPage < 8) {
+			this.setCurrentPage(this.currentPage + 1);
+			this.goPage(this.currentPage);
 		}
 	},
 	goPage: function(page) {
 		// page range check
 		if (page < 1 || page > 8) return;
-		
+
 		// move main element and then render page contents
 		var left = ((page - 1) * (-100)) + "%";
 		$("#main").css("left", left).one("transitionend", function() {
@@ -229,7 +236,7 @@ var Page =  {
 };
 
 
-var Answer = { //dummy
+var Answer = {
 	a1: null,
 	a2: null,
 	a3: null,
