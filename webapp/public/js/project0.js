@@ -180,12 +180,20 @@ var Project0 = {
 			$("#browserRecommend").css("display", "block");
 		}
 		
-		
+		// index page = 0
 		this.currentPage = 0;
 		
-		$("#startButton").on("touchClick", function() {
-			console.log("start!!!");
+		// 시작!!!
+		$("#startButton").on("touchClick", this.start.bind(this));
+	},
+	start: function() {
+		// index page 올리고 성능을 위해서 삭제
+		$("#index").addClass("up");
+		$("#index").one("transitionend", function() {
+			$(this).remove();
 		});
+
+		this.currentPage++;
 	}
 }
 
