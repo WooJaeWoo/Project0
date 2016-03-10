@@ -276,7 +276,7 @@ html, body {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 120px;
+	left: 8%;
 	margin: auto 0;
 	height: 150px;
 }
@@ -299,7 +299,11 @@ html, body {
 	letter-spacing: -5px;
 }
 
-
+.aBox {
+	position: absolute;
+	top: 0;
+	right: 8%;
+}
 
 
 /*
