@@ -181,6 +181,7 @@ html, body {
 
 
 /** main **/
+/** frame **/
 #frame {
 	position: fixed;
 	top: 0;
@@ -194,32 +195,6 @@ html, body {
 	z-index: 888;
 	pointer-events: none;
 }
-#main {
-	position: relative;
-	left: -1%;
-	width: 800%;
-	height: 100%;
-	transition: 1s;
-	transition-timing-function: ease;
-}
-
-.question {
-	position: relative;
-	float: left;
-	width: 12.5%;
-	height: 100%;
-	box-sizing: border-box;
-}
-
-#question1 { background-color: #b3d3d0; }
-#question2 { background-color: #f8c8b8; }
-#question3 { background-color: #043d5d; }
-#question4 { background-color: thistle; }
-#question5 { background-color: mediumaquamarine; }
-#question6 { background-color: lightcoral; }
-#question7 { background-color: lightcyan; }
-#question8 { background-color: lightgoldenrodyellow; }
-
 
 /** nav **/
 #nav {
@@ -232,7 +207,7 @@ html, body {
 	position: relative;
 	display: inline-block;
 	vertical-align: middle;
-	margin: 0 5px;
+	margin: 0 2px;
 	cursor: pointer;
 	width: 30px;
 	height: 30px;
@@ -268,6 +243,63 @@ html, body {
 	70% { border: 12px solid rgba(50, 50, 50, 0.4); }
 	100% { border: 8px solid rgba(50, 50, 50, 0.4); }
 }
+
+/** main sections **/
+#main {
+	position: relative;
+	left: -1%;
+	width: 800%;
+	height: 100%;
+	transition: 1s;
+	transition-timing-function: ease;
+}
+
+#main > section {
+	position: relative;
+	float: left;
+	width: 12.5%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 20px;
+}
+
+#section1 { background-color: #b3d3d0; color: #644b54; }
+#section2 { background-color: #f8c8b8; }
+#section3 { background-color: #043d5d; }
+#section4 { background-color: thistle; }
+#section5 { background-color: mediumaquamarine; }
+#section6 { background-color: lightcoral; }
+#section7 { background-color: lightcyan; }
+#section8 { background-color: lightgoldenrodyellow; }
+
+.qBox {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 120px;
+	margin: auto 0;
+	height: 150px;
+}
+
+.qBox .qNum {
+	position: absolute;
+	top: -110px;
+	left: 0;
+	font-size: 30px;
+	text-align: center;
+}
+.qBox .qNum > div { width: 100%; line-height: 35px; }
+.qBox .qNum > div:first-of-type { font-size: 50px; }
+.qBox .qestion { line-height: 80px; }
+.qBox .qestion .qEn { font-size: 70px; }
+.qBox .qestion .qKr {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 55px;
+	font-weight: 200;
+	letter-spacing: -5px;
+}
+
+
 
 
 /*
