@@ -44,7 +44,9 @@
 html, body {
 	position: relative;
 	width: 100%;
+	min-width: 320px;
 	height: 100%;
+	min-height: 480px;
 	overflow: hidden;
 	font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
 }
@@ -104,7 +106,7 @@ html, body {
 #index #spotlight2 {
 	font-size: 20em;
 	animation-name: spotlighting2;
-	animation-duration: 15s;
+	animation-duration: 16s;
 }
 
 #index .coverLayer {
@@ -209,9 +211,9 @@ html, body {
 	box-sizing: border-box;
 }
 
-#question1 { background-color: bisque; }
-#question2 { background-color: skyblue; }
-#question3 { background-color: lightgreen; }
+#question1 { background-color: #b3d3d0; }
+#question2 { background-color: #f8c8b8; }
+#question3 { background-color: #043d5d; }
 #question4 { background-color: thistle; }
 #question5 { background-color: mediumaquamarine; }
 #question6 { background-color: lightcoral; }
@@ -243,18 +245,18 @@ html, body {
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	width: 12px;
-	height: 12px;
+	width: 8px;
+	height: 8px;
 	border-radius: 50%;
-	background-color: #999;
+	background-color: #8ca5a2;
 	transition: .5s;
 }
 #nav .dot:hover {
 	background-color: #ff93ac;
 }
 #nav .dot.on {
-	background-color: red;
-	border: 4px solid #333;
+	background-color: #fff;
+	border: 8px solid rgba(50, 50, 50, 0.4);
 	
 	animation-name: dotting;
 	animation-timing-function: ease;
@@ -262,43 +264,13 @@ html, body {
 	animation-direction: alternate;
 }
 @keyframes dotting {
-	0% { border: 0px solid #333; }
-	70% { border: 9px solid #333; }
-	100% { border: 5px solid #333; }
+	0% { border: 0px solid rgba(50, 50, 50, 0.4); }
+	70% { border: 12px solid rgba(50, 50, 50, 0.4); }
+	100% { border: 8px solid rgba(50, 50, 50, 0.4); }
 }
 
 
 /*
-
-#index svg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-#index svg text {
-	width: 100%;
-	height: 100%;
-}
-
-
-background-color: #FF93AC;
-svg {
-	width: 100%;
-	height: 100%;
-}
-#svgDefs {
-	position: absolute;
-	height: 0px;
-	overflow: hidden;
-}
-#spotLight {
-	-webkit-clip-path: url(#clipCircle);
-	-moz-clip-path: url(#clipCircle);
-	-ms-clip-path: url(#clipCircle);
-	clip-path: url(#clipCircle);
-}
 section {
 	margin-bottom: 40px;
 }
@@ -319,3 +291,6 @@ section button.on {
 	background-color: #456674;
 	color: #fff;
 }
+*/
+
+

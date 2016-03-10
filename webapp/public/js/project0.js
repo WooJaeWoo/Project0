@@ -191,7 +191,7 @@ var Project0 = {
 var Page =  {
 	currentPage: 1,
 	setCurrentPage: function(page) { this.currentPage = page; },
-	frameColor: [ "#aaa", "#333", "#fff", "#000", "#777", "#ddd", "#111", "#ccc" ],
+	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#777", "#ddd", "#111", "#ccc" ],
 	init: function() {
 		this.setCurrentPage(1);
 		this.goPage(this.currentPage);
