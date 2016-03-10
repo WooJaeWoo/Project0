@@ -218,6 +218,7 @@ var Page =  {
 		$("#main").on("transitionend", function() {
 			this.dottingAnimation();
 			this.changeFrameColor();
+			this.runSectionScript();
 		}.bind(this));
 	},
 	goNext: function() {
@@ -241,10 +242,23 @@ var Page =  {
 		var dots = $("#nav").find("li");
 		dots.find(".dot").removeClass("on");
 		dots.eq(this.currentPage - 1).find(".dot").addClass("on");
+	},
+	runSectionScript: function() {
+		console.log("test");
+		if (this.currentPage === 1) {
+			section1();
+		} else if (this.currentPage === 2) {
+			section2();
+		}
 	}
 };
 
-
+function section1() {
+	console.log("section1");
+}
+function section2() {
+	console.log("section2");
+}
 var Answer = {
 	a1: null,
 	a2: null,
