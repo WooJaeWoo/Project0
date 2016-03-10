@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+
 @font-face {
 	font-family: 'Noto Sans KR';
 	font-style: normal;
@@ -14,30 +16,48 @@
 		 url(./font/NotoSansKR-Medium.woff) format('woff'),
 		 url(./font/NotoSansKR-Medium.otf) format('opentype');
 }
-@font-face {
-	font-family: 'Playfair Display';
-	font-style: normal;
-	font-weight: 400;
-	src: local('Playfair Display'),
-		 local('PlayfairDisplay-Regular'),
-		 url(./font/PlayDisplay-Normal.woff2) format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+
+/** TODO: mobile용 animation도 만들기 **/
+@keyframes spotlighting1 {
+	0% { text-indent: -150%; line-height: 100%;	}
+	16% { text-indent: -30%; line-height: 450%;	}
+	27% { text-indent: 50%; line-height: 100%; }
+	42% { text-indent: 100%; line-height: 420%;	}
+	64% { text-indent: -110%; line-height: 240%; }
+	74% { text-indent: 10%;	line-height: 100%; }
+	82% { text-indent: 80%;	line-height: 240%; }
+	100% { text-indent: -100%; line-height: 550%; }
 }
-@font-face {
-	font-family: 'Playfair Display';
-	font-style: italic;
-	font-weight: 400;
-	src: local('Playfair Display Italic'),
-		 local('PlayfairDisplay-Italic'),
-		 url(./font/PlayDisplay-Italic.woff2) format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+
+@keyframes spotlighting2 {
+	0% { text-indent: 120%; line-height: 940%; }
+	18% { text-indent: -100%; line-height: 520%; }
+	29% { text-indent: 20%; line-height: 200%; }
+	40% { text-indent: 90%; line-height: 470%; }
+	57% { text-indent: -95%; line-height: 720%; }
+	72% { text-indent: 40%; line-height: 250%; }
+	84% { text-indent: 90%; line-height: 780%; }
+	100% { text-indent: -60%; line-height: 950%; }
 }
+
+
 html, body {
 	position: relative;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 	font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
+}
+
+#noise {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/noise.png');
+	pointer-events: none;
+	z-index: 999;
 }
 
 /** index page **/
@@ -47,7 +67,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	background-color: #FF93AC;
+	background-color: #166152;
 	font-size: 1em;
 	text-align: center;
 	transition: 3s;
@@ -62,9 +82,11 @@ html, body {
 	left: 0;
 	width: 100%;
 	height: 150%;
-	color: #FF93AC;
-	background: -webkit-linear-gradient(transparent, transparent), url("../img/stripe.jpg") repeat;
-	background: -o-linear-gradient(transparent, transparent);
+	color: #166152;
+	background: -o-linear-gradient(45deg, #ffa04c, #fea6e1);
+	background: -webkit-linear-gradient(45deg, #ffa04c, #fea6e1);
+	background: linear-gradient(45deg, #ffa04c, #fea6e1);
+
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	
@@ -75,48 +97,73 @@ html, body {
 #index #spotlight1 {
 	font-size: 40em;
 	animation-name: spotlighting1;
-	animation-duration: 18s;
+	animation-duration: 22s;
 }
 #index #spotlight2 {
 	font-size: 20em;
 	animation-name: spotlighting2;
-	animation-duration: 12s;
-}
-/** TODO: mobile용 animation도 만들기 **/
-@keyframes spotlighting1 {
-	0% { text-indent: -150%; line-height: 100%;	}
-	15% { text-indent: -30%; line-height: 420%;	}
-	27% { text-indent: 60%; line-height: 140%; }
-	40% { text-indent: 100%; line-height: 370%;	}
-	60% { text-indent: -110%; line-height: 280%; }
-	70% { text-indent: 10%;	line-height: 100%; }
-	80% { text-indent: 90%;	line-height: 280%; }
-	100% { text-indent: -100%; line-height: 550%; }
+	animation-duration: 15s;
 }
 
-@keyframes spotlighting2 {
-	0% { text-indent: 150%; line-height: 100%; }
-	15% { text-indent: 30%; line-height: 420%; }
-	27% { text-indent: -60%; line-height: 140%; }
-	40% { text-indent: -100%; line-height: 370%; }
-	60% { text-indent: 110%; line-height: 280%; }
-	70% { text-indent: -10%; line-height: 100%; }
-	80% { text-indent: -90%; line-height: 280%; }
-	100% { text-indent: 100%; line-height: 550%; }
-}
-#index .start {
+#index .coverLayer {
 	position: absolute;
-	top: 70%;
-	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 62%;
+	height: 70%;
+	background-color: rgba(255, 255, 255, 0.7);
+	padding: 12px;
 }
-
+#index .coverLayer > div {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border: 2px solid #f6a2ab;
+}
+#index .coverLayer > div > div {
+	position: absolute;
+	left: 0;
+	box-sizing: border-box;
+	width: 100%;	
+}
+#index .coverLayer .title {
+	top: 28%;
+	font-size: 120px;
+	color: #b38f6b;
+}
+#index .coverLayer .title i {
+	color: #32584c;
+}
+#index .coverLayer .desc {
+	top: 50%;
+	font-size: 22px;
+	color: #326857;
+	font-weight: 200;
+}
+#index .coverLayer .desc b {
+	font-weight: 400;
+}
+#index .coverLayer .start {
+	top: 68%;
+}
+#index .coverLayer .start > div {
+	margin: 0 auto;
+	width: 330px;
+	height: 75px;
+	background-color: #1c5c4f;
+	padding: 10px;
+}
 #index #startButton {
-	width: 200px;
-	height: 60px;
-	line-height: 60px;
-	background-color: blue;
+	width: 100%;
+	height: 100%;
+	border: 2px solid #fff;
+	line-height: 55px;
 	color: #fff;
-	font-size: 25px;
+	font-size: 35px;
+	letter-spacing: 12px;
 }
 
 #index #browserRecommend {
