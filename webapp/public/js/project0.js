@@ -196,20 +196,28 @@ var Page =  {
 		this.setCurrentPage(1);
 		this.goPage(this.currentPage);
 		
+		// nav로 페이지 이동
 		$("#nav").on("touchClick", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
 			if (page !== this.currentPage) {
-				this.goPage(page);
 				this.setCurrentPage(page);
+				this.goPage(page);
 			}
 		}.bind(this));
 		
+		// next 버튼으로 페이지 이동		
 		$("#nextButton").on("touchClick", function(event) {
 			if (this.currentPage === 8) {
 				console.log("send answer!");
 			} else {
 				this.goNext();
 			}
+		}.bind(this));
+		
+		// page 변환하면 nav animation과 frame 색깔 수정하기
+		$("#main").on("transitionend", function() {
+			this.dottingAnimation();
+			this.changeFrameColor();
 		}.bind(this));
 	},
 	goNext: function() {
@@ -224,18 +232,15 @@ var Page =  {
 
 		// move main element and then render page contents
 		var left = ((page - 1) * (-100)) + "%";
-		$("#main").css("left", left).one("transitionend", function() {
-			this.dottingAnimation(page);
-			this.changeFrameColor(page);
-		}.bind(this));
+		$("#main").css("left", left);
 	},
-	changeFrameColor: function(page) {
-		$("#frame").css("borderColor", this.frameColor[page - 1]);
+	changeFrameColor: function() {
+		$("#frame").css("borderColor", this.frameColor[this.currentPage - 1]);
 	},
-	dottingAnimation: function(page) {
+	dottingAnimation: function() {
 		var dots = $("#nav").find("li");
 		dots.find(".dot").removeClass("on");
-		dots.eq(page - 1).find(".dot").addClass("on");
+		dots.eq(this.currentPage - 1).find(".dot").addClass("on");
 	}
 };
 

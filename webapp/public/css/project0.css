@@ -56,6 +56,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	background-image: url('../img/noise.png');
+	background-size: 12%;
 	pointer-events: none;
 	z-index: 999;
 }
@@ -71,6 +72,7 @@ html, body {
 	font-size: 1em;
 	text-align: center;
 	transition: 3s;
+	transition-timing-function: ease;
 	z-index: 999;
 }
 #index.up {
@@ -192,11 +194,11 @@ html, body {
 }
 #main {
 	position: relative;
-	left: 0px;
+	left: -1%;
 	width: 800%;
 	height: 100%;
 	transition: 1s;
-	transition-timing-function: linear;
+	transition-timing-function: ease;
 }
 
 .question {
