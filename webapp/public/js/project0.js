@@ -193,8 +193,10 @@ var Page =  {
 	setCurrentPage: function(page) { this.currentPage = page; },
 	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#777", "#ddd", "#111", "#ccc" ],
 	init: function() {
+		// first section
 		this.setCurrentPage(1);
-		this.goPage(this.currentPage);
+		
+		SectionInit.init();
 		
 		// nav로 페이지 이동
 		$("#nav").on("touchClick", "li", function(event) {
@@ -219,6 +221,9 @@ var Page =  {
 			this.changeFrameColor();
 			this.runSectionScript();
 		}.bind(this));
+		
+		// open first section
+		this.goPage(this.currentPage);
 	},
 	goNext: function() {
 		if (this.currentPage < 8) {
@@ -246,12 +251,43 @@ var Page =  {
 	},
 	runSectionScript: function() {
 		// section 별 script
-		Section["section" + this.currentPage]();
+		SectionContents["section" + this.currentPage]();
 	}
 };
 
+var SectionInit = {
+	init: function() {
+		for (var i = 1; i <= 8; i++) {
+			this["section" + i]();
+		}
+	},
+	section1: function() {
+		console.log("section1 i");
+	},
+	section2: function() {
+		console.log("section2 i");
+	},
+	section3: function() {
+		console.log("section3 i");
+	},
+	section4: function() {
+		console.log("section4 i");
+	},
+	section5: function() {
+		console.log("section5 i");
+	},
+	section6: function() {
+		console.log("section6 i");
+	},
+	section7: function() {
+		console.log("section7 i");
+	},
+	section8: function() {
+		console.log("section8 i");
+	}
+};
 
-var Section = {
+var SectionContents = {
 	section1: function() {
 		console.log("section1");
 	},
