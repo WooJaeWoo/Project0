@@ -201,14 +201,14 @@ var Page =  {
 		SectionInit.init();
 		
 		// make first section as "out" state
-		SectionOut.section1();
+		SectionOut.clean(SectionOut.section1);
 		
 		// nav로 페이지 이동
 		$("#nav").on("touchClick", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
 			if (page !== this.currentPage) {
 				// section out
-				SectionOut["section" + this.currentPage]();
+				SectionOut.clean(SectionOut["section" + this.currentPage]);
 				
 				// set new page
 				this.setCurrentPage(page);
@@ -220,7 +220,7 @@ var Page =  {
 		// next 버튼으로 페이지 이동		
 		$("#nextButton").on("touchClick", function(event) {
 			// section out
-			SectionOut["section" + this.currentPage]();
+			SectionOut.clean(SectionOut["section" + this.currentPage]);
 			
 			if (this.currentPage === 8) {
 				console.log("send answer!");
@@ -232,7 +232,8 @@ var Page =  {
 		// page 변환하면 nav animation과 frame 색깔 수정하기
 		$("#main").on("transitionend", function() {
 			this.changeFrameColor();
-			this.runSectionIn();
+			// run section in
+			SectionIn.start(SectionIn["section" + this.currentPage]);
 		}.bind(this));
 		
 		// open first section
@@ -261,10 +262,6 @@ var Page =  {
 		var dots = $("#nav").find("li");
 		dots.find(".dot").removeClass("on");
 		dots.eq(this.currentPage - 1).find(".dot").addClass("on");
-	},
-	runSectionIn: function() {
-		// section 별 script
-		SectionIn["section" + this.currentPage]();
 	}
 };
 
@@ -276,26 +273,50 @@ var SectionInit = {
 		}
 	},
 	section1: function() {
+		$("#section1").find(".aBox").on("touchClick", "img", function(event) {
+			Answer.answerObj.a1 = $(event.currentTarget).data("value");
+		});
 	},
 	section2: function() {
+		
 	},
 	section3: function() {
+		
 	},
 	section4: function() {
+		
 	},
 	section5: function() {
+		
 	},
 	section6: function() {
+		
 	},
 	section7: function() {
+		
 	},
 	section8: function() {
+		
 	}
 };
 
 // section 전환 시 새 페이지 효과
 var SectionIn = {
-	section1: function() {
+	start: function(sectionCallBack) {
+		var section = $("#section" + Page.currentPage);
+		section.find(".qNum").addClass("animated fadeInUp");
+		setTimeout(function() {
+			section.find(".question").addClass("animated fadeInUp");
+		}, 500);
+		setTimeout(function() {
+			sectionCallBack(section);
+		}, 1000);
+	},
+	section1: function(section) {
+		section.find("#genderTagM").addClass("animated bounceInDown");
+		setTimeout(function() {
+			section.find("#genderTagF").addClass("animated bounceInDown");
+		}, 300);		
 	},
 	section2: function() {
 	},
@@ -315,21 +336,37 @@ var SectionIn = {
 
 // section 전환 시 헌 페이지 숨기기 (새 페이지 SectionIn이 가능하도록)
 var SectionOut = {
-	section1: function() {
+	clean: function(sectionCallBack) {
+		var section = $("#section" + Page.currentPage);
+		setTimeout(function() {
+			section.find(".qNum").removeClass("animated fadeInUp");
+			section.find(".question").removeClass("animated fadeInUp");
+			sectionCallBack(section);
+		}, 1000);
+	},
+	section1: function(section) {
+		section.find(".genderTag").removeClass("animated bounceInDown");
 	},
 	section2: function() {
+		
 	},
 	section3: function() {
+		
 	},
 	section4: function() {
+		
 	},
 	section5: function() {
+		
 	},
 	section6: function() {
+		
 	},
 	section7: function() {
+		
 	},
 	section8: function() {
+		
 	}
 };
 
@@ -361,7 +398,6 @@ var Answer = {
 			}
 		});
 	}
-	
 };
 
 /*

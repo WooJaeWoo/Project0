@@ -63,7 +63,7 @@
 	50% { text-indent: -180%; line-height: 320%; }
 	66% { text-indent: 100%; line-height: 160%; }
 	85% { text-indent: -120%; line-height: 100%; }
-	100% { text-indent: -200%; line-height: 360%; }
+	100% { text-indent: -200%; line-height: 200%; }
 }
 
 html, body {
@@ -127,7 +127,7 @@ html, body {
 	-webkit-text-fill-color: transparent;
 	
 	animation-iteration-count: infinite;
-	animation-direction: alternate;
+	animation-direction: normal;
 	animation-timing-function: linear;
 }
 #index #spotlight1 {
@@ -225,9 +225,17 @@ html, body {
 	height: 100%;
 	border: 20px solid;
 	border-color: transparent;
-	transition: 1.5s;
+	transition: 2s;
 	z-index: 888;
 	pointer-events: none;
+}
+
+/** logo **/
+#logo {
+	position: fixed;
+	top: 6%;
+	left: 5%;
+	z-index: 1000;
 }
 
 /** nav **/
@@ -297,15 +305,9 @@ html, body {
 	padding: 20px;
 }
 
-#section1 { background-color: #b3d3d0; color: #644b54; }
-#section2 { background-color: #f8c8b8; }
-#section3 { background-color: #043d5d; }
-#section4 { background-color: thistle; }
-#section5 { background-color: mediumaquamarine; }
-#section6 { background-color: lightcoral; }
-#section7 { background-color: lightcyan; }
-#section8 { background-color: lightgoldenrodyellow; }
-
+#main > section img {
+	max-width: 100%;
+}
 .qBox {
 	position: absolute;
 	top: 0;
@@ -321,12 +323,16 @@ html, body {
 	left: 0;
 	font-size: 30px;
 	text-align: center;
+	opacity: 0;
 }
 .qBox .qNum > div { width: 100%; line-height: 35px; }
 .qBox .qNum > div:first-of-type { font-size: 50px; }
-.qBox .qestion { line-height: 80px; }
-.qBox .qestion .qEn { font-size: 70px; }
-.qBox .qestion .qKr {
+.qBox .question {
+	line-height: 80px;
+	opacity: 0;
+}
+.qBox .question .qEn { font-size: 70px; }
+.qBox .question .qKr {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 55px;
 	font-weight: 200;
@@ -336,8 +342,34 @@ html, body {
 .aBox {
 	position: absolute;
 	top: 0;
-	right: 8%;
+	right: 0;
+	box-sizing: border-box;
+	padding-right: 8%;
+	height: 100%;
+	text-align: center;
 }
+
+#section1 { background-color: #b3d3d0; color: #644b54; }
+#section1 .aBox { width: 55%; }
+#section1 .genderTag {
+	width: 40%;
+	max-width: 400px;
+	display: inline-block;
+	opacity: 0;
+	margin: 20px 10px;
+	cursor: pointer;
+}
+#section1 .genderTag.animated {
+	opacity: 1;
+}
+#section2 { background-color: #f8c8b8; }
+#section3 { background-color: #043d5d; }
+#section4 { background-color: thistle; }
+#section5 { background-color: mediumaquamarine; }
+#section6 { background-color: lightcoral; }
+#section7 { background-color: lightcyan; }
+#section8 { background-color: lightgoldenrodyellow; }
+
 
 @media all and (max-width : 990px) {
 	.m-show { display: block; }
@@ -351,9 +383,13 @@ html, body {
 	}
 	#index .coverLayer .title {	top: 18%; }
 	#index .coverLayer .start {	top: 78%; }
+	#index #browserRecommend { font-size: 10px; }
 }
 
 @media all and (max-width : 767px) {	
+	/** frame **/
+	#frame { border: 10px solid; }
+
 	#index #spotlight1 {
 		font-size: 15em;
 		animation-name: spotlighting1_mobile;
@@ -387,5 +423,4 @@ html, body {
 		letter-spacing: 12px;
 		text-indent: 15px;
 	}
-	#index #browserRecommend { font-size: 10px; }
 }

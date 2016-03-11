@@ -2,9 +2,11 @@
 <html>
 <head>
 	<%- include('./common/head') %>
+	<script src="/js/lib/hammerjs/hammer.min.js"></script>
 </head>
 <body>
 	<div id="frame"></div>
+	<div id="logo">logo</div>
 	<div id="index">
 		<div id="spotlight1" class="spotlight">●</div>
 		<div id="spotlight2" class="spotlight">●</div>
@@ -28,14 +30,18 @@
 					<div>1</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Gender</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>				
 			</div>
 			<div class="aBox">
-				<img src="/img/q1_male.png" alt="Male">
-				<img src="/img/q1_female.png" alt="Female">				
+				<div id="genderTagM" class="genderTag">
+					<img src="/img/q1_male.png" alt="Male" data-value="M">
+				</div>
+				<div id="genderTagF" class="genderTag">
+					<img src="/img/q1_female.png" alt="Female" data-value="F">
+				</div>
 			</div>
 		</section>
 		<section id="section2">
@@ -44,7 +50,7 @@
 					<div>2</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Age</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>
@@ -59,7 +65,7 @@
 					<div>3</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Gender</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>
@@ -74,7 +80,7 @@
 					<div>4</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Gender</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>
@@ -89,7 +95,7 @@
 					<div>5</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Gender</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>
@@ -104,7 +110,7 @@
 					<div>6</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Gender</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>
@@ -119,7 +125,7 @@
 					<div>7</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Gender</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>
@@ -134,7 +140,7 @@
 					<div>8</div>
 					<div>.....</div>
 				</div>
-				<div class="qestion">
+				<div class="question">
 					<div class="qEn">Gender</div>
 					<div class="qKr">당신의 성별은?</div>
 				</div>
