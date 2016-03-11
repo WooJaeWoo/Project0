@@ -22,7 +22,7 @@
 
 
 /** Spotlight Animation **/
-/** TODO: mobile용 animation도 만들기 **/
+/** TODO: animation range 정해서 수정 **/
 @keyframes spotlighting1 {
 	0% { text-indent: 120%; line-height: 940%; }
 	18% { text-indent: -100%; line-height: 520%; }
@@ -44,8 +44,27 @@
 	100% { text-indent: -100%; line-height: 550%; }
 }
 
-
-
+/** TODO: mobile용 화면 사이즈 고려 다시 수정 **/
+@keyframes spotlighting1_mobile {
+	/* text-indent: -150% ~ 90% / line-height: 100% ~ 660% */
+	0% { text-indent: 90%; line-height: 100%; }
+	19% { text-indent: -10%; line-height: 620%; }
+	30% { text-indent: -150%; line-height: 400%; }
+	44% { text-indent: 30%; line-height: 110%; }
+	67% { text-indent: 90%; line-height: 580%; }
+	84% { text-indent: -150%; line-height: 300%; }
+	100% { text-indent: 90%; line-height: 100%; }
+}
+@keyframes spotlighting2_mobile {
+	/* text-indent: -200% ~ 100% / line-height: 100% ~ 360% */
+	0% { text-indent: -200%; line-height: 200%; }
+	18% { text-indent: 100%; line-height: 360%; }
+	34% { text-indent: -10%; line-height: 100%; }
+	50% { text-indent: -180%; line-height: 320%; }
+	66% { text-indent: 100%; line-height: 160%; }
+	85% { text-indent: -120%; line-height: 100%; }
+	100% { text-indent: -200%; line-height: 360%; }
+}
 
 html, body {
 	position: relative;
@@ -58,6 +77,10 @@ html, body {
 	font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
 }
 
+.hide { display: none; }
+.m-show { display: none; }
+.m-show_inline { display: none; }
+
 #noise {
 	position: fixed;
 	top: 0;
@@ -65,7 +88,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	background-image: url('../img/noise.png');
-	background-size: 12%;
+	background-size: 20%;
 	pointer-events: none;
 	z-index: 999;
 }
@@ -110,12 +133,12 @@ html, body {
 #index #spotlight1 {
 	font-size: 20em;
 	animation-name: spotlighting1;
-	animation-duration: 16s;
+	animation-duration: 28s;
 }
 #index #spotlight2 {
-	font-size: 40em;
+	font-size: 36em;
 	animation-name: spotlighting2;
-	animation-duration: 22s;
+	animation-duration: 24s;
 }
 
 #index .coverLayer {
@@ -316,28 +339,53 @@ html, body {
 	right: 8%;
 }
 
+@media all and (max-width : 990px) {
+	.m-show { display: block; }
+	.m-show_inline { display: inline; }
+	.m-hide { display: none !important; }
+	
+	#index .coverLayer {
+		width: 80%;
+		height: 88%;
+		padding: 12px;
+	}
+	#index .coverLayer .title {	top: 18%; }
+	#index .coverLayer .start {	top: 78%; }
+}
 
-/*
-section {
-	margin-bottom: 40px;
+@media all and (max-width : 767px) {	
+	#index #spotlight1 {
+		font-size: 15em;
+		animation-name: spotlighting1_mobile;
+		animation-duration: 22s;
+	}
+	#index #spotlight2 {
+		font-size: 25em;
+		animation-name: spotlighting2_mobile;
+		animation-duration: 20s;
+	}
+	#index .coverLayer .title {
+		top: 15%;
+		font-size: 60px;
+	}
+	#index .coverLayer .desc {
+		top: 48%;
+		font-size: 15px;
+		line-height: 24px;
+	}
+	#index .coverLayer .start {
+		top: 75%;
+	}
+	#index .coverLayer .start > div {
+		width: 172px;
+		height: 40px;
+		padding: 6px;
+	}
+	#index #startButton {
+		line-height: 28px;
+		font-size: 20px;
+		letter-spacing: 12px;
+		text-indent: 15px;
+	}
+	#index #browserRecommend { font-size: 10px; }
 }
-section p {
-	margin-bottom: 10px;
-}
-section button {
-	width: 65px;
-	height: 45px;
-	border: 2px solid #555;
-}
-section button.on {
-	background-color: darkorange;
-}
-#getResultBtn {
-	width: 200px;
-	height: 60px;
-	background-color: #456674;
-	color: #fff;
-}
-*/
-
-
