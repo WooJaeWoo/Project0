@@ -356,13 +356,12 @@ html, body {
 	width: 40%;
 	max-width: 400px;
 	display: inline-block;
-	opacity: 0;
 	margin: 20px 10px;
 	cursor: pointer;
+	opacity: 0;
 }
-#section1 .genderTag.animated {
-	opacity: 1;
-}
+#section1 .genderTag.animated { opacity: 1; }
+
 
 #section2 { background-color: #f8c8b8; color: #5e4d47; }
 
@@ -372,14 +371,41 @@ html, body {
 #section3 .leftSide { float: left; width: 45%; height: 100%; }
 #section3 .leftSide .upperDiv { width: 100%; height: 75%; background-color: #164361; }
 #section3 .leftSide .lowerDiv { width: 100%; height: 25%; background-color: #274b65; }
-#section3 .rightSide { float: right; width: 55%; height: 100%; }
+#section3 .rightSide { position: relative; float: right; width: 55%; height: 100%; }
 #section3.yes { background-color: #ff81a5; }
 #section3.yes .leftSide .upperDiv { background-color: #ff8cae; }
 #section3.yes .leftSide .lowerDiv { background-color: #ff9bbb; }
 #section3.no { background-color: #bdd4e2; }
 #section3.no .leftSide .upperDiv { background-color: #9fbbce; }
 #section3.no .leftSide .lowerDiv { background-color: #b3c9d7; }
-
+#section3 #marriageButton {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto 0;
+	width: 75%;
+	height: 300px;
+	opacity: 0;
+}
+#section3 #marriageButton.animated { opacity: 1; }
+#section3 .marriageYes {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background-color: sandybrown;
+}
+#section3 .marriageNo {
+	position: absolute;
+	top: 0;
+	right: 0;
+	float: right;
+	width: 50%;
+	height: 100%;
+	background-color: aquamarine;
+}
 #section4 { background-color: thistle; }
 #section5 { background-color: mediumaquamarine; }
 #section6 { background-color: lightcoral; }

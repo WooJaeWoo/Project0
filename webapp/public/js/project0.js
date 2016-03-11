@@ -127,6 +127,16 @@ var Util = {
 			'class' : 'spotlight'
 		});
 	},
+	extendAnimateCSS : function () {
+		$.fn.extend({
+			animateCSS: function (animationName) {
+				$(this).addClass('animated ' + animationName);
+			},
+			unanimateCSS: function(animationName) {
+				$(this).removeClass('animated ' + animationName);
+			}
+		});
+	},
 	backgroundClipCheck : function () {
 		return document.body.style.webkitBackgroundClip != undefined;
 	},
@@ -170,7 +180,8 @@ $(window).on("load", function () {
 var Project0 = {
 	init: function() {
 		Util.extendClickEvent();
-		//Util.extendBgClip();
+		Util.extendAnimateCSS();
+		
 		if (!Util.backgroundClipCheck() || !Util.transitionendCheck()) {
 			$("#browserRecommend").css("display", "block");
 		}
@@ -281,7 +292,16 @@ var SectionInit = {
 		
 	},
 	section3: function() {
-		
+		$("#section3").find(".aBox").on("touchClick", "button", function(event) {		
+			var value = $(event.currentTarget).data("value");
+			if (value === "yes") {
+				$("#frame").css("borderColor", "#ffb5d1");
+			} else {
+				$("#frame").css("borderColor", "#537187");
+			}
+			$("#section3").removeClass().addClass(value);
+			Answer.answerObj.a3 = value;
+		});
 	},
 	section4: function() {
 		
@@ -304,33 +324,32 @@ var SectionInit = {
 var SectionIn = {
 	start: function(sectionCallBack) {
 		var section = $("#section" + Page.currentPage);
-		section.find(".qNum").addClass("animated fadeInUp");
+		section.find(".qNum").animateCSS("fadeInUp");
 		setTimeout(function() {
-			section.find(".question").addClass("animated fadeInUp");
-		}, 500);
-		setTimeout(function() {
+			section.find(".question").animateCSS("fadeInUp");
 			sectionCallBack(section);
-		}, 1000);
+		}, 500);
 	},
 	section1: function(section) {
-		section.find("#genderTagM").addClass("animated bounceInDown");
+		section.find("#genderTagM").animateCSS("bounceInDown");
 		setTimeout(function() {
-			section.find("#genderTagF").addClass("animated bounceInDown");
+			section.find("#genderTagF").animateCSS("bounceInDown");
 		}, 300);		
 	},
-	section2: function() {
+	section2: function(section) {
 	},
-	section3: function() {
+	section3: function(section) {
+		$("#marriageButton").animateCSS("fadeInUpBig");
 	},
-	section4: function() {
+	section4: function(section) {
 	},
-	section5: function() {
+	section5: function(section) {
 	},
-	section6: function() {
+	section6: function(section) {
 	},
-	section7: function() {
+	section7: function(section) {
 	},
-	section8: function() {
+	section8: function(section) {
 	}
 };
 
@@ -339,33 +358,33 @@ var SectionOut = {
 	clean: function(sectionCallBack) {
 		var section = $("#section" + Page.currentPage);
 		setTimeout(function() {
-			section.find(".qNum").removeClass("animated fadeInUp");
-			section.find(".question").removeClass("animated fadeInUp");
+			//section.find(".qNum").unanimateCSS("fadeInUp");
+			//section.find(".question").unanimateCSS("fadeInUp");
 			sectionCallBack(section);
 		}, 1000);
 	},
 	section1: function(section) {
-		section.find(".genderTag").removeClass("animated bounceInDown");
+		section.find(".genderTag").unanimateCSS("bounceInDown");
 	},
-	section2: function() {
+	section2: function(section) {
 		
 	},
-	section3: function() {
+	section3: function(section) {
 		
 	},
-	section4: function() {
+	section4: function(section) {
 		
 	},
-	section5: function() {
+	section5: function(section) {
 		
 	},
-	section6: function() {
+	section6: function(section) {
 		
 	},
-	section7: function() {
+	section7: function(section) {
 		
 	},
-	section8: function() {
+	section8: function(section) {
 		
 	}
 };
