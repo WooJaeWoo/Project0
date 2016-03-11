@@ -358,8 +358,8 @@ var SectionOut = {
 	clean: function(sectionCallBack) {
 		var section = $("#section" + Page.currentPage);
 		setTimeout(function() {
-			//section.find(".qNum").unanimateCSS("fadeInUp");
-			//section.find(".question").unanimateCSS("fadeInUp");
+			section.find(".qNum").unanimateCSS("fadeInUp");
+			section.find(".question").unanimateCSS("fadeInUp");
 			sectionCallBack(section);
 		}, 1000);
 	},
