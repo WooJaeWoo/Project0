@@ -156,6 +156,7 @@ var Util = {
     }
 };
 
+
 $(document).on("ready", function () {
 	console.log("Welcome to Project0!");
 	Project0.init();
@@ -196,19 +197,31 @@ var Page =  {
 		// first section
 		this.setCurrentPage(1);
 		
+		// init sections
 		SectionInit.init();
+		
+		// make first section as "out" state
+		SectionOut.section1();
 		
 		// nav로 페이지 이동
 		$("#nav").on("touchClick", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
 			if (page !== this.currentPage) {
+				// section out
+				SectionOut["section" + this.currentPage]();
+				
+				// set new page
 				this.setCurrentPage(page);
+				// and go page!
 				this.goPage(page);
 			}
 		}.bind(this));
 		
 		// next 버튼으로 페이지 이동		
 		$("#nextButton").on("touchClick", function(event) {
+			// section out
+			SectionOut["section" + this.currentPage]();
+			
 			if (this.currentPage === 8) {
 				console.log("send answer!");
 			} else {
@@ -219,7 +232,7 @@ var Page =  {
 		// page 변환하면 nav animation과 frame 색깔 수정하기
 		$("#main").on("transitionend", function() {
 			this.changeFrameColor();
-			this.runSectionScript();
+			this.runSectionIn();
 		}.bind(this));
 		
 		// open first section
@@ -249,12 +262,13 @@ var Page =  {
 		dots.find(".dot").removeClass("on");
 		dots.eq(this.currentPage - 1).find(".dot").addClass("on");
 	},
-	runSectionScript: function() {
+	runSectionIn: function() {
 		// section 별 script
-		SectionContents["section" + this.currentPage]();
+		SectionIn["section" + this.currentPage]();
 	}
 };
 
+// 각 section에 이벤트 리스너를 붙이고 초기 상태를 세팅
 var SectionInit = {
 	init: function() {
 		for (var i = 1; i <= 8; i++) {
@@ -262,175 +276,95 @@ var SectionInit = {
 		}
 	},
 	section1: function() {
-		console.log("section1 i");
 	},
 	section2: function() {
-		console.log("section2 i");
 	},
 	section3: function() {
-		console.log("section3 i");
 	},
 	section4: function() {
-		console.log("section4 i");
 	},
 	section5: function() {
-		console.log("section5 i");
 	},
 	section6: function() {
-		console.log("section6 i");
 	},
 	section7: function() {
-		console.log("section7 i");
 	},
 	section8: function() {
-		console.log("section8 i");
 	}
 };
 
-var SectionContents = {
+// section 전환 시 새 페이지 효과
+var SectionIn = {
 	section1: function() {
-		console.log("section1");
 	},
 	section2: function() {
-		console.log("section2");
 	},
 	section3: function() {
-		console.log("section3");
 	},
 	section4: function() {
-		console.log("section4");
 	},
 	section5: function() {
-		console.log("section5");
 	},
 	section6: function() {
-		console.log("section6");
 	},
 	section7: function() {
-		console.log("section7");
 	},
 	section8: function() {
-		console.log("section8");
+	}
+};
+
+// section 전환 시 헌 페이지 숨기기 (새 페이지 SectionIn이 가능하도록)
+var SectionOut = {
+	section1: function() {
+	},
+	section2: function() {
+	},
+	section3: function() {
+	},
+	section4: function() {
+	},
+	section5: function() {
+	},
+	section6: function() {
+	},
+	section7: function() {
+	},
+	section8: function() {
 	}
 };
 
 var Answer = {
-	a1: null,
-	a2: null,
-	a3: null,
-	a4: null,
-	a5: [],
-	a6: null,
-	a7: null,
-	a8: []
-};
-/*
-var Question = {
-	init: function() {
-		$(".q1").on("click", "button", function(event) {
-			$(".q1 button").removeClass("on");
-			$(event.currentTarget).addClass("on");
-			Answer.a1 = $(event.currentTarget).val();
-		});
-		$(".q2").on("change", "select", function(event) {
-			Answer.a2 = $(event.currentTarget).val();
-		});
-		$(".q3").on("click", "button", function(event) {
-			if ($(event.currentTarget).val() == "false") {
-				$(event.currentTarget).val("true").text("married");
-			} else {
-				$(event.currentTarget).val("false").text("Not married");
-			}
-			Answer.a3 = $(event.currentTarget).val();
-			$(event.currentTarget).toggleClass("on");
-		});
-		$(".q4").on("change", "input", function(event) {
-			Answer.a4 = $(event.currentTarget).val();
-		});
-		$(".q5").on("click", "button", function(event) {
-			if ($(event.currentTarget).hasClass("on")) {
-				$(event.currentTarget).removeClass("on");
-				var i = Answer.a5.indexOf($(event.currentTarget).val());
-				Answer.a5.splice(i, 1);
-				return;
-			}
-			
-			var buttons = $(".q5 button");
-			var cnt = 0;
-			for (var i = 0; i < buttons.length; i++) {
-				if ($(buttons[i]).hasClass("on")) {
-					cnt++;
-				}
-			}
-			if (cnt < 2) {
-				$(event.currentTarget).addClass("on");
-				Answer.a5.push($(event.currentTarget).val());
-			}
-		});
-		$(".q6").on("change", "input", function(event) {
-			Answer.a6 = $(event.currentTarget).val();
-		});
-		$(".q7").on("click", "button", function(event) {
-			$(".q7 button").removeClass("on");
-			$(event.currentTarget).addClass("on");
-			Answer.a7 = $(event.currentTarget).val();
-		});
-		$(".q8").on("click", "button", function(event) {
-			if ($(event.currentTarget).hasClass("on")) {
-				$(event.currentTarget).removeClass("on");
-				var i = Answer.a8.indexOf($(event.currentTarget).val());
-				Answer.a8.splice(i, 1);
-				return;
-			}
-			
-			var buttons = $(".q8 button");
-			var cnt = 0;
-			for (var i = 0; i < buttons.length; i++) {
-				if ($(buttons[i]).hasClass("on")) {
-					cnt++;
-				}
-			}
-			if (cnt < 2) {
-				$(event.currentTarget).addClass("on");
-				Answer.a8.push($(event.currentTarget).val());
-			}
-		});
-	}
-}
-
-
-function getResult() {
-	$.ajax({
-		url: "/result",
-		type: "POST",
-		data: Answer,
-		dataType: "html",
-		success: function(res) {
-			$("main").html(res);
-		},
-		error: function() {
-			console.log("[error] get result ajax!!!");
-		}
-	});
-}
-*/
-/*
-var Scroll = function () {};
-Scroll.prototype = {
-	init: function () {
-		$(window).one("mousewheel", this.scrollHandler.bind(this));
+	answerObj: {
+		a1: null,
+		a2: null,
+		a3: null,
+		a4: null,
+		a5: [],
+		a6: null,
+		a7: null,
+		a8: []
 	},
-	scrollHandler: function (event) {
-		if (event.originalEvent.wheelDelta > 0) {
-			console.log('Scroll up');
-			Page.goPrev();
-		}
-		else {
-			console.log('Scroll down');
-			Page.goNext();
-		}
+	submitAnswer: function() {
+		$.ajax({
+			url: "/result",
+			type: "POST",
+			data: Answer.answerObj,
+			dataType: "html",
+			success: function(res) {
+				$("main").html(res);
+			},
+			error: function(res) {
+				console.log("[error] Ajax Result");
+				if (res) {
+					console.log(res.responseText);
+				}
+			}
+		});
 	}
+	
 };
+
+/*
 
 var Swipe = function () {};
 Swipe.prototype = {
