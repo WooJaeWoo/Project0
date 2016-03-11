@@ -216,7 +216,6 @@ var Page =  {
 		
 		// page 변환하면 nav animation과 frame 색깔 수정하기
 		$("#main").on("transitionend", function() {
-			this.dottingAnimation();
 			this.changeFrameColor();
 			this.runSectionScript();
 		}.bind(this));
@@ -230,6 +229,8 @@ var Page =  {
 	goPage: function(page) {
 		// page range check
 		if (page < 1 || page > 8) return;
+		
+		this.dottingAnimation();
 
 		// move main element and then render page contents
 		var left = ((page - 1) * (-100)) + "%";
@@ -244,21 +245,39 @@ var Page =  {
 		dots.eq(this.currentPage - 1).find(".dot").addClass("on");
 	},
 	runSectionScript: function() {
-		console.log("test");
-		if (this.currentPage === 1) {
-			section1();
-		} else if (this.currentPage === 2) {
-			section2();
-		}
+		// section 별 script
+		Section["section" + this.currentPage]();
 	}
 };
 
-function section1() {
-	console.log("section1");
-}
-function section2() {
-	console.log("section2");
-}
+
+var Section = {
+	section1: function() {
+		console.log("section1");
+	},
+	section2: function() {
+		console.log("section2");
+	},
+	section3: function() {
+		console.log("section3");
+	},
+	section4: function() {
+		console.log("section4");
+	},
+	section5: function() {
+		console.log("section5");
+	},
+	section6: function() {
+		console.log("section6");
+	},
+	section7: function() {
+		console.log("section7");
+	},
+	section8: function() {
+		console.log("section8");
+	}
+};
+
 var Answer = {
 	a1: null,
 	a2: null,
