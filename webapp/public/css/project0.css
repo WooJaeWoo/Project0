@@ -1,5 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display);
+/** Font: Playfair Display **/
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(./font/PlayDisplay-Normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Playfair Display Italic'), local('PlayfairDisplay-Italic'), url(./font/PlayDisplay-Italic.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
 
+/** Font: Noto Sans KR **/
 @font-face {
 	font-family: 'Noto Sans KR';
 	font-style: normal;
@@ -16,6 +31,7 @@
 		 url(./font/NotoSansKR-Medium.woff) format('woff'),
 		 url(./font/NotoSansKR-Medium.otf) format('opentype');
 }
+
 
 /** TODO: mobile용 animation도 만들기 **/
 @keyframes spotlighting1 {
@@ -116,8 +132,8 @@ html, body {
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	width: 62%;
-	height: 70%;
+	width: 57%;
+	height: 65%;
 	background-color: rgba(255, 255, 255, 0.7);
 	padding: 12px;
 }
@@ -134,15 +150,17 @@ html, body {
 	width: 100%;	
 }
 #index .coverLayer .title {
-	top: 28%;
+	top: 26%;
 	font-size: 120px;
 	color: #b38f6b;
 }
 #index .coverLayer .title i {
 	color: #32584c;
+	font-style: italic;
+	font-weight: 400;
 }
 #index .coverLayer .desc {
-	top: 50%;
+	top: 48%;
 	font-size: 22px;
 	color: #326857;
 	font-weight: 200;
@@ -155,18 +173,18 @@ html, body {
 }
 #index .coverLayer .start > div {
 	margin: 0 auto;
-	width: 330px;
-	height: 75px;
+	width: 280px;
+	height: 65px;
 	background-color: #1c5c4f;
 	padding: 10px;
 }
 #index #startButton {
 	width: 100%;
 	height: 100%;
-	border: 2px solid #fff;
+	border: 1px solid #fff;
 	line-height: 55px;
 	color: #fff;
-	font-size: 35px;
+	font-size: 30px;
 	letter-spacing: 12px;
 }
 
