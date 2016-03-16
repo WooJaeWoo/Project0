@@ -126,7 +126,7 @@ html, body {
 	-webkit-text-fill-color: transparent;
 	
 	animation-iteration-count: infinite;
-	animation-direction: normal;
+	animation-direction: alternate-reverse;
 	animation-timing-function: linear;
 }
 #index #spotlight1 {
@@ -237,6 +237,9 @@ html, body {
 	top: 6%;
 	left: 5%;
 	z-index: 1000;
+}
+#logo svg path {
+	transition: .5s;
 }
 
 /** nav **/

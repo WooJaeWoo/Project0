@@ -203,6 +203,7 @@ var Project0 = {
 var Page =  {
 	currentPage: 1,
 	setCurrentPage: function(page) { this.currentPage = page; },
+	logoColor: [ "#fff", "#a88174", "#fff", "#000", "#777", "#ddd", "#111", "#ccc" ],
 	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#777", "#ddd", "#111", "#ccc" ],
 	init: function() {
 		// first section
@@ -242,6 +243,7 @@ var Page =  {
 		
 		// page 변환하면 nav animation과 frame 색깔 수정하기
 		$("#main").on("transitionend", function() {
+			this.changeLogoColor();
 			this.changeFrameColor();
 			// run section in
 			SectionIn.start(SectionIn["section" + this.currentPage]);
@@ -265,6 +267,9 @@ var Page =  {
 		// move main element and then render page contents
 		var left = ((page - 1) * (-100)) + "%";
 		$("#main").css("left", left);
+	},
+	changeLogoColor: function() {
+		$("#logoSVG").find("path").attr("fill", this.logoColor[this.currentPage - 1]);
 	},
 	changeFrameColor: function() {
 		$("#frame").css("borderColor", this.frameColor[this.currentPage - 1]);
