@@ -290,18 +290,33 @@ var SectionInit = {
 	},
 	section1: function() {
 		$("#section1").find(".aBox").on("touchClick", ".tag", function(event) {
-			Answer.answerObj.a1 = $(event.currentTarget).data("value");
+			var tag = $(event.currentTarget);
+			$(event.delegateTarget).find(".tag").unanimateCSS("swing");
+			tag.animateCSS("swing");
+			Answer.answerObj.a1 = tag.data("value");
 		});
 	},
 	section2: function() {
-		
+		$("#section2").find(".aBox").on("touchClick", ".age", function(event) {
+			var age = $(event.currentTarget)
+			$("#section2").find(".age").removeClass("on");
+			age.addClass("on");
+			
+			var value = age.data("value");
+			Answer.answerObj.a2 = value;
+			var angle = (value / 10 - 1) * 60;
+			$("#section2 #clockNeedle1").css("transform", "rotate(" + angle + "deg)");
+		});
 	},
 	section3: function() {
 		$("#section3").find(".aBox").on("touchClick", "button", function(event) {		
 			var value = $(event.currentTarget).data("value");
+			var btnImg = $("#marriageButtonImg");
 			if (value === "yes") {
+				btnImg.attr("src", "/img/q3_yes.png");
 				$("#frame").css("borderColor", "#ffb5d1");
 			} else {
+				btnImg.attr("src", "/img/q3_no.png");
 				$("#frame").css("borderColor", "#537187");
 			}
 			$("#section3").removeClass().addClass(value);
@@ -329,11 +344,15 @@ var SectionInit = {
 var SectionIn = {
 	start: function(sectionCallBack) {
 		var section = $("#section" + Page.currentPage);
-		section.find(".qNum").animateCSS("fadeInUp");
+		
 		setTimeout(function() {
+			section.find(".qNum").animateCSS("fadeInUp");
+		}, 100);
+		setTimeout(function() {
+			section.find(".qNum").animateCSS("fadeInUp");
 			section.find(".question").animateCSS("fadeInUp");
 			sectionCallBack(section);
-		}, 500);
+		}, 600);
 	},
 	section1: function(section) {
 		section.find("#genderTagM").animateCSS("bounceInDown");
@@ -342,6 +361,7 @@ var SectionIn = {
 		}, 300);		
 	},
 	section2: function(section) {
+		$(".clock").animateCSS("rotateIn");
 	},
 	section3: function(section) {
 		$("#marriageButton").animateCSS("fadeInUpBig");
@@ -372,10 +392,10 @@ var SectionOut = {
 		section.find(".genderTag").unanimateCSS("bounceInDown");
 	},
 	section2: function(section) {
-		
+		$(".clock").unanimateCSS("rotateIn");
 	},
 	section3: function(section) {
-		
+		$("#marriageButton").unanimateCSS("fadeInUpBig");
 	},
 	section4: function(section) {
 		

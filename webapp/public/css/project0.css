@@ -66,6 +66,10 @@
 	100% { text-indent: -200%; line-height: 200%; }
 }
 
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 html, body {
 	position: relative;
 	width: 100%;
@@ -369,16 +373,95 @@ html, body {
 #section1 #genderTagF { top: 22%; }
 #section1 .genderTag .tag {
 	cursor: pointer;
+	animation-iteration-count: infinite;
 }
 #section1 .genderTag .line {
 	position: absolute;
 	transform: translate(786%, -97%);
 	width: 6%;
+	z-index: 666;
 }
 
 #section2 { background-color: #f8c8b8; color: #5e4d47; }
-
-
+#section2 .aBox { width: 55%; }
+#section2 .clock {
+	position: absolute;
+	top: -12%;
+	left: 0;
+	right: 15%;
+	bottom: 0;
+	margin: auto;
+	width: 700px;
+	height: 700px;
+	opacity: 0;
+}
+#section2 .clockFace {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+#section2 .clockFace img {
+	vertical-align: middle;
+}
+#section2 #clockNeedle1 {
+	transition: transform 1s;
+	transform: rotate(0deg);
+}
+#section2 #clockNeedle2 {
+	-webkit-animation: spin 10s linear infinite;
+    -moz-animation: spin 10s linear infinite;
+    animation: spin 10s linear infinite;
+}
+#section2 .age {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 70px;
+	height: 50px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 25px;
+	font-weight: 200;
+	color: #bc8582;
+	cursor: pointer;
+}
+#section2 #age10 {
+	top: 15px;
+	bottom: auto;
+}
+#section2 #age20 {
+	left: auto;
+	top: -265px;
+	right: 20px;
+}
+#section2 #age30 {
+	left: auto;
+	top: 275px;
+	right: 20px;
+}
+#section2 #age40 {
+	top: auto;
+}
+#section2 #age50 {
+	right: auto;
+	top: 275px;
+	left: 20px;
+}
+#section2 #age60 {
+	right: auto;
+	top: -265px;
+	left: 20px;
+}
+#section2 .age.on {
+	color: #705754;
+}
+#section2 .age > span {
+	font-size: 40px;
+	font-weight: 400;
+}
 #section3 { background-color: #043d5d; color: #fff; }
 #section3 .aBox { width: 100%; }
 #section3 .leftSide { float: left; width: 45%; height: 100%; }
@@ -393,12 +476,12 @@ html, body {
 #section3.no .leftSide .lowerDiv { background-color: #b3c9d7; }
 #section3 #marriageButton {
 	position: absolute;
-	top: 0;
+	top: -70px;
 	bottom: 0;
 	right: 0;
 	margin: auto 0;
 	width: 75%;
-	height: 300px;
+	height: 400px;
 	opacity: 0;
 }
 #section3 .marriageYes {
@@ -407,7 +490,6 @@ html, body {
 	left: 0;
 	width: 50%;
 	height: 100%;
-	background-color: sandybrown;
 }
 #section3 .marriageNo {
 	position: absolute;
@@ -416,7 +498,6 @@ html, body {
 	float: right;
 	width: 50%;
 	height: 100%;
-	background-color: aquamarine;
 }
 #section4 { background-color: thistle; }
 #section5 { background-color: mediumaquamarine; }
@@ -450,29 +531,37 @@ html, body {
 	.qBox {
 		bottom: auto;
 		top: 12%;
-		left: 8%;
+		left: 0;
+		width: 100%;
 		margin: 0;
-		height: 150px;
-		z-index: 555;
+		height: auto;
 	}
-	.qBox > div { display: inline-block; }
+	.qBox > div {
+		float: left;
+		box-sizing: border-box;
+	}
 	.qBox .qNum {
 		position: relative;
 		top: 0;
 		left: 0;
-		font-size: 30px;
-		margin: 0 20px;
+		width: 25%;
+		font-size: 40px;
+		padding: 0 5% 0 12%;
 		vertical-align: top;
 	}
-	.qBox .qNum > div { line-height: 25px; }
-	.qBox .qNum > div:first-of-type { font-size: 40px; }
+	.qBox .qNum > div { line-height: 40px; }
+	.qBox .qNum > div:first-of-type { font-size: 60px; }
 	.qBox .question {
-		line-height: 35px;
+		width: 75%;
+		line-height: 60px;
 	}
-	.qBox .question .qEn { font-size: 36px; }
+	.qBox .question .qEn { font-size: 50px; }
 	.qBox .question .qKr {
-		font-size: 22px;
+		font-size: 32px;
 		letter-spacing: -2px;
+		line-height: 40px;
+    	padding-top: 5px;
+		padding-right: 12%;
 	}
 	
 	.aBox {
@@ -525,4 +614,24 @@ html, body {
 		font-size: 20px;
 		letter-spacing: 12px;
 	}
+	
+	.qBox .qNum {
+		width: 32%;
+		font-size: 30px;
+		padding: 0 8% 0 12%;
+	}
+	.qBox .qNum > div { line-height: 25px; }
+	.qBox .qNum > div:first-of-type { font-size: 40px; }
+	.qBox .question {
+		width: 68%;
+		line-height: 35px;
+	}
+	.qBox .question .qEn { font-size: 32px; }
+	.qBox .question .qKr {
+		font-size: 20px;
+		line-height: 27px;
+	}
+	
+	
+	
 }
