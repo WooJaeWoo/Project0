@@ -289,7 +289,7 @@ var SectionInit = {
 		}
 	},
 	section1: function() {
-		$("#section1").find(".aBox").on("touchClick", "img", function(event) {
+		$("#section1").find(".aBox").on("touchClick", ".tag", function(event) {
 			Answer.answerObj.a1 = $(event.currentTarget).data("value");
 		});
 	},

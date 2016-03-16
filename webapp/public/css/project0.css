@@ -80,6 +80,7 @@ html, body {
 .hide { display: none; }
 .m-show { display: none; }
 .m-show_inline { display: none; }
+.animated { opacity: 1 !important; }
 
 #noise {
 	position: fixed;
@@ -357,15 +358,23 @@ html, body {
 #section1 { background-color: #b3d3d0; color: #644b54; }
 #section1 .aBox { width: 55%; }
 #section1 .genderTag {
+	display: inline-block;
+	position: relative;
+	margin: 20px 10px;
 	width: 40%;
 	max-width: 400px;
-	display: inline-block;
-	margin: 20px 10px;
-	cursor: pointer;
 	opacity: 0;
 }
-#section1 .genderTag.animated { opacity: 1; }
-
+#section1 #genderTagM { top: 16%; }
+#section1 #genderTagF { top: 22%; }
+#section1 .genderTag .tag {
+	cursor: pointer;
+}
+#section1 .genderTag .line {
+	position: absolute;
+	transform: translate(786%, -97%);
+	width: 6%;
+}
 
 #section2 { background-color: #f8c8b8; color: #5e4d47; }
 
@@ -392,7 +401,6 @@ html, body {
 	height: 300px;
 	opacity: 0;
 }
-#section3 #marriageButton.animated { opacity: 1; }
 #section3 .marriageYes {
 	position: absolute;
 	top: 0;
@@ -422,20 +430,69 @@ html, body {
 	.m-show_inline { display: inline; }
 	.m-hide { display: none !important; }
 	
+	#logo {
+		left: 8%;
+	}
+	
 	#index .coverLayer {
 		width: 80%;
-		height: 88%;
+		height: 60%;
 		padding: 12px;
 	}
 	#index .coverLayer .title {	top: 18%; }
+	#index .coverLayer .desc {
+		top: 60%;
+		line-height: 32px;
+	}
 	#index .coverLayer .start {	top: 78%; }
 	#index #browserRecommend { font-size: 10px; }
+	
+	.qBox {
+		bottom: auto;
+		top: 12%;
+		left: 8%;
+		margin: 0;
+		height: 150px;
+		z-index: 555;
+	}
+	.qBox > div { display: inline-block; }
+	.qBox .qNum {
+		position: relative;
+		top: 0;
+		left: 0;
+		font-size: 30px;
+		margin: 0 20px;
+		vertical-align: top;
+	}
+	.qBox .qNum > div { line-height: 25px; }
+	.qBox .qNum > div:first-of-type { font-size: 40px; }
+	.qBox .question {
+		line-height: 35px;
+	}
+	.qBox .question .qEn { font-size: 36px; }
+	.qBox .question .qKr {
+		font-size: 22px;
+		letter-spacing: -2px;
+	}
+	
+	.aBox {
+		padding: 0 8%;
+	}
+
+	#section1 .aBox { width: 100%; }
+	#section1 #genderTagM { top: 34%; }
+	#section1 #genderTagF { top: 39%; }
 }
 
 @media all and (max-width : 767px) {	
 	/** frame **/
 	#frame { border: 10px solid; }
 
+	#logo {
+		transform: scale(0.6);
+		transform-origin: top left;
+	}
+	
 	#index #spotlight1 {
 		font-size: 15em;
 		animation-name: spotlighting1_mobile;
@@ -451,7 +508,7 @@ html, body {
 		font-size: 60px;
 	}
 	#index .coverLayer .desc {
-		top: 48%;
+		top: 50%;
 		font-size: 15px;
 		line-height: 24px;
 	}
