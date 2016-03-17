@@ -3,7 +3,7 @@ var Util = {
         return Math.floor(Math.random() * limit);
     },
 	extendClickEvent : function () {
-		$.event.special.touchClick = {
+		$.event.special.tc = {
 			bindType: (function () {
 				if (this.isMobile()) {
 					return "touchstart";
@@ -15,6 +15,54 @@ var Util = {
 					return "touchstart";
 				}
 				return "click";
+			}.bind(this))()
+		};
+	},
+	extendMouseDownEvent : function () {
+		$.event.special.tcDown = {
+			bindType: (function () {
+				if (this.isMobile()) {
+					return "touchstart";
+				}
+				return "mousedown";
+			}.bind(this))(),
+			delegateType: (function () {
+				if (this.isMobile()) {
+					return "touchstart";
+				}
+				return "mousedown";
+			}.bind(this))()
+		};
+	},
+	extendMouseMoveEvent : function () {
+		$.event.special.tcMove = {
+			bindType: (function () {
+				if (this.isMobile()) {
+					return "touchmove";
+				}
+				return "mousemove";
+			}.bind(this))(),
+			delegateType: (function () {
+				if (this.isMobile()) {
+					return "touchmove";
+				}
+				return "mousemove";
+			}.bind(this))()
+		};
+	},
+	extendMouseUpEvent : function () {
+		$.event.special.tcUp = {
+			bindType: (function () {
+				if (this.isMobile()) {
+					return "touchend";
+				}
+				return "mouseup";
+			}.bind(this))(),
+			delegateType: (function () {
+				if (this.isMobile()) {
+					return "touchend";
+				}
+				return "mouseup";
 			}.bind(this))()
 		};
 	},
@@ -180,6 +228,9 @@ $(window).on("load", function () {
 var Project0 = {
 	init: function() {
 		Util.extendClickEvent();
+		Util.extendMouseDownEvent();
+		Util.extendMouseMoveEvent();
+		Util.extendMouseUpEvent();
 		Util.extendAnimateCSS();
 		
 		if (!Util.backgroundClipCheck() || !Util.transitionendCheck()) {
@@ -187,7 +238,7 @@ var Project0 = {
 		}
 		
 		// Start!!!
-		$("#startButton").on("touchClick", this.start.bind(this));
+		$("#startButton").on("tc", this.start.bind(this));
 	},
 	start: function() {
 		// move index page up and remove itself for performance
@@ -203,8 +254,15 @@ var Project0 = {
 var Page =  {
 	currentPage: 1,
 	setCurrentPage: function(page) { this.currentPage = page; },
-	logoColor: [ "#fff", "#a88174", "#fff", "#000", "#9ffff9", "#ddd", "#aa9981", "#ccc" ],
-	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#426361", "#ddd", "#5f494b", "#ccc" ],
+	logoColor: [ "#fff", "#a88174", "#fff", "#000", "#9ffff9", "#cce7bd", "#aa9981", "#ccc" ],
+	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#426361", "#1c3130", "#5f494b", "#ccc" ],
+	q5_holeColor: {
+		red: ["#E86767", "#ED7474", "#F48282"],
+		cyan: ["#66AA9D", "#6DB8AA", "#7AC1B3"],
+		yellow: ["#EACD1F","#F4D862", "#FCE781"],
+		purple: ["#8F6799", "#9770A0", "#A17DAA"],
+		green: ["#6BAF6B", "#76B776", "#87C687"]
+	},
 	init: function() {
 		// first section
 		this.setCurrentPage(1);
@@ -216,7 +274,7 @@ var Page =  {
 		SectionOut.clean(SectionOut.section1);
 		
 		// nav로 페이지 이동
-		$("#nav").on("touchClick", "li", function(event) {
+		$("#nav").on("tc", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
 			if (page !== this.currentPage) {
 				// section out
@@ -230,7 +288,7 @@ var Page =  {
 		}.bind(this));
 		
 		// next 버튼으로 페이지 이동		
-		$("#nextButton").on("touchClick", function(event) {
+		$("#nextButton").on("tc", function(event) {
 			// section out
 			SectionOut.clean(SectionOut["section" + this.currentPage]);
 			
@@ -289,7 +347,7 @@ var SectionInit = {
 		}
 	},
 	section1: function() {
-		$("#section1").find(".aBox").on("touchClick", ".tag", function(event) {
+		$("#section1").find(".aBox").on("tc", ".tag", function(event) {
 			var tag = $(event.currentTarget);
 			$(event.delegateTarget).find(".tag").unanimateCSS("swing");
 			tag.animateCSS("swing");
@@ -297,7 +355,7 @@ var SectionInit = {
 		});
 	},
 	section2: function() {
-		$("#section2").find(".aBox").on("touchClick", ".age", function(event) {
+		$("#section2").find(".aBox").on("tc", ".age", function(event) {
 			var age = $(event.currentTarget)
 			$("#section2").find(".age").removeClass("on");
 			age.addClass("on");
@@ -309,7 +367,7 @@ var SectionInit = {
 		});
 	},
 	section3: function() {
-		$("#section3").find(".aBox").on("touchClick", "button", function(event) {		
+		$("#section3").find(".aBox").on("tc", "button", function(event) {		
 			var value = $(event.currentTarget).data("value");
 			var btnImg = $("#marriageButtonImg");
 			if (value === "yes") {
@@ -327,7 +385,7 @@ var SectionInit = {
 		
 	},
 	section5: function() {
-		$("#section5").find(".aBox").on("touchClick", "li", function(event) {
+		$("#section5").find(".aBox").on("tc", "li", function(event) {
 			var li = $(event.currentTarget);			
 			var value = li.data("value");
 			var a5 = Answer.answerObj.a5;
@@ -337,7 +395,7 @@ var SectionInit = {
 				Answer.answerObj.a5.splice(a5.indexOf(value), 1);
 				return;
 			}
-						
+			
 			if (a5.length >= 2) {
 				$("#section5").find("#" + a5[0]).removeClass("on");
 				Answer.answerObj.a5.shift();
@@ -351,7 +409,9 @@ var SectionInit = {
 		
 	},
 	section7: function() {
-		
+		$("#section7").find(".aBox").on("tcDown", function(event) { console.log("tcDown!"); });
+		$("#section7").find(".aBox").on("tcMove", function(event) { console.log("tcMove!"); });
+		$("#section7").find(".aBox").on("tcUp", function(event) { console.log("tcUp!"); });
 	},
 	section8: function() {
 		
@@ -392,6 +452,8 @@ var SectionIn = {
 	section6: function(section) {
 	},
 	section7: function(section) {
+		section.find(".colors").animateCSS("fadeInDownBig");
+		section.find(".color").animateCSS("pulse");
 	},
 	section8: function(section) {
 	}
@@ -404,7 +466,7 @@ var SectionOut = {
 		setTimeout(function() {
 			section.find(".qNum").unanimateCSS("fadeInUp");
 			section.find(".question").unanimateCSS("fadeInUp");
-			section.find(".qDesc").animateCSS("fadeInUp");
+			section.find(".qDesc").unanimateCSS("fadeInUp");
 			sectionCallBack(section);
 		}, 1000);
 	},
@@ -418,7 +480,7 @@ var SectionOut = {
 		section.find("#marriageButton").unanimateCSS("fadeInUpBig");
 	},
 	section4: function(section) {
-		
+		section.find(".colors").unanimateCSS("fadeInDownBig");
 	},
 	section5: function(section) {
 		section.find("img").unanimateCSS("flipInY");
@@ -427,7 +489,7 @@ var SectionOut = {
 		
 	},
 	section7: function(section) {
-		
+		section.find(".colors").unanimateCSS("fadeInDownBig");
 	},
 	section8: function(section) {
 		
