@@ -334,6 +334,7 @@ var SectionInit = {
 			
 			if (a5.indexOf(value) >= 0) {
 				li.removeClass("on");
+				Answer.answerObj.a5.splice(a5.indexOf(value), 1);
 				return;
 			}
 						
