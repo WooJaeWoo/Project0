@@ -528,12 +528,23 @@ html, body {
 	height: 100%;
 }
 #section5 .grid > li {
+	position: relative;
 	float: left;
 	width: 33.33%;
 	height: 50%;
 }
 #section5 .grid > li:nth-of-type(even) { background-color: #67b6a8; }
 #section5 .grid > li.on { background-color: #ffb071; }
+#section5 .grid img {
+	width: 75%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
 
 /** Section 6**/
 #section6 { background-color: lightcoral; }
