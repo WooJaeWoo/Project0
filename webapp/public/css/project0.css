@@ -534,7 +534,7 @@ html, body {
 	height: 50%;
 }
 #section5 .grid > li:nth-of-type(even) { background-color: #67b6a8; }
-#section5 .grid > li.on { background-color: #ffb071; }
+#section5 .grid > li.on { background-color: #ffb797; }
 #section5 .grid img {
 	width: 75%;
 	position: absolute;
