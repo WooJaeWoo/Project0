@@ -349,7 +349,14 @@ html, body {
 	font-weight: 200;
 	letter-spacing: -5px;
 }
-
+.qBox .qDesc {
+	position: relative;
+	margin-top: 24px;
+	font-size: 20px;
+	font-weight: 200;
+	text-indent: 5px;
+	opacity: 0;
+}
 .aBox {
 	position: absolute;
 	top: 0;
@@ -532,10 +539,26 @@ html, body {
 #section6 { background-color: lightcoral; }
 
 /** Section 7 **/
-#section7 { background-color: #f9e2c1; color: #4f3f40; }
-
-
-
+#section7 { background-color: #f8dcb9; color: #4f3f40; }
+#section7 .aBox {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+#section7 .floor {
+	position: absolute;
+	width: 100%;
+	height: 33%;
+	bottom: 0;
+	background-color: #fbe4c3;
+}
+#section7 .floor > div {
+	position: absolute;
+	right: 12%;
+}
+#section7 .floor .holeCover {
+	z-index: 777;
+}
 
 /** Section 8 **/
 #section8 { background-color: lightgoldenrodyellow; }

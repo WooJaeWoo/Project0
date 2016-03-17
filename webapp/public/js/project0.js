@@ -366,8 +366,8 @@ var SectionIn = {
 			section.find(".qNum").animateCSS("fadeInUp");
 		}, 100);
 		setTimeout(function() {
-			section.find(".qNum").animateCSS("fadeInUp");
 			section.find(".question").animateCSS("fadeInUp");
+			section.find(".qDesc").animateCSS("fadeInUp");
 			sectionCallBack(section);
 		}, 600);
 	},
@@ -402,6 +402,7 @@ var SectionOut = {
 		setTimeout(function() {
 			section.find(".qNum").unanimateCSS("fadeInUp");
 			section.find(".question").unanimateCSS("fadeInUp");
+			section.find(".qDesc").animateCSS("fadeInUp");
 			sectionCallBack(section);
 		}, 1000);
 	},
