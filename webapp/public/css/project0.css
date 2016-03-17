@@ -325,6 +325,7 @@ html, body {
 	margin: auto 0;
 	height: 150px;
 	z-index: 555;
+	pointer-events: none;
 }
 
 .qBox .qNum {
@@ -359,6 +360,7 @@ html, body {
 	text-align: center;
 }
 
+/** Section 1 **/
 #section1 { background-color: #b3d3d0; color: #644b54; }
 #section1 .aBox { width: 55%; }
 #section1 .genderTag {
@@ -374,6 +376,7 @@ html, body {
 #section1 .genderTag .tag {
 	cursor: pointer;
 	animation-iteration-count: infinite;
+	animation-duration: 1.2s;
 }
 #section1 .genderTag .line {
 	position: absolute;
@@ -382,11 +385,12 @@ html, body {
 	z-index: 666;
 }
 
+/** Section 2 **/
 #section2 { background-color: #f8c8b8; color: #5e4d47; }
 #section2 .aBox { width: 55%; }
 #section2 .clock {
 	position: absolute;
-	top: -12%;
+	top: -6%;
 	left: 0;
 	right: 15%;
 	bottom: 0;
@@ -424,7 +428,6 @@ html, body {
 	height: 50px;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 25px;
-	font-weight: 200;
 	color: #bc8582;
 	cursor: pointer;
 }
@@ -460,8 +463,9 @@ html, body {
 }
 #section2 .age > span {
 	font-size: 40px;
-	font-weight: 400;
 }
+
+/** Section 3 **/
 #section3 { background-color: #043d5d; color: #fff; }
 #section3 .aBox { width: 100%; }
 #section3 .leftSide { float: left; width: 45%; height: 100%; }
@@ -499,11 +503,44 @@ html, body {
 	width: 50%;
 	height: 100%;
 }
+
+/** Section 4 **/
 #section4 { background-color: thistle; }
-#section5 { background-color: mediumaquamarine; }
+
+/** Section 5 **/
+#section5 { background-color: #63aea1; color: #fff; }
+#section5 .aBox {
+	left: 0;
+	right: auto;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+}
+#section5 .grid {
+	width: 100%;
+	height: 100%;
+}
+#section5 .grid > li {
+	float: left;
+	width: 33.33%;
+	height: 50%;
+}
+#section5 .grid > li:nth-of-type(even) { background-color: #67b6a8; }
+#section5 .grid > li.on { background-color: #ffb071; }
+
+/** Section 6**/
 #section6 { background-color: lightcoral; }
-#section7 { background-color: lightcyan; }
+
+/** Section 7 **/
+#section7 { background-color: #f9e2c1; color: #4f3f40; }
+
+
+
+
+/** Section 8 **/
 #section8 { background-color: lightgoldenrodyellow; }
+
+
 
 
 @media all and (max-width : 990px) {
