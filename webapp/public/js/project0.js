@@ -442,6 +442,11 @@ var SectionIn = {
 		section.find(".clock").animateCSS("rotateIn");
 	},
 	section3: function(section) {
+		if (Answer.answerObj.a3 === "yes") {
+			$("#frame").css("borderColor", "#ffb5d1");
+		} else if (Answer.answerObj.a3 == "no") {
+			$("#frame").css("borderColor", "#537187");
+		}
 		section.find("#marriageButton").animateCSS("fadeInUpBig");
 	},
 	section4: function(section) {
