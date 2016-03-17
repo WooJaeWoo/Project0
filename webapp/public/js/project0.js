@@ -378,14 +378,15 @@ var SectionIn = {
 		}, 300);		
 	},
 	section2: function(section) {
-		$(".clock").animateCSS("rotateIn");
+		section.find(".clock").animateCSS("rotateIn");
 	},
 	section3: function(section) {
-		$("#marriageButton").animateCSS("fadeInUpBig");
+		section.find("#marriageButton").animateCSS("fadeInUpBig");
 	},
 	section4: function(section) {
 	},
 	section5: function(section) {
+		section.find("img").animateCSS("flipInY");
 	},
 	section6: function(section) {
 	},
@@ -410,16 +411,16 @@ var SectionOut = {
 		section.find(".genderTag").unanimateCSS("bounceInDown");
 	},
 	section2: function(section) {
-		$(".clock").unanimateCSS("rotateIn");
+		section.find(".clock").unanimateCSS("rotateIn");
 	},
 	section3: function(section) {
-		$("#marriageButton").unanimateCSS("fadeInUpBig");
+		section.find("#marriageButton").unanimateCSS("fadeInUpBig");
 	},
 	section4: function(section) {
 		
 	},
 	section5: function(section) {
-		
+		section.find("img").unanimateCSS("flipInY");
 	},
 	section6: function(section) {
 		
