@@ -203,8 +203,8 @@ var Project0 = {
 var Page =  {
 	currentPage: 1,
 	setCurrentPage: function(page) { this.currentPage = page; },
-	logoColor: [ "#fff", "#a88174", "#fff", "#000", "#777", "#ddd", "#111", "#ccc" ],
-	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#777", "#ddd", "#111", "#ccc" ],
+	logoColor: [ "#fff", "#a88174", "#fff", "#000", "#9ffff9", "#ddd", "#aa9981", "#ccc" ],
+	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#426361", "#ddd", "#5f494b", "#ccc" ],
 	init: function() {
 		// first section
 		this.setCurrentPage(1);
@@ -327,7 +327,24 @@ var SectionInit = {
 		
 	},
 	section5: function() {
-		
+		$("#section5").find(".aBox").on("touchClick", "li", function(event) {
+			var li = $(event.currentTarget);			
+			var value = li.data("value");
+			var a5 = Answer.answerObj.a5;
+			
+			if (a5.indexOf(value) >= 0) {
+				li.removeClass("on");
+				return;
+			}
+						
+			if (a5.length >= 2) {
+				$("#section5").find("#" + a5[0]).removeClass("on");
+				Answer.answerObj.a5.shift();
+			}
+			Answer.answerObj.a5.push(value);
+			
+			li.addClass("on");
+		});
 	},
 	section6: function() {
 		
