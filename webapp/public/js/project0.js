@@ -3,7 +3,7 @@ var Util = {
         return Math.floor(Math.random() * limit);
     },
 	extendClickEvent : function () {
-		$.event.special.tc = {
+		$.event.special.touchClick = {
 			bindType: (function () {
 				if (this.isMobile()) {
 					return "touchstart";
@@ -25,9 +25,9 @@ var Util = {
 					scrollTop: $(this).offset().top
 				}, 1000);
 			});
-		}
+		};
 	},
-	extendBgClip : function() {
+	extendBgClip : function () {
 		/**
 			-webkit-background-clip: text Polyfill
 
@@ -45,7 +45,7 @@ var Util = {
 
 			function hasBackgroundClip() {
 				return b.style.webkitBackgroundClip != undefined;
-			};
+			}
 
 			function addAttributes(el, attributes) {
 				for (var key in attributes) {
@@ -182,9 +182,6 @@ $(window).on("load", function () {
 var Project0 = {
 	init: function() {
 		Util.extendClickEvent();
-		//Util.extendMouseDownEvent();
-		//Util.extendMouseMoveEvent();
-		//Util.extendMouseUpEvent();
 		Util.extendAnimateCSS();
 		
 		if (!Util.backgroundClipCheck() || !Util.transitionendCheck()) {
@@ -192,7 +189,7 @@ var Project0 = {
 		}
 		
 		// Start!!!
-		$("#startButton").on("tc", this.start.bind(this));
+		$("#startButton").on("touchClick", this.start.bind(this));
 	},
 	start: function() {
 		// move index page up and remove itself for performance
@@ -228,7 +225,7 @@ var Page =  {
 		SectionOut.clean(SectionOut.section1);
 		
 		// nav로 페이지 이동
-		$("#nav").on("tc", "li", function(event) {
+		$("#nav").on("touchClick", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
 			if (page !== this.currentPage) {
 				// section out
@@ -242,7 +239,7 @@ var Page =  {
 		}.bind(this));
 		
 		// next 버튼으로 페이지 이동		
-		$("#nextButton").on("tc", function(event) {
+		$("#nextButton").on("touchClick", function(event) {
 			// section out
 			SectionOut.clean(SectionOut["section" + this.currentPage]);
 			
@@ -301,7 +298,7 @@ var SectionInit = {
 		}
 	},
 	section1: function() {
-		$("#section1").find(".aBox").on("tc", ".tag", function(event) {
+		$("#section1").find(".aBox").on("touchClick", ".tag", function(event) {
 			var tag = $(event.currentTarget);
 			$(event.delegateTarget).find(".tag").unanimateCSS("swing");
 			tag.animateCSS("swing");
@@ -309,7 +306,7 @@ var SectionInit = {
 		});
 	},
 	section2: function() {
-		$("#section2").find(".aBox").on("tc", ".age", function(event) {
+		$("#section2").find(".aBox").on("touchClick", ".age", function(event) {
 			var age = $(event.currentTarget)
 			$("#section2").find(".age").removeClass("on");
 			age.addClass("on");
@@ -321,7 +318,7 @@ var SectionInit = {
 		});
 	},
 	section3: function() {
-		$("#section3").find(".aBox").on("tc", "button", function(event) {		
+		$("#section3").find(".aBox").on("touchClick", "button", function(event) {		
 			var value = $(event.currentTarget).data("value");
 			var btnImg = $("#marriageButtonImg");
 			if (value === "yes") {
@@ -339,7 +336,7 @@ var SectionInit = {
 		
 	},
 	section5: function() {
-		$("#section5").find(".aBox").on("tc", "li", function(event) {
+		$("#section5").find(".aBox").on("touchClick", "li", function(event) {
 			var li = $(event.currentTarget);			
 			var value = li.data("value");
 			var a5 = Answer.answerObj.a5;
@@ -363,41 +360,78 @@ var SectionInit = {
 		
 	},
 	section7: function() {
-		var red = $("#section7").find("#red").get(0);
-		var mc = new Hammer(red);
-		
-		mc.on("panstart panmove panend", function(event) {
-			event.preventDefault();
-			var target = $(event.target);
-			
-			if (event.type === "panstart") {
-				rStart.left = parseInt(target.css("left"));
-				rStart.top = parseInt(target.css("top"));
-			} else if (event.type === "panmove") {
-				target.css("top", (rStart.top + event.deltaY) + "px");
-				target.css("left", (rStart.left + event.deltaX) + "px");
-				
-			} else if (event.type === "panend") {
-				target.animateCSS("jello");
-				setTimeout(function() {
-					target.removeClass("jello");
-				}, 500);
-			}
-			
-			
-		});
+		colors.red = new ColorPan("red");
+		colors.yellow = new ColorPan("yellow");
+		colors.green = new ColorPan("green");
+		colors.cyan = new ColorPan("cyan");
+		colors.purple = new ColorPan("purple");
 	},
 	section8: function() {
 		
 	}
 };
 
-var rStart = {top: null, left: null};
-var ColorPan = function(el) {
-	this.element = el;
-	this.size = { width: el.offsetWidth, height: el.offsetHeight };
-	this.start = { x: null, y: null };
-}
+var colors = {
+	red: null,
+	green: null,
+	cyan: null,
+	purple: null,
+	yellow: null
+};
+
+var ColorPan = function(elementId) {
+	this.element = document.getElementById(elementId);
+	this.size = { width: this.element.offsetWidth, height: this.element.offsetHeight };
+	
+	this.origin = null;
+	this.start = { top: null, left: null };
+	
+	this.init();
+	
+	return this;
+};
+
+ColorPan.prototype = {
+	init: function() {
+		this.origin = { top: $(this.element).css("top"), left: $(this.element).css("left") }
+		
+		var mc = new Hammer(this.element);
+		mc.on("panstart panmove panend", function(event) {
+			event.preventDefault();
+			var target = $(event.target);
+			
+			if (event.type === "panstart") {
+				this.onPanStart(target);
+			} else if (event.type === "panmove") {
+				this.onPanMove(target, event);
+			} else if (event.type === "panend") {
+				this.onPanEnd(target);
+			}
+		}.bind(this));
+	},
+	onPanStart: function(target) {
+		this.start.top = parseInt(target.css("top"));
+		this.start.left = parseInt(target.css("left"));
+	},
+	onPanMove: function(target, event) {
+		target.css("top", (this.start.top + event.deltaY) + "px")
+			.css("left", (this.start.left + event.deltaX) + "px");
+	},
+	onPanEnd: function(target) {
+		target.animateCSS("jello");
+		setTimeout(function() {
+			target.removeClass("jello");
+		}, 500);
+	},
+	checkHoleIn: function() {
+		
+	},
+	returnToOrigin: function() {
+		$(this.element).css("top", this.origin.top)
+			.css("left", this.origin.left);
+	}
+};
+
 
 // section 전환 시 새 페이지 효과
 var SectionIn = {
@@ -511,30 +545,3 @@ var Answer = {
 		});
 	}
 };
-
-
-
-/*
-
-var Swipe = function () {};
-Swipe.prototype = {
-	init: function () {
-		var main = document.getElementById("main");
-		var mc = new Hammer(main);
-		
-		mc.on("tap panup pandown", function(event) {
-			if (event.type === "panup") {
-				this.panUpHandler();
-			} else if (event.type === "pandown") {
-				this.panDownHandler();
-			}
-		}.bind(this));
-	},
-	panUpHandler: function() {
-		Page.goNext();
-	},
-	panDownHandler: function() {
-		Page.goPrev();
-	}
-};
-*/
