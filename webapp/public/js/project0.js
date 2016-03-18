@@ -333,7 +333,6 @@ var SectionInit = {
 		});
 	},
 	section4: function() {
-		
 	},
 	section5: function() {
 		$("#section5").find(".aBox").on("touchClick", "li", function(event) {
@@ -389,6 +388,9 @@ var SectionInit = {
 	}
 };
 
+
+
+// Question 7 color picking script
 var colors = {};
 
 var ColorPan = function(elementId) {
@@ -479,6 +481,8 @@ var SectionIn = {
 		section.find("#marriageButton").animateCSS("fadeInUpBig");
 	},
 	section4: function(section) {
+		section.find(".gaugeText").fadeIn(1500);
+		section.find("#grip").animateCSS("fadeInRightBig");
 	},
 	section5: function(section) {
 		section.find("img").animateCSS("flipInY");
@@ -514,7 +518,8 @@ var SectionOut = {
 		section.find("#marriageButton").unanimateCSS("fadeInUpBig");
 	},
 	section4: function(section) {
-		section.find(".colors").unanimateCSS("fadeInDownBig");
+		section.find(".gaugeText").fadeOut(200);
+		section.find("#grip").unanimateCSS("fadeInRightBig");
 	},
 	section5: function(section) {
 		section.find("img").unanimateCSS("flipInY");
