@@ -239,8 +239,8 @@ html, body {
 /** logo **/
 #logo {
 	position: fixed;
-	top: 6%;
-	left: 5%;
+	top: 8%;
+	left: 8%;
 	z-index: 1000;
 }
 #logo svg path {
@@ -344,7 +344,7 @@ html, body {
 	line-height: 70px;
 	opacity: 0;
 }
-.qBox .question .qEn { font-size: 60px; }
+.qBox .question .qEn { font-size: 65px; }
 .qBox .question .qKr {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 45px;
@@ -541,10 +541,11 @@ html, body {
 #section4 .gauge {
 	position: absolute;
 	right: 0;
-	width: 150px;
+	width: 180px;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 #section4 .inside .gauge {
-	top: 50%;
+	bottom: 0;
 	height: 50%;
 	background-color: #f8d864;
 }
@@ -553,10 +554,34 @@ html, body {
 	height: 100%;
 	background-color: #f8d440;
 }
+#section4 .gaugeText {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 100%;
+	height: 80px;
+	font-size: 25px;
+}
+#section4 .gaugeText > div {
+	padding-right: 10px;
+	box-sizing: border-box;
+}
+#section4 .gaugeText > div:first-of-type {
+	font-size: 25px;
+	line-height: 30px;
+}
+#section4 .gaugeText > div:last-of-type {
+	font-size: 30px;
+	line-height: 45px;
+}
+#section4 .gaugeText span {
+	font-size: 40px;
+}
 #section4 #grip {
 	position: absolute;
 	top: 42%;
-	right: 15%;
+	right: 18%;
 }
 
 /** Section 5 **/
@@ -690,16 +715,62 @@ html, body {
 /** Section 8 **/
 #section8 { background-color: #ec92ad; color: #523d36; }
 #section8 .aBox {
-	left: 0;
-	right: auto;
-	width: 100%;
-	height: 100%;
+	top: 0;
+	bottom: 0;
+	right: 10%;
+	margin: auto 0;
+	width: 45%;
+	height: 70%;
 	padding: 20px;
 }
-#section8 .stuff > div {
-	float: left;
+#section8 .stuff {
+	position: absolute;
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
 }
+#section8 .stuff > img { visibility: hidden; }
+#section8 #travel {
+	top: 0%;
+	left: 0%;
+	background-image: url(/img/q8_travel.png);
+	width: 40%;
+}
+#section8 #exercise {
+	top: 10%;
+	left: 45%;
+	background-image: url(/img/q8_exercise.png);
+	width: 20%;
+}
+#section8 #DIY {
+	top: 22%;
+	left: 70%;
+	background-image: url(/img/q8_DIY.png);
+	width: 30%;
+}
+#section8 #cook {
+	top: 42%;
+	left: 8%;
+	background-image: url(/img/q8_cook.png);
+	width: 32%;
+}
+#section8 #exhibition {
+	top: 70%;
+	left: 62%;
+	background-image: url(/img/q8_exhibition.png);
+	width: 38%;
+}
+#section8 #travel:hover { background-image: url(/img/q8_travel_hover.png); }
+#section8 #exercise:hover { background-image: url(/img/q8_exercise_hover.png); }
+#section8 #DIY:hover { background-image: url(/img/q8_DIY_hover.png); }
+#section8 #cook:hover { background-image: url(/img/q8_cook_hover.png); }
+#section8 #exhibition:hover { background-image: url(/img/q8_exhibition_hover.png); }
 
+#section8 #travel.on { background-image: url(/img/q8_travel_hover.png); }
+#section8 #exercise.on { background-image: url(/img/q8_exercise_hover.png); }
+#section8 #DIY.on { background-image: url(/img/q8_DIY_hover.png); }
+#section8 #cook.on { background-image: url(/img/q8_cook_hover.png); }
+#section8 #exhibition.on { background-image: url(/img/q8_exhibition_hover.png); }
 
 @media all and (max-width : 990px) {
 	.m-show { display: block; }

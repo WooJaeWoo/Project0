@@ -367,17 +367,29 @@ var SectionInit = {
 		colors.purple = new ColorPan("purple");
 	},
 	section8: function() {
-		
+		$("#section8").find(".aBox").on("touchClick", ".stuff", function(event) {
+			var stuff = $(event.currentTarget);
+			var value = stuff.data("value");
+			var a8 = Answer.answerObj.a8;
+			
+			if (a8.indexOf(value) >= 0) {
+				stuff.removeClass("on");
+				Answer.answerObj.a8.splice(a8.indexOf(value), 1);
+				return;
+			}
+			
+			if (a8.length >= 2) {
+				$("#section8").find("#" + a8[0]).removeClass("on");
+				Answer.answerObj.a8.shift();
+			}
+			Answer.answerObj.a8.push(value);
+			
+			stuff.addClass("on");
+		});
 	}
 };
 
-var colors = {
-	red: null,
-	green: null,
-	cyan: null,
-	purple: null,
-	yellow: null
-};
+var colors = {};
 
 var ColorPan = function(elementId) {
 	this.element = document.getElementById(elementId);
@@ -536,7 +548,7 @@ var Answer = {
 			data: Answer.answerObj,
 			dataType: "html",
 			success: function(res) {
-				$("main").html(res);
+				//$("main").html(res);
 			},
 			error: function(res) {
 				console.log("[error] Ajax Result");

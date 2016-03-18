@@ -145,17 +145,27 @@
 					<div>.....</div>
 				</div>
 				<div class="question">
-					<div class="qEn">Spending time at home</div>
+					<div class="qEn">Time at home</div>
 					<div class="qKr">집에서 보내는 시간은 어느 정도 인가요?</div>
 				</div>
 				<div class="qDesc">평균적인 시간을 드래그 해주세요.</div>
 			</div>
 			<div class="aBox">
 				<div class="inside">
-					<div class="gauge"></div>
+					<div class="gauge">
+						<div class="gaugeText">
+							<div>Indoor</div>
+							<div><span id="inHour" value="12">12</span>hr</div>
+						</div>
+					</div>
 				</div>
 				<div class="outside">
-					<div class="gauge"></div>
+					<div class="gauge">
+						<div class="gaugeText">
+							<div>Outdoor</div>
+							<div><span id="outHour" value="12">12</span>hr</div>
+						</div>
+					</div>
 				</div>
 				<button id="grip">
 					<img src="/img/q4_grip.png" alt="">
@@ -283,22 +293,20 @@
 				</div>
 			</div>
 			<div class="aBox">
-				<div class="stuff">
-					<div>
-						<img src="/img/q8_cook.png" alt="">
-					</div>
-					<div>
-						<img src="/img/q8_DIY.png" alt="">
-					</div>
-					<div>
-						<img src="/img/q8_exhibition.png" alt="">
-					</div>
-					<div>
-						<img src="/img/q8_map.png" alt="">
-					</div>
-					<div>
-						<img src="/img/q8_sports.png" alt="">
-					</div>
+				<div id="travel" class="stuff" data-value="travel">
+					<img src="/img/q8_travel.png" alt="">
+				</div>
+				<div id="exercise" class="stuff" data-value="exercise">
+					<img src="/img/q8_exercise.png" alt="">
+				</div>
+				<div id="DIY" class="stuff" data-value="DIY">
+					<img src="/img/q8_DIY.png" alt="">
+				</div>
+				<div id="cook" class="stuff" data-value="cook">
+					<img src="/img/q8_cook.png" alt="">
+				</div>
+				<div id="exhibition" class="stuff" data-value="exhibition">
+					<img src="/img/q8_exhibition.png" alt="">
 				</div>
 			</div>
 		</section>
