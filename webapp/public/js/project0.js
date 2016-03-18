@@ -488,6 +488,7 @@ var SectionIn = {
 		section.find("img").animateCSS("flipInY");
 	},
 	section6: function(section) {
+		section.find(".tapeline").animateCSS("rollIn");
 	},
 	section7: function(section) {
 		section.find(".colors").animateCSS("fadeInDownBig");
@@ -526,7 +527,7 @@ var SectionOut = {
 		section.find("img").unanimateCSS("flipInY");
 	},
 	section6: function(section) {
-		
+		section.find(".tapeline").unanimateCSS("rollIn");
 	},
 	section7: function(section) {
 		section.find(".colors").unanimateCSS("fadeInDownBig");
