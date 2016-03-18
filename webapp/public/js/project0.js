@@ -210,6 +210,7 @@ var Page =  {
 	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3" ],
 	nextButtonColor: [ "#536866", "#8e5955", "#595657", "#946e00", "#234f47", "#15a65a", "#aa7b3a", "#793247" ],
 	q7_holeColor: {
+		default: ["#4C4142", "#514546", "#625354"],
 		red: ["#E86767", "#ED7474", "#F48282"],
 		cyan: ["#66AA9D", "#6DB8AA", "#7AC1B3"],
 		yellow: ["#EACD1F","#F4D862", "#FCE781"],
@@ -484,6 +485,13 @@ var SectionIn = {
 		if (Answer.answerObj.a6) { Page.showNextButton(); }
 	},
 	section7: function(section) {
+		var hole = $("#section7").find(".hole");
+		var offset = hole.offset();
+		var width = hole.width();
+		var height = hole.height();
+		holeCenter.x = offset.left + width / 2;
+		holeCenter.y = offset.top + height / 2;
+		
 		section.find(".colors").animateCSS("fadeInDownBig");
 		section.find(".color").animateCSS("pulse");
 		
@@ -495,6 +503,8 @@ var SectionIn = {
 		if (Answer.answerObj.a8.length >= 2) { Page.showNextButton(); }
 	}
 };
+
+
 
 // section 전환 시 헌 페이지 숨기기 (새 페이지 SectionIn이 가능하도록)
 var SectionOut = {
@@ -538,6 +548,7 @@ var SectionOut = {
 
 // Question 7 color picking script
 var colors = {};
+var holeCenter = {};
 
 var ColorPan = function(elementId) {
 	this.element = document.getElementById(elementId);
@@ -545,6 +556,8 @@ var ColorPan = function(elementId) {
 	
 	this.origin = null;
 	this.start = { top: null, left: null };
+	
+	this.holeIn = false;
 	
 	this.init();
 	
@@ -577,20 +590,62 @@ ColorPan.prototype = {
 		target.css("top", (this.start.top + event.deltaY) + "px")
 			.css("left", (this.start.left + event.deltaX) + "px");
 		
-		this.checkHoleIn();
+		this.checkHoleIn(event.center);
+		
+		if (this.holeIn) {
+			this.changeHoleColor(target);
+		} else {
+			this.changeHoleColor();
+		}
 	},
 	onPanEnd: function(target) {
 		target.animateCSS("jello");
 		setTimeout(function() {
 			target.removeClass("jello");
 		}, 500);
+		
+		if (this.holeIn) {
+			if (Answer.answerObj.a7) {
+				var oldAnswer = colors[Answer.answerObj.a7];
+				oldAnswer.returnToOrigin();
+				$(oldAnswer.element).css("display", "block");
+			}
+			
+			Answer.answerObj.a7 = target.data("value");
+			target.css("display", "none");
+		}
 	},
-	checkHoleIn: function() {
-		console.log("check!!!");
+	checkHoleIn: function(center) {
+		var d = Math.sqrt( (center.x-=holeCenter.x)*center.x + (center.y-=holeCenter.y)*center.y );
+		
+		if (d <= 160) {
+			this.holeIn = true;
+		} else {
+			this.holeIn = false;
+		}
+	},
+	changeHoleColor: function(target) {
+		if (target) {
+			var color = target.data("value");
+			$("#section7").find("#holePath").find("path").each(function(i) {
+				$(this).attr("fill", Page.q7_holeColor[color][i]);
+			});
+		} else if (!target) {
+			if (Answer.answerObj.a7) {
+				$("#section7").find("#holePath").find("path").each(function(i) {
+					$(this).attr("fill", Page.q7_holeColor[Answer.answerObj.a7][i]);
+				});
+			} else {
+				$("#section7").find("#holePath").find("path").each(function(i) {
+					$(this).attr("fill", Page.q7_holeColor.default[i]);
+				});
+			}
+		}
 	},
 	returnToOrigin: function() {
 		$(this.element).css("top", this.origin.top)
 			.css("left", this.origin.left);
+		return this;
 	}
 };
 
