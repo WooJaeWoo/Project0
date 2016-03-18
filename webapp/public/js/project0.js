@@ -205,8 +205,8 @@ var Project0 = {
 var Page =  {
 	currentPage: 1,
 	setCurrentPage: function(page) { this.currentPage = page; },
-	logoColor: [ "#fff", "#a88174", "#fff", "#000", "#9ffff9", "#cce7bd", "#aa9981", "#ccc" ],
-	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#426361", "#1c3130", "#5f494b", "#ccc" ],
+	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba" ],
+	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3" ],
 	q7_holeColor: {
 		red: ["#E86767", "#ED7474", "#F48282"],
 		cyan: ["#66AA9D", "#6DB8AA", "#7AC1B3"],
@@ -416,6 +416,8 @@ ColorPan.prototype = {
 	onPanMove: function(target, event) {
 		target.css("top", (this.start.top + event.deltaY) + "px")
 			.css("left", (this.start.left + event.deltaX) + "px");
+		
+		this.checkHoleIn();
 	},
 	onPanEnd: function(target) {
 		target.animateCSS("jello");
@@ -424,7 +426,7 @@ ColorPan.prototype = {
 		}, 500);
 	},
 	checkHoleIn: function() {
-		
+		console.log("check!!!");
 	},
 	returnToOrigin: function() {
 		$(this.element).css("top", this.origin.top)
