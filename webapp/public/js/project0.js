@@ -204,6 +204,7 @@ var Project0 = {
 
 var Page =  {
 	currentPage: 1,
+	maxPage: 8,  // TODO: 개발 후에는 1로 초기화 할 것
 	setCurrentPage: function(page) { this.currentPage = page; },
 	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba" ],
 	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3" ],
@@ -228,6 +229,9 @@ var Page =  {
 		// nav로 페이지 이동
 		$("#nav").on("touchClick", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
+			
+			if (page > this.maxPage) { return; }
+			
 			if (page !== this.currentPage) {
 				// section out
 				SectionOut.clean(SectionOut["section" + this.currentPage]);
@@ -247,6 +251,10 @@ var Page =  {
 			if (this.currentPage === 8) {
 				console.log("send answer!");
 			} else {
+				if (this.currentPage === this.maxPage) {
+					this.maxPage++;
+				}
+				
 				this.goNext();
 			}
 		}.bind(this));
@@ -272,7 +280,7 @@ var Page =  {
 		// page range check
 		if (page < 1 || page > 8) return;
 		
-		this.dottingAnimation();
+		this.navAnimation();
 
 		// move main element and then render page contents
 		var left = ((page - 1) * (-100)) + "%";
@@ -296,10 +304,10 @@ var Page =  {
 	hideNextButton: function() {
 		$("#nextButton").removeClass("on");
 	},
-	dottingAnimation: function() {
-		var dots = $("#nav").find("li");
-		dots.find(".dot").removeClass("on");
-		dots.eq(this.currentPage - 1).find(".dot").addClass("on");
+	navAnimation: function() {
+		$("#nav").find("li").eq(this.currentPage - 1).find(".dot").addClass("on");
+		var progressWidth = (this.currentPage - 1) * 30 + 24;
+		$("#navProgress").css("width", progressWidth + "px");
 	}
 };
 
