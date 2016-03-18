@@ -723,7 +723,7 @@ html, body {
 	margin: auto 0;
 	width: 45%;
 	height: 70%;
-	padding: 20px;
+	opacity: 0;
 }
 #section8 .stuff {
 	position: absolute;

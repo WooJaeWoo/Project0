@@ -494,6 +494,7 @@ var SectionIn = {
 		section.find(".color").animateCSS("pulse");
 	},
 	section8: function(section) {
+		section.find(".aBox").animateCSS("zoomIn");
 	}
 };
 
@@ -531,7 +532,7 @@ var SectionOut = {
 		section.find(".colors").unanimateCSS("fadeInDownBig");
 	},
 	section8: function(section) {
-		
+		section.find(".aBox").unanimateCSS("zoomIn");
 	}
 };
 
