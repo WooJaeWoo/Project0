@@ -362,6 +362,7 @@ var SectionInit = {
 			if (a5.indexOf(value) >= 0) {
 				li.removeClass("on");
 				Answer.answerObj.a5.splice(a5.indexOf(value), 1);
+				Page.hideNextButton();
 				return;
 			}
 			
@@ -373,10 +374,8 @@ var SectionInit = {
 			
 			li.addClass("on");
 			
-			if (a5.length === 2) {
+			if (Answer.answerObj.a5.length >= 2) {
 				Page.showNextButton();
-			} else {
-				Page.hideNextButton();
 			}
 		});
 	},
@@ -399,6 +398,7 @@ var SectionInit = {
 			if (a8.indexOf(value) >= 0) {
 				stuff.removeClass("on");
 				Answer.answerObj.a8.splice(a8.indexOf(value), 1);
+				Page.hideNextButton();
 				return;
 			}
 			
@@ -410,10 +410,8 @@ var SectionInit = {
 			
 			stuff.addClass("on");
 			
-			if (a8.length === 2) {
+			if (Answer.answerObj.a8.length >= 2) {
 				Page.showNextButton();
-			} else {
-				Page.hideNextButton();
 			}
 		});
 	}
