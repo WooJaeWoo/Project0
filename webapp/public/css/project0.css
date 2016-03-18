@@ -253,7 +253,7 @@ html, body {
 	bottom: 45px;
 	width: 100%;
 	text-align: center;
-	z-index: 888;
+	z-index: 777;
 }
 #nav li {
 	position: relative;
@@ -294,6 +294,28 @@ html, body {
 	0% { border: 0px solid rgba(50, 50, 50, 0.4); }
 	70% { border: 12px solid rgba(50, 50, 50, 0.4); }
 	100% { border: 8px solid rgba(50, 50, 50, 0.4); }
+}
+
+#nextButton {
+	position: fixed;
+	bottom: -200px;
+	right: 20px;
+	width: 300px;
+	height: 72px;
+	line-height: 72px;
+	color: #fff;
+	font-size: 24px;
+	background-color: #536866;
+	text-indent: 10px;
+	z-index: 777;
+	transition: .5s;
+}
+#nextButton.on {
+	bottom: 20px;
+}
+#nextButton > span {
+	margin-left: 6px;
+	font-size: 18px;
 }
 
 /** main sections **/
@@ -604,6 +626,7 @@ html, body {
 	float: left;
 	width: 33.33%;
 	height: 50%;
+	cursor: pointer;
 }
 #section5 .grid > li:nth-of-type(even) { background-color: #67b6a8; }
 #section5 .grid > li.on { background-color: #ffb797; }

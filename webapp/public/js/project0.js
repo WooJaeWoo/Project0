@@ -207,6 +207,7 @@ var Page =  {
 	setCurrentPage: function(page) { this.currentPage = page; },
 	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba" ],
 	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3" ],
+	nextButtonColor: [ "#536866", "#8e5955", "#595657", "#946e00", "#234f47", "#15a65a", "#aa7b3a", "#793247" ],
 	q7_holeColor: {
 		red: ["#E86767", "#ED7474", "#F48282"],
 		cyan: ["#66AA9D", "#6DB8AA", "#7AC1B3"],
@@ -283,6 +284,18 @@ var Page =  {
 	changeFrameColor: function() {
 		$("#frame").css("borderColor", this.frameColor[this.currentPage - 1]);
 	},
+	showNextButton: function() {
+		var button = $("#nextButton");
+		button.html("Next Question <span>→</span>");
+		if (this.currentPage === 8) {
+			button.text("Finish");
+		}
+		
+		button.addClass("on");
+	},
+	hideNextButton: function() {
+		$("#nextButton").removeClass("on");
+	},
 	dottingAnimation: function() {
 		var dots = $("#nav").find("li");
 		dots.find(".dot").removeClass("on");
@@ -303,6 +316,8 @@ var SectionInit = {
 			$(event.delegateTarget).find(".tag").unanimateCSS("swing");
 			tag.animateCSS("swing");
 			Answer.answerObj.a1 = tag.data("value");
+			
+			Page.showNextButton();
 		});
 	},
 	section2: function() {
@@ -315,6 +330,8 @@ var SectionInit = {
 			Answer.answerObj.a2 = value;
 			var angle = (value / 10 - 1) * 60;
 			$("#section2 #clockNeedle1").css("transform", "rotate(" + angle + "deg)");
+			
+			Page.showNextButton();
 		});
 	},
 	section3: function() {
@@ -330,6 +347,8 @@ var SectionInit = {
 			}
 			$("#section3").removeClass().addClass(value);
 			Answer.answerObj.a3 = value;
+			
+			Page.showNextButton();
 		});
 	},
 	section4: function() {
@@ -353,6 +372,12 @@ var SectionInit = {
 			Answer.answerObj.a5.push(value);
 			
 			li.addClass("on");
+			
+			if (a5.length === 2) {
+				Page.showNextButton();
+			} else {
+				Page.hideNextButton();
+			}
 		});
 	},
 	section6: function() {
@@ -384,11 +409,126 @@ var SectionInit = {
 			Answer.answerObj.a8.push(value);
 			
 			stuff.addClass("on");
+			
+			if (a8.length === 2) {
+				Page.showNextButton();
+			} else {
+				Page.hideNextButton();
+			}
 		});
 	}
 };
 
 
+// section 전환 시 새 페이지 효과
+var SectionIn = {
+	start: function(sectionCallBack) {
+		var section = $("#section" + Page.currentPage);
+		
+		setTimeout(function() {
+			section.find(".qNum").animateCSS("fadeInUp");
+		}, 100);
+		setTimeout(function() {
+			section.find(".question").animateCSS("fadeInUp");
+			sectionCallBack(section);
+		}, 600);
+		setTimeout(function() {
+			section.find(".qDesc").animateCSS("fadeInUp");
+		}, 1000);
+		
+		$("#nextButton").css("backgroundColor", Page.nextButtonColor[Page.currentPage - 1]);		
+	},
+	section1: function(section) {
+		section.find("#genderTagM").animateCSS("bounceInDown");
+		setTimeout(function() {
+			section.find("#genderTagF").animateCSS("bounceInDown");
+		}, 300);
+		
+		if (Answer.answerObj.a1) { Page.showNextButton(); }
+	},
+	section2: function(section) {
+		section.find(".clock").animateCSS("rotateIn");
+		
+		if (Answer.answerObj.a2) { Page.showNextButton(); }
+	},
+	section3: function(section) {
+		if (Answer.answerObj.a3 === "yes") {
+			$("#frame").css("borderColor", "#ffb5d1");
+		} else if (Answer.answerObj.a3 == "no") {
+			$("#frame").css("borderColor", "#537187");
+		}
+		section.find("#marriageButton").animateCSS("fadeInUpBig");
+		
+		if (Answer.answerObj.a3) { Page.showNextButton(); }
+	},
+	section4: function(section) {
+		section.find(".gaugeText").fadeIn(1500);
+		section.find("#grip").animateCSS("fadeInRightBig");
+		
+		if (Answer.answerObj.a4) { Page.showNextButton(); }
+	},
+	section5: function(section) {
+		section.find("img").animateCSS("flipInY");
+		
+		if (Answer.answerObj.a5.length >= 2) { Page.showNextButton(); }
+	},
+	section6: function(section) {
+		section.find(".tapeline").animateCSS("rollIn");
+		
+		if (Answer.answerObj.a6) { Page.showNextButton(); }
+	},
+	section7: function(section) {
+		section.find(".colors").animateCSS("fadeInDownBig");
+		section.find(".color").animateCSS("pulse");
+		
+		if (Answer.answerObj.a7) { Page.showNextButton(); }
+	},
+	section8: function(section) {
+		section.find(".aBox").animateCSS("zoomIn");
+		
+		if (Answer.answerObj.a8.length >= 2) { Page.showNextButton(); }
+	}
+};
+
+// section 전환 시 헌 페이지 숨기기 (새 페이지 SectionIn이 가능하도록)
+var SectionOut = {
+	clean: function(sectionCallBack) {
+		var section = $("#section" + Page.currentPage);
+		setTimeout(function() {
+			section.find(".qNum").unanimateCSS("fadeInUp");
+			section.find(".question").unanimateCSS("fadeInUp");
+			section.find(".qDesc").unanimateCSS("fadeInUp");
+			sectionCallBack(section);
+		}, 800);
+		
+		Page.hideNextButton();
+	},
+	section1: function(section) {
+		section.find(".genderTag").unanimateCSS("bounceInDown");
+	},
+	section2: function(section) {
+		section.find(".clock").unanimateCSS("rotateIn");
+	},
+	section3: function(section) {
+		section.find("#marriageButton").unanimateCSS("fadeInUpBig");
+	},
+	section4: function(section) {
+		section.find(".gaugeText").fadeOut(200);
+		section.find("#grip").unanimateCSS("fadeInRightBig");
+	},
+	section5: function(section) {
+		section.find("img").unanimateCSS("flipInY");
+	},
+	section6: function(section) {
+		section.find(".tapeline").unanimateCSS("rollIn");
+	},
+	section7: function(section) {
+		section.find(".colors").unanimateCSS("fadeInDownBig");
+	},
+	section8: function(section) {
+		section.find(".aBox").unanimateCSS("zoomIn");
+	}
+};
 
 // Question 7 color picking script
 var colors = {};
@@ -448,94 +588,6 @@ ColorPan.prototype = {
 	}
 };
 
-
-// section 전환 시 새 페이지 효과
-var SectionIn = {
-	start: function(sectionCallBack) {
-		var section = $("#section" + Page.currentPage);
-		
-		setTimeout(function() {
-			section.find(".qNum").animateCSS("fadeInUp");
-		}, 100);
-		setTimeout(function() {
-			section.find(".question").animateCSS("fadeInUp");
-			section.find(".qDesc").animateCSS("fadeInUp");
-			sectionCallBack(section);
-		}, 600);
-	},
-	section1: function(section) {
-		section.find("#genderTagM").animateCSS("bounceInDown");
-		setTimeout(function() {
-			section.find("#genderTagF").animateCSS("bounceInDown");
-		}, 300);		
-	},
-	section2: function(section) {
-		section.find(".clock").animateCSS("rotateIn");
-	},
-	section3: function(section) {
-		if (Answer.answerObj.a3 === "yes") {
-			$("#frame").css("borderColor", "#ffb5d1");
-		} else if (Answer.answerObj.a3 == "no") {
-			$("#frame").css("borderColor", "#537187");
-		}
-		section.find("#marriageButton").animateCSS("fadeInUpBig");
-	},
-	section4: function(section) {
-		section.find(".gaugeText").fadeIn(1500);
-		section.find("#grip").animateCSS("fadeInRightBig");
-	},
-	section5: function(section) {
-		section.find("img").animateCSS("flipInY");
-	},
-	section6: function(section) {
-		section.find(".tapeline").animateCSS("rollIn");
-	},
-	section7: function(section) {
-		section.find(".colors").animateCSS("fadeInDownBig");
-		section.find(".color").animateCSS("pulse");
-	},
-	section8: function(section) {
-		section.find(".aBox").animateCSS("zoomIn");
-	}
-};
-
-// section 전환 시 헌 페이지 숨기기 (새 페이지 SectionIn이 가능하도록)
-var SectionOut = {
-	clean: function(sectionCallBack) {
-		var section = $("#section" + Page.currentPage);
-		setTimeout(function() {
-			section.find(".qNum").unanimateCSS("fadeInUp");
-			section.find(".question").unanimateCSS("fadeInUp");
-			section.find(".qDesc").unanimateCSS("fadeInUp");
-			sectionCallBack(section);
-		}, 800);
-	},
-	section1: function(section) {
-		section.find(".genderTag").unanimateCSS("bounceInDown");
-	},
-	section2: function(section) {
-		section.find(".clock").unanimateCSS("rotateIn");
-	},
-	section3: function(section) {
-		section.find("#marriageButton").unanimateCSS("fadeInUpBig");
-	},
-	section4: function(section) {
-		section.find(".gaugeText").fadeOut(200);
-		section.find("#grip").unanimateCSS("fadeInRightBig");
-	},
-	section5: function(section) {
-		section.find("img").unanimateCSS("flipInY");
-	},
-	section6: function(section) {
-		section.find(".tapeline").unanimateCSS("rollIn");
-	},
-	section7: function(section) {
-		section.find(".colors").unanimateCSS("fadeInDownBig");
-	},
-	section8: function(section) {
-		section.find(".aBox").unanimateCSS("zoomIn");
-	}
-};
 
 var Answer = {
 	answerObj: {
