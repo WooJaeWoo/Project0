@@ -18,54 +18,6 @@ var Util = {
 			}.bind(this))()
 		};
 	},
-	extendMouseDownEvent : function () {
-		$.event.special.tcDown = {
-			bindType: (function () {
-				if (this.isMobile()) {
-					return "touchstart";
-				}
-				return "mousedown";
-			}.bind(this))(),
-			delegateType: (function () {
-				if (this.isMobile()) {
-					return "touchstart";
-				}
-				return "mousedown";
-			}.bind(this))()
-		};
-	},
-	extendMouseMoveEvent : function () {
-		$.event.special.tcMove = {
-			bindType: (function () {
-				if (this.isMobile()) {
-					return "touchmove";
-				}
-				return "mousemove";
-			}.bind(this))(),
-			delegateType: (function () {
-				if (this.isMobile()) {
-					return "touchmove";
-				}
-				return "mousemove";
-			}.bind(this))()
-		};
-	},
-	extendMouseUpEvent : function () {
-		$.event.special.tcUp = {
-			bindType: (function () {
-				if (this.isMobile()) {
-					return "touchend";
-				}
-				return "mouseup";
-			}.bind(this))(),
-			delegateType: (function () {
-				if (this.isMobile()) {
-					return "touchend";
-				}
-				return "mouseup";
-			}.bind(this))()
-		};
-	},
 	extendScrollMove : function () {
 		$.fn.scrollMove = function () {
 			return this.each(function () {
@@ -179,9 +131,11 @@ var Util = {
 		$.fn.extend({
 			animateCSS: function (animationName) {
 				$(this).addClass('animated ' + animationName);
+				return this;
 			},
 			unanimateCSS: function(animationName) {
 				$(this).removeClass('animated ' + animationName);
+				return this;
 			}
 		});
 	},
@@ -228,9 +182,9 @@ $(window).on("load", function () {
 var Project0 = {
 	init: function() {
 		Util.extendClickEvent();
-		Util.extendMouseDownEvent();
-		Util.extendMouseMoveEvent();
-		Util.extendMouseUpEvent();
+		//Util.extendMouseDownEvent();
+		//Util.extendMouseMoveEvent();
+		//Util.extendMouseUpEvent();
 		Util.extendAnimateCSS();
 		
 		if (!Util.backgroundClipCheck() || !Util.transitionendCheck()) {
@@ -256,7 +210,7 @@ var Page =  {
 	setCurrentPage: function(page) { this.currentPage = page; },
 	logoColor: [ "#fff", "#a88174", "#fff", "#000", "#9ffff9", "#cce7bd", "#aa9981", "#ccc" ],
 	frameColor: [ "#897777", "#be8985", "#537187", "#000", "#426361", "#1c3130", "#5f494b", "#ccc" ],
-	q5_holeColor: {
+	q7_holeColor: {
 		red: ["#E86767", "#ED7474", "#F48282"],
 		cyan: ["#66AA9D", "#6DB8AA", "#7AC1B3"],
 		yellow: ["#EACD1F","#F4D862", "#FCE781"],
@@ -409,14 +363,41 @@ var SectionInit = {
 		
 	},
 	section7: function() {
-		$("#section7").find(".aBox").on("tcDown", function(event) { console.log("tcDown!"); });
-		$("#section7").find(".aBox").on("tcMove", function(event) { console.log("tcMove!"); });
-		$("#section7").find(".aBox").on("tcUp", function(event) { console.log("tcUp!"); });
+		var red = $("#section7").find("#red").get(0);
+		var mc = new Hammer(red);
+		
+		mc.on("panstart panmove panend", function(event) {
+			event.preventDefault();
+			var target = $(event.target);
+			
+			if (event.type === "panstart") {
+				rStart.left = parseInt(target.css("left"));
+				rStart.top = parseInt(target.css("top"));
+			} else if (event.type === "panmove") {
+				target.css("top", (rStart.top + event.deltaY) + "px");
+				target.css("left", (rStart.left + event.deltaX) + "px");
+				
+			} else if (event.type === "panend") {
+				target.animateCSS("jello");
+				setTimeout(function() {
+					target.removeClass("jello");
+				}, 500);
+			}
+			
+			
+		});
 	},
 	section8: function() {
 		
 	}
 };
+
+var rStart = {top: null, left: null};
+var ColorPan = function(el) {
+	this.element = el;
+	this.size = { width: el.offsetWidth, height: el.offsetHeight };
+	this.start = { x: null, y: null };
+}
 
 // section 전환 시 새 페이지 효과
 var SectionIn = {
@@ -473,7 +454,7 @@ var SectionOut = {
 			section.find(".question").unanimateCSS("fadeInUp");
 			section.find(".qDesc").unanimateCSS("fadeInUp");
 			sectionCallBack(section);
-		}, 1000);
+		}, 800);
 	},
 	section1: function(section) {
 		section.find(".genderTag").unanimateCSS("bounceInDown");
@@ -530,6 +511,8 @@ var Answer = {
 		});
 	}
 };
+
+
 
 /*
 
