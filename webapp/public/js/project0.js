@@ -396,51 +396,6 @@ var SectionInit = {
 		new Handle();
 		
 	},
-	
-	/*
-	onPanStart: function(target) {
-		this.start.top = parseInt(target.css("top"));
-		this.start.left = parseInt(target.css("left"));
-	},
-	onPanMove: function(target, event) {
-		target.css("top", (this.start.top + event.deltaY) + "px")
-			.css("left", (this.start.left + event.deltaX) + "px");
-
-		this.checkHoleIn(event.center);
-
-		if (this.holeIn) {
-			this.changeHoleColor(target);
-		} else {
-			this.changeHoleColor();
-		}
-	},
-	onPanEnd: function(target) {
-		target.animateCSS("jello");
-		setTimeout(function() {
-			target.removeClass("jello");
-		}, 500);
-
-		if (this.holeIn) {
-			if (Answer.answerObj.a7) {
-				var oldAnswer = colors[Answer.answerObj.a7];
-				oldAnswer.returnToOrigin();
-				$(oldAnswer.element).css("display", "block");
-			} else {
-				Page.showNextButton();
-			}
-
-			Answer.answerObj.a7 = target.data("value");
-			target.css("display", "none");
-		}
-	},
-	
-	
-	
-	
-	*/
-	
-	
-	
 	section5: function() {
 		$("#section5").find(".aBox").on("touchClick", "li", function(event) {
 			var li = $(event.currentTarget);			
