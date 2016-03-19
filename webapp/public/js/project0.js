@@ -361,7 +361,86 @@ var SectionInit = {
 		});
 	},
 	section4: function() {
+		var Handle = function() {
+			this.element = document.getElementById("handle");
+			this.start;
+			this.halfHeight = $(this.element).height() / 2;
+			this.section = $("#section4");
+			
+			var mc = new Hammer(this.element);
+			mc.on("panstart panmove panend", function(event) {
+				event.preventDefault();
+				var target = $(event.target);
+				
+				if (event.type === "panstart") {
+					this.start = parseInt(target.css("top"));
+					Page.hideNextButton();
+				} else if (event.type === "panmove") {
+					target.css("top", (this.start + event.deltaY) + "px");
+					var borderHeight = parseInt(target.css("top")) + this.halfHeight;
+					this.section.find(".outside").css("height", borderHeight + "px");
+					this.section.find(".inside").find(".gauge").css("height", ($(window).height() - borderHeight) + "px");
+					
+					var outHour = parseInt(borderHeight / $(window).height() * 24);
+					var inHour = 24 - outHour;
+					this.section.find("#inHour").text(inHour).data("value", inHour);
+					this.section.find("#outHour").text(outHour).data("value", outHour);
+
+				} else if (event.type === "panend") {
+					Answer.answerObj.a4 = this.section.find("#inHour").data("value");
+					Page.showNextButton();
+				}
+			}.bind(this));
+		}
+		
+		new Handle();
+		
 	},
+	
+	/*
+	onPanStart: function(target) {
+		this.start.top = parseInt(target.css("top"));
+		this.start.left = parseInt(target.css("left"));
+	},
+	onPanMove: function(target, event) {
+		target.css("top", (this.start.top + event.deltaY) + "px")
+			.css("left", (this.start.left + event.deltaX) + "px");
+
+		this.checkHoleIn(event.center);
+
+		if (this.holeIn) {
+			this.changeHoleColor(target);
+		} else {
+			this.changeHoleColor();
+		}
+	},
+	onPanEnd: function(target) {
+		target.animateCSS("jello");
+		setTimeout(function() {
+			target.removeClass("jello");
+		}, 500);
+
+		if (this.holeIn) {
+			if (Answer.answerObj.a7) {
+				var oldAnswer = colors[Answer.answerObj.a7];
+				oldAnswer.returnToOrigin();
+				$(oldAnswer.element).css("display", "block");
+			} else {
+				Page.showNextButton();
+			}
+
+			Answer.answerObj.a7 = target.data("value");
+			target.css("display", "none");
+		}
+	},
+	
+	
+	
+	
+	*/
+	
+	
+	
 	section5: function() {
 		$("#section5").find(".aBox").on("touchClick", "li", function(event) {
 			var li = $(event.currentTarget);			
@@ -470,7 +549,7 @@ var SectionIn = {
 	},
 	section4: function(section) {
 		section.find(".gaugeText").fadeIn(1500);
-		section.find("#grip").animateCSS("fadeInRightBig");
+		section.find("#handle").animateCSS("fadeInRightBig");
 		
 		if (Answer.answerObj.a4) { Page.showNextButton(); }
 	},
@@ -530,7 +609,7 @@ var SectionOut = {
 	},
 	section4: function(section) {
 		section.find(".gaugeText").fadeOut(200);
-		section.find("#grip").unanimateCSS("fadeInRightBig");
+		section.find("#handle").unanimateCSS("fadeInRightBig");
 	},
 	section5: function(section) {
 		section.find("img").unanimateCSS("flipInY");
