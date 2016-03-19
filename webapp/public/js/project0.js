@@ -44,7 +44,7 @@ var Util = {
 				el = this;
 
 			function hasBackgroundClip() {
-				return b.style.webkitBackgroundClip != undefined;
+				return b.style.webkitBackgroundClip !== undefined;
 			}
 
 			function addAttributes(el, attributes) {
@@ -282,7 +282,7 @@ var Page =  {
 		if (page < 1 || page > 8) return;
 		
 		this.navAnimation();
-
+		
 		// move main element and then render page contents
 		var left = ((page - 1) * (-100)) + "%";
 		$("#main").css("left", left);
@@ -609,6 +609,8 @@ ColorPan.prototype = {
 				var oldAnswer = colors[Answer.answerObj.a7];
 				oldAnswer.returnToOrigin();
 				$(oldAnswer.element).css("display", "block");
+			} else {
+				Page.showNextButton();
 			}
 			
 			Answer.answerObj.a7 = target.data("value");

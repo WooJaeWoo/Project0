@@ -154,6 +154,7 @@ html, body {
 	margin: auto;
 	width: 57%;
 	height: 65%;
+	min-height: 500px;
 	background-color: rgba(255, 255, 255, 0.7);
 	padding: 12px;	
 }
@@ -819,6 +820,7 @@ html, body {
 	#index .coverLayer {
 		width: 80%;
 		height: 60%;
+		min-height: auto;
 		padding: 12px;
 	}
 	#index .coverLayer .title {	top: 18%; }
