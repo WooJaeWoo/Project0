@@ -14,21 +14,21 @@ var scoreMatrix = {
 		"60": [0, 2, 1, 1, 0, 1]
 	},
 	a3: { // married
-		"true": [1, 1, 1, 0, 0, 3],
-		"false": [1, 0, 1, 2, 2, 0]
+		"yes": [1, 1, 1, 0, 0, 3],
+		"no": [1, 0, 1, 2, 2, 0]
 	},
 	a4: { // atHome : 높은 수준부터 A, B, C
 		"A": [1, 3, 1, 1, 1, 2], // 집:밖 = 16:8
 		"B": [2, 2, 2, 1, 1, 1], // 집:밖 = 12:12
 		"C": [3, 1, 1, 1, 1, 0]  // 집:밖 = 8:16
 	},
-	a5: { // needs : 여기는 선택지를 임의로 넣은거라서 수정하고 추가를 마구 하셔도 좋습니다.
-		"DE": [3, 2, 1, 1, 1, 1],
-		"HA": [2, 3, 1, 1, 1, 1],
-		"LU": [1, 1, 3, 2, 1, 1],
-		"MY": [1, 1, 2, 3, 1, 1],
-		"MA": [1, 1, 1, 1, 3, 1],
-		"MO": [1, 2, 1, 1, 1, 3]
+	a5: { // needs
+		"chair": [3, 2, 1, 1, 1, 1],
+		"laptop": [2, 3, 1, 1, 1, 1],
+		"bag": [1, 1, 3, 2, 1, 1],
+		"watch": [1, 1, 2, 3, 1, 1],
+		"bike": [1, 1, 1, 1, 3, 1],
+		"stroller": [1, 2, 1, 1, 1, 3]
 	},
 	a6: { // interiorRatio : 높은 수준부터 A, B, C
 		"A": [3, 3, 1, 2, 1, 2],
@@ -39,7 +39,7 @@ var scoreMatrix = {
 		"red": [2, 1, 1, 0, 3, 0],
 		"yellow": [1, 2, 3, 2, 1, 1],
 		"green": [3, 1, 2, 1, 0, 1],
-		"blue": [2, 1, 2, 1, 2, 3],
+		"cyan": [2, 1, 2, 1, 2, 3],
 		"purple": [3, 1, 2, 1, 1, 1]
 	},
 	a8: { // culture
@@ -67,7 +67,7 @@ scoreMod.prototype.calculate = function(answer) {
 	this.addScores(scoreMatrix.a2[answer.a2]);
 	this.addScores(scoreMatrix.a3[answer.a3]);
 	var atHome = "C";
-	if (answer.a4 > 10 && answer.a4 <= 16) {
+	if (answer.a4 > 8 && answer.a4 <= 16) {
 		atHome = "B";
 	} else if (answer.a4 > 16) {
 		atHome = "A";

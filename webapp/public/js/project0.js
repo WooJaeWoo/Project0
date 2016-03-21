@@ -348,10 +348,8 @@ var SectionInit = {
 			var value = $(event.currentTarget).data("value");
 			var btnImg = $("#marriageButtonImg");
 			if (value === "yes") {
-				btnImg.attr("src", "/img/q3_yes.png");
 				$("#frame").css("borderColor", "#ffb5d1");
 			} else {
-				btnImg.attr("src", "/img/q3_no.png");
 				$("#frame").css("borderColor", "#537187");
 			}
 			$("#section3").removeClass().addClass(value);
@@ -500,7 +498,7 @@ var SectionIn = {
 		}
 		section.find("#marriageButton").animateCSS("fadeInUpBig");
 		
-		if (Answer.answerObj.a3) { Page.showNextButton(); }
+		if (Answer.answerObj.a3 === "yes" || Answer.answerObj.a3 === "no") { Page.showNextButton(); }
 	},
 	section4: function(section) {
 		section.find(".gaugeText").fadeIn(1500);
