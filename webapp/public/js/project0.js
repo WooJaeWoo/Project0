@@ -421,7 +421,42 @@ var SectionInit = {
 		});
 	},
 	section6: function() {
-		
+		var Line = function() {
+			this.element = document.getElementById("tapelineLine");
+			this.start;
+			this.section = $("#section6");
+            this.width = $(this.element).width();
+
+			var mc = new Hammer(this.element);
+			mc.on("panstart panmove panend", function(event) {
+				event.preventDefault();
+				var target = $(event.target);
+
+				if (event.type === "panstart") {
+					this.start = parseInt(target.css("left"));
+					Page.hideNextButton();
+				} else if (event.type === "panmove") {
+                    var left = this.start + event.deltaX;
+                    if (left >= 0 && left < this.width) {
+                        if (left < parseInt(this.width / 3)) {
+                            console.log("3");
+                        } else if ( left > parseInt(this.width * 2 / 3)) {
+                            console.log("2");
+                        } else {
+                            console.log("1");
+                        }
+                        
+                        target.css("left", left + "px");
+                    }
+					
+				} else if (event.type === "panend") {
+					//Answer.answerObj.a6 = ;
+					Page.showNextButton();
+				}
+			}.bind(this));
+		}
+
+		new Line();
 	},
 	section7: function() {
 		colors.red = new ColorPan("red");
