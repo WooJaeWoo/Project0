@@ -478,12 +478,12 @@ html, body {
 }
 #section2 #age20 {
 	left: auto;
-	top: -265px;
+	top: -270px;
 	right: 20px;
 }
 #section2 #age30 {
 	left: auto;
-	top: 275px;
+	top: 280px;
 	right: 20px;
 }
 #section2 #age40 {
@@ -491,12 +491,12 @@ html, body {
 }
 #section2 #age50 {
 	right: auto;
-	top: 275px;
+	top: 280px;
 	left: 20px;
 }
 #section2 #age60 {
 	right: auto;
-	top: -265px;
+	top: -270px;
 	left: 20px;
 }
 #section2 .age.on {
@@ -508,7 +508,7 @@ html, body {
 
 /** Section 3 **/
 #section3 { background-color: #043d5d; color: #fff; }
-#section3 .aBox { width: 100%; }
+#section3 .aBox { width: 100%; padding-right: 0; }
 #section3 .leftSide { float: left; width: 45%; height: 100%; }
 #section3 .leftSide .upperDiv { width: 100%; height: 75%; background-color: #164361; }
 #section3 .leftSide .lowerDiv { width: 100%; height: 25%; background-color: #274b65; }
@@ -521,28 +521,41 @@ html, body {
 #section3.no .leftSide .lowerDiv { background-color: #b3c9d7; }
 #section3 #marriageButton {
 	position: absolute;
-	top: -70px;
+	top: 0;
+	left: 0;
 	bottom: 0;
 	right: 0;
-	margin: auto 0;
+	margin: auto;
 	width: 75%;
-	height: 400px;
+	height: 50%;
 	opacity: 0;
+	background-image: url(/img/q3_default.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center center;
+}
+#section3.yes #marriageButton {
+	background-image: url(/img/q3_yes.png);
+}
+#section3.no #marriageButton {
+	background-image: url(/img/q3_no.png);
+}
+#section3 #marriageButton img {
+	visibility: hidden;
 }
 #section3 .marriageYes {
 	position: absolute;
-	top: 0;
+	top: 24%;
 	left: 0;
 	width: 50%;
-	height: 100%;
+	height: 50%;
 }
 #section3 .marriageNo {
 	position: absolute;
-	top: 0;
+	top: 24%;
 	right: 0;
-	float: right;
 	width: 50%;
-	height: 100%;
+	height: 50%;
 }
 
 /** Section 4 **/
@@ -871,14 +884,114 @@ html, body {
     	padding-top: 5px;
 		padding-right: 12%;
 	}
+	.qBox .qDesc {
+		width: 75%;
+		float: right;
+	}
 	
 	.aBox {
 		padding: 0 8%;
 	}
 
+	#nextButton {
+		right: auto;
+		width: 100%;
+	}
+	
+	/** Section 1 **/
 	#section1 .aBox { width: 100%; }
 	#section1 #genderTagM { top: 34%; }
 	#section1 #genderTagF { top: 39%; }
+	
+	/** Section 2 **/
+	#section2 .aBox { width: 100%; padding: 0; }
+	#section2 .clock {
+		top: 10%;
+		right: 0;
+		width: 600px;
+		height: 600px;
+	}
+		
+	/** Section 3 **/
+	#section3 .aBox { width: 100%; padding: 0; }
+	#section3 .leftSide { float: left; width: 100%; height: 32%; }
+	#section3 .leftSide .upperDiv { float: left; width: 65%; height: 100%; }
+	#section3 .leftSide .lowerDiv { float: left; width: 35%; height: 100%; }
+	#section3 .rightSide { position: relative; float: left; width: 100%; height: 68%; }
+	#section3 #marriageButton {
+		width: 80%;
+		height: 60%;
+	}
+
+	/** Section 4 **/
+	#section4 .aBox { width: 100%; }
+	#section4 #handle {
+		position: relative;
+		top: 42.5%;
+		right: auto;
+	}
+	
+	/** Section 5 **/
+	#section5 .grid > li {
+		width: 50%;
+		height: 33.33%;
+	}
+	#section5 .grid > li:nth-of-type(even) { background-color: #67b6a8; }
+	#section5 .grid > li:nth-of-type(3) { background-color: #67b6a8; }
+	#section5 .grid > li:nth-of-type(4) { background-color: #63aea1; }
+	#section5 .grid > li.on { background-color: #ffb797; }
+
+	#section6 .aBox { width: 100%; }
+
+	#section7 .aBox { width: 100%; }
+	#section7 .floor > div {
+		position: absolute;
+		top: 25px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 540px;
+	}
+	#section7 .colors #yellow {
+		top: 29%;
+		left: 10%;
+		width: 140px;
+		height: 140px;
+	}
+	#section7 .colors #red {
+		top: 23%;
+		left: 49%;
+		width: 80px;
+		height: 260px;
+	}
+	#section7 .colors #cyan {
+		top: 10%;
+		left: 70%;
+		width: 130px;
+		height: 210px;
+	}
+	#section7 .colors #purple {
+		top: 39%;
+		left: 65%;
+		width: 190px;
+		height: 190px;
+	}
+	#section7 .colors #green {
+		top: 45%;
+		left: 20%;
+		width: 185px;
+		height: 180px;
+	}
+	
+	
+	#section8 .aBox {
+		top: 100px;
+		left: 0;
+		right: 0;
+		margin: auto;
+		width: 86%;
+		height: 55%;
+	}
 }
 
 @media all and (max-width : 767px) {	
@@ -905,7 +1018,7 @@ html, body {
 		font-size: 60px;
 	}
 	#index .coverLayer .desc {
-		top: 50%;
+		top: 53%;
 		font-size: 15px;
 		line-height: 24px;
 	}
@@ -941,5 +1054,8 @@ html, body {
 	}
 	
 	
+	#nextButton.on {
+		bottom: 10px;
+	}
 	
 }
