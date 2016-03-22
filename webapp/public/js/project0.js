@@ -583,7 +583,7 @@ var SectionIn = {
 		if (Answer.answerObj.a8.length >= 2) { Page.showNextButton(); }
 	},
 	section9: function(section) {
-		$("#nav").addClass("hide");
+		$("#nav").animateCSS("bounceOutDown");
 	}
 };
 
@@ -751,18 +751,26 @@ var Answer = {
 	},
 	submitAnswer: function() {
 		$.ajax({
-			url: "/result",
+			url: "/score",
 			type: "POST",
 			data: Answer.answerObj,
 			dataType: "json",
 			success: function(res) {
-				console.log(res);
+				setTimeout(function() {
+					location.href = res.url;
+				}, 5000);
 				//$("main").html(res);
 			},
 			error: function(res) {
 				console.log("[error] Ajax Result");
 				if (res) {
 					console.log(res.responseText);
+				}
+				if (res.status == "400") {
+					console.log("비정상적인 답변이 제출되었습니다.\n 첫 페이지로 이동합니다.");
+					setTimeout(function() {
+						location.reload();
+					}, 3000);
 				}
 			}
 		});
