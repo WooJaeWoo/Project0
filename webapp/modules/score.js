@@ -62,31 +62,31 @@ scoreMod.prototype.addScores = function(scoreArray) {
 scoreMod.prototype.calculate = function(answer) {
 	
 	// TODO: verify answer first!!!
+	if (!(answer.a1 && answer.a2 && answer.a3 && answer.a4
+	   && answer.a5[0] && answer.a5[1] && answer.a6
+	   && answer.a7 && answer.a8[0] && answer.a8[1])) {
+		return;
+	}
 	
 	this.addScores(scoreMatrix.a1[answer.a1]);
 	this.addScores(scoreMatrix.a2[answer.a2]);
 	this.addScores(scoreMatrix.a3[answer.a3]);
-	var atHome = "C";
-	if (answer.a4 > 8 && answer.a4 <= 16) {
-		atHome = "B";
-	} else if (answer.a4 > 16) {
-		atHome = "A";
-	}
-	this.addScores(scoreMatrix.a4[atHome]);
+	this.addScores(scoreMatrix.a4[answer.a4]);
 	this.addScores(scoreMatrix.a5[answer.a5[0]]);
 	this.addScores(scoreMatrix.a5[answer.a5[1]]);
-	var interiorRatio = "C";
-	if (answer.a6 > 10 && answer.a6 <= 30) {
-		interiorRatio = "B";
-	} else if (answer.a6 > 30) {
-		interiorRatio = "A";
-	}
-	this.addScores(scoreMatrix.a6[interiorRatio]);
+	this.addScores(scoreMatrix.a6[answer.a6]);
 	this.addScores(scoreMatrix.a7[answer.a7]);
 	this.addScores(scoreMatrix.a8[answer.a8[0]]);
 	this.addScores(scoreMatrix.a8[answer.a8[1]]);
 }
 scoreMod.prototype.getScore = function() {
+	var sum = 0;
+	this.score.forEach(function(element, index) {
+		sum += element;
+	});
+	if (sum === 0) {
+		return false;
+	}
 	return this.score;
 }
 scoreMod.prototype.getResult = function() {

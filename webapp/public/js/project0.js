@@ -248,7 +248,7 @@ var Page =  {
 			SectionOut.clean(SectionOut["section" + this.currentPage]);
 			
 			if (this.currentPage === $("main").children().length - 1) {
-				console.log("send answer!");
+				Answer.submitAnswer();
 			} else {
 				if (this.currentPage === this.limitPage) {
 					this.limitPage++;
@@ -387,7 +387,15 @@ var SectionInit = {
 					this.section.find("#outHour").text(outHour).data("value", outHour);
 
 				} else if (event.type === "panend") {
-					Answer.answerObj.a4 = this.section.find("#inHour").data("value");
+					var value = this.section.find("#inHour").data("value");
+					var atHome = "C";
+					if (value > 8 && value <= 16 ) {
+						atHome = "B";
+					} else if (value > 16) {
+						atHome = "A";
+					}
+					
+					Answer.answerObj.a4 = atHome;
 					Page.showNextButton();
 				}
 			}.bind(this));
@@ -439,20 +447,20 @@ var SectionInit = {
 					Page.hideNextButton();
 				} else if (event.type === "panmove") {
                     var left = this.start + event.deltaX;
-                    if (left >= 0 && left < this.width) {
+                    if (left >= 0 && left < this.width - 20) {
                         if (left < parseInt(this.width / 3)) {
-                            console.log("3");
+							target.data("value", "A");
                         } else if ( left > parseInt(this.width * 2 / 3)) {
-                            console.log("2");
+							target.data("value", "C");
                         } else {
-                            console.log("1");
+							target.data("value", "B");
                         }
                         
                         target.css("left", left + "px");
                     }
 					
 				} else if (event.type === "panend") {
-					//Answer.answerObj.a6 = ;
+					Answer.answerObj.a6 = target.data("value");
 					Page.showNextButton();
 				}
 			}.bind(this));
@@ -746,8 +754,9 @@ var Answer = {
 			url: "/result",
 			type: "POST",
 			data: Answer.answerObj,
-			dataType: "html",
+			dataType: "json",
 			success: function(res) {
+				console.log(res);
 				//$("main").html(res);
 			},
 			error: function(res) {

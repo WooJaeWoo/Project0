@@ -30,20 +30,20 @@ router.post("/", function(req, res, next) {
 	var myscore = score.getScore();
 	var result = score.getResult();
 	
-	// TODO: result first와 second 값으로 결과 페이지 구성하기!
-	// console.log(result.first);
-	// console.log(result.second);
-	
-	// DB: save answer
-	// TODO: uncomment to save answer to DB
-	//saveAnswer(req.headers['user-agent'], req.body);
-	
-	res.render("result", {
-		score: myscore,
-		first: result.first,
-		second: result.second
-	});
-	
+	if (!myscore) {
+		res.status(400).send("Wrong answer type");
+	} else {
+		// TODO: result first와 second 값으로 결과 페이지 구성하기!
+		// DB: save answer
+		// TODO: uncomment to save answer to DB
+		//saveAnswer(req.headers['user-agent'], req.body);
+		
+		res.send({
+			score: myscore,
+			first: result.first,
+			second: result.second
+		});
+	}	
 });
 
 module.exports = router;
