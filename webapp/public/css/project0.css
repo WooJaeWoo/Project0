@@ -332,7 +332,7 @@ html, body {
 #main {
 	position: relative;
 	left: -1px;
-	width: 800%;
+	width: 900%;
 	height: 100%;
 	transition: 1s;
 	transition-timing-function: ease;
@@ -341,7 +341,7 @@ html, body {
 #main > section {
 	position: relative;
 	float: left;
-	width: 12.5%;
+	width: 11.11%;
 	height: 100%;
 	box-sizing: border-box;
 	padding: 20px;
@@ -846,6 +846,10 @@ html, body {
 #section8 #DIY.on { background-image: url(/img/q8_DIY_hover.png); }
 #section8 #cook.on { background-image: url(/img/q8_cook_hover.png); }
 #section8 #exhibition.on { background-image: url(/img/q8_exhibition_hover.png); }
+
+
+#loading { background-color: #000; color: #fff; font-size: 300px;}
+
 
 @media all and (max-width : 990px) {
 	.m-show { display: block; }

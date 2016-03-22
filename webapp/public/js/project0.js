@@ -204,10 +204,10 @@ var Project0 = {
 
 var Page =  {
 	currentPage: 1,
-	maxPage: 8,  // TODO: 개발 후에는 1로 초기화 할 것
+	limitPage: 9,  // TODO: 개발 후에는 1로 초기화 할 것
 	setCurrentPage: function(page) { this.currentPage = page; },
-	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba" ],
-	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3" ],
+	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba", "#000" ],
+	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3", "#fff" ],
 	nextButtonColor: [ "#536866", "#8e5955", "#595657", "#946e00", "#234f47", "#15a65a", "#aa7b3a", "#793247" ],
 	q7_holeColor: {
 		default: ["#4C4142", "#514546", "#625354"],
@@ -231,14 +231,12 @@ var Page =  {
 		$("#nav").on("touchClick", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
 			
-			if (page > this.maxPage) { return; }
+			if (page > this.limitPage) { return; }
 			
 			if (page !== this.currentPage) {
 				// section out
 				SectionOut.clean(SectionOut["section" + this.currentPage]);
 				
-				// set new page
-				this.setCurrentPage(page);
 				// and go page!
 				this.goPage(page);
 			}
@@ -249,15 +247,14 @@ var Page =  {
 			// section out
 			SectionOut.clean(SectionOut["section" + this.currentPage]);
 			
-			if (this.currentPage === 8) {
+			if (this.currentPage === $("main").children().length - 1) {
 				console.log("send answer!");
 			} else {
-				if (this.currentPage === this.maxPage) {
-					this.maxPage++;
+				if (this.currentPage === this.limitPage) {
+					this.limitPage++;
 				}
-				
-				this.goNext();
 			}
+			this.goNext();
 		}.bind(this));
 		
 		// page 변환하면 nav animation과 frame 색깔 수정하기
@@ -272,14 +269,16 @@ var Page =  {
 		this.goPage(this.currentPage);
 	},
 	goNext: function() {
-		if (this.currentPage < 8) {
-			this.setCurrentPage(this.currentPage + 1);
-			this.goPage(this.currentPage);
+		if (this.currentPage < $("#main").children().length) {
+			this.goPage(this.currentPage + 1);
 		}
 	},
 	goPage: function(page) {
 		// page range check
-		if (page < 1 || page > 8) return;
+		if (page < 1 || page > $("#main").children().length) return;
+		
+		// set new page
+		this.setCurrentPage(page);
 		
 		this.navAnimation();
 		
@@ -306,6 +305,9 @@ var Page =  {
 		$("#nextButton").removeClass("on");
 	},
 	navAnimation: function() {
+		
+		if (this.currentPage === $("#main").children().length) return;
+		
 		$("#nav").find("li").eq(this.currentPage - 1).find(".dot").addClass("on");
 		var progressWidth = (this.currentPage - 1) * 30 + 24;
 		$("#navProgress").css("width", progressWidth + "px");
@@ -315,7 +317,7 @@ var Page =  {
 // 각 section에 이벤트 리스너를 붙이고 초기 상태를 세팅
 var SectionInit = {
 	init: function() {
-		for (var i = 1; i <= 8; i++) {
+		for (var i = 1; i <= 9; i++) {
 			this["section" + i]();
 		}
 	},
@@ -490,6 +492,9 @@ var SectionInit = {
 				Page.showNextButton();
 			}
 		});
+	},
+	section9: function() {
+		
 	}
 };
 
@@ -568,6 +573,9 @@ var SectionIn = {
 		section.find(".aBox").animateCSS("zoomIn");
 		
 		if (Answer.answerObj.a8.length >= 2) { Page.showNextButton(); }
+	},
+	section9: function(section) {
+		$("#nav").addClass("hide");
 	}
 };
 
@@ -610,6 +618,9 @@ var SectionOut = {
 	},
 	section8: function(section) {
 		section.find(".aBox").unanimateCSS("zoomIn");
+	},
+	section9: function(section) {
+		
 	}
 };
 
