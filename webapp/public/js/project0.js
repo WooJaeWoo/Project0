@@ -206,8 +206,8 @@ var Page =  {
 	currentPage: 1,
 	limitPage: 9,  // TODO: 개발 후에는 1로 초기화 할 것
 	setCurrentPage: function(page) { this.currentPage = page; },
-	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba", "#000" ],
-	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3", "#fff" ],
+	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba", "#166152" ],
+	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3", "#166152" ],
 	nextButtonColor: [ "#536866", "#8e5955", "#595657", "#946e00", "#234f47", "#15a65a", "#aa7b3a", "#793247" ],
 	q7_holeColor: {
 		default: ["#4C4142", "#514546", "#625354"],
@@ -361,6 +361,8 @@ var SectionInit = {
 		});
 	},
 	section4: function() {
+		Answer.answerObj.a4 = "C";
+		
 		var Handle = function() {
 			this.element = document.getElementById("handle");
 			this.start;
@@ -431,6 +433,8 @@ var SectionInit = {
 		});
 	},
 	section6: function() {
+		Answer.answerObj.a6 = "C";
+		
 		var Line = function() {
 			this.element = document.getElementById("tapelineLine");
 			this.start;
@@ -584,6 +588,21 @@ var SectionIn = {
 	},
 	section9: function(section) {
 		$("#nav").animateCSS("bounceOutDown");
+		section.find(".barProgress").addClass("isLoading");
+		
+		setInterval(function() {
+			var loadingText = section.find(".loadingText");
+			loadingText.html("결과 분석 중");
+			setTimeout(function() {
+				loadingText.html("&middot;&nbsp;&nbsp;결과 분석 중&nbsp;&nbsp;&middot;");
+			}, 300);
+			setTimeout(function() {
+				loadingText.html("&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;결과 분석 중&nbsp;&nbsp;&middot;&nbsp;&nbsp;&middot;");
+			}, 600);
+			setTimeout(function() {
+				loadingText.html("&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;결과 분석 중&nbsp;&nbsp;&middot;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&middot;");
+			}, 900);
+		}, 1400);
 	}
 };
 
@@ -739,6 +758,18 @@ ColorPan.prototype = {
 
 
 var Answer = {
+	// TODO: fake answer
+	answerObj: {
+		a1: "M",
+		a2: 10,
+		a3: "yes",
+		a4: "A",
+		a5: ["chair", "bag"],
+		a6: "B",
+		a7: "red",
+		a8: ["DIY", "travel"]
+	},
+	/*
 	answerObj: {
 		a1: null,
 		a2: null,
@@ -748,7 +779,7 @@ var Answer = {
 		a6: null,
 		a7: null,
 		a8: []
-	},
+	},*/
 	submitAnswer: function() {
 		$.ajax({
 			url: "/score",
@@ -758,7 +789,8 @@ var Answer = {
 			success: function(res) {
 				setTimeout(function() {
 					location.href = res.url;
-				}, 5000);
+				}, 7500);
+				
 				//$("main").html(res);
 			},
 			error: function(res) {

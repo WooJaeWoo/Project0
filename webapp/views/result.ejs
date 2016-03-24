@@ -3,41 +3,37 @@
 <head>
 	<%- include('./common/head') %>
 	
-	<script src="/js/lib/handlebars/handlebars.min.js"></script>
+	<link rel="stylesheet" href="/css/project0_result.css">
 </head>
 <body>
-	<div> mag: 
-		<% if (mag == "design") { %>
-			design
-		<% } else if (mag == "happy") { %>
-			happy
-		<% } else if (mag == "luxury") { %>
-			luxury
-		<% } else if (mag == "mywedding") { %>
-			mywedding	
-		<% } else if (mag == "mens") { %>
-			mens
-		<% } else if (mag == "enfant") { %>
-			enfant
-		<% } %>
-	</div>
-	
-	----------------------------------------
-	
-	<div> smag: 
-		<% if (smag == "design") { %>
-			design
-		<% } else if (smag == "happy") { %>
-			happy
-		<% } else if (smag == "luxury") { %>
-			luxury
-		<% } else if (smag == "mywedding") { %>
-			mywedding	
-		<% } else if (smag == "mens") { %>
-			mens
-		<% } else if (smag == "enfant") { %>
-			enfant
-		<% } %>
-	</div>
+	<main>
+		<div class="sideBg"></div>
+		<section>
+			<div> 
+				<div class="dhLogo">
+					<a href="http://www.designhouse.co.kr">
+						
+					</a>
+				</div>
+			
+			mag: 
+				<% if (mag == "design") { %>
+					design
+				<% } else if (mag == "happy") { %>
+					happy
+				<% } else if (mag == "luxury") { %>
+					luxury
+				<% } else if (mag == "mywedding") { %>
+					mywedding	
+				<% } else if (mag == "mens") { %>
+					mens
+				<% } else if (mag == "enfant") { %>
+					enfant
+				<% } %>
+			</div>
+		</section>
+	</main>
+	<%- include('./common/footer') %>
+	<script src="/js/project0_result.js"></script>
 </body>
 </html>

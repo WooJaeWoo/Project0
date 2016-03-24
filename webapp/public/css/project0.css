@@ -22,7 +22,7 @@
 
 
 /** Spotlight Animation **/
-/** TODO: animation range 정해서 수정 **/
+/** TODO: transform으로 수정 **/
 @keyframes spotlighting1 {
 	0% { text-indent: 120%; line-height: 940%; }
 	18% { text-indent: -100%; line-height: 520%; }
@@ -124,6 +124,7 @@ html, body {
 	
 	color: #166152;
 	background: -o-linear-gradient(45deg, #ffcdb4, #ff7caf);
+	background: -moz-linear-gradient(45deg, #ffcdb4, #ff7caf);
 	background: -webkit-linear-gradient(45deg, #ffcdb4, #ff7caf);
 	background: linear-gradient(45deg, #ffcdb4, #ff7caf);
 
@@ -231,7 +232,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	border: 20px solid;
-	border-color: transparent;
+	border-color: #166152;
 	transition: 2s;
 	z-index: 888;
 	pointer-events: none;
@@ -847,9 +848,49 @@ html, body {
 #section8 #cook.on { background-image: url(/img/q8_cook_hover.png); }
 #section8 #exhibition.on { background-image: url(/img/q8_exhibition_hover.png); }
 
-
-#loading { background-color: #000; color: #fff; font-size: 300px;}
-
+#section9 {
+	background: -o-linear-gradient(45deg, #ffcdb4, #ff7caf);
+	background: -moz-linear-gradient(45deg, #ffcdb4, #ff7caf);
+	background: -webkit-linear-gradient(45deg, #ffcdb4, #ff7caf);
+	background: linear-gradient(45deg, #ffcdb4, #ff7caf);
+}
+#section9 .loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 100%;
+	height: 80px;
+}
+#section9 .loadingText {
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 20px;
+}
+#section9 .loadingBar {
+	margin: 0 auto;
+	margin-top: 10px;
+	width: 300px;
+	height: 20px;
+	border: 2px solid #fff;
+	border-radius: 20px;
+	background-color: #e6e6e6;
+	overflow: hidden;
+}
+#section9 .barProgress {
+	height: 100%;
+	width: 0%;
+	background-color: #ffc559;
+	transition: 6s;
+}
+#section9 .barProgress.isLoading {
+	width: 100%;
+}
 
 @media all and (max-width : 990px) {
 	.m-show { display: block; }
@@ -1007,7 +1048,6 @@ html, body {
 		width: 185px;
 		height: 180px;
 	}
-	
 	
 	#section8 .aBox {
 		top: 100px;

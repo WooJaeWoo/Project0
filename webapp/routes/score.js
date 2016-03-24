@@ -38,7 +38,7 @@ router.post("/", function(req, res, next) {
 		//saveAnswer(req.headers['user-agent'], req.body);
 		
 		res.send({
-			url: "/result/" + result.first + "?s=" + result.second
+			url: "/result/" + result.first
 		});
 	}	
 });
