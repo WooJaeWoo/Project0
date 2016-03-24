@@ -10,5 +10,6 @@ module.exports = {
 		localhost: "mongodb://localhost:27017/project0",
 		options: {}
 	},
+	service: require('./service.js'),
 	error: require('./error.js')
 };
