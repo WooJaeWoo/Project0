@@ -247,7 +247,7 @@ var Page =  {
 	currentPage: 1,
 	limitPage: 9,  // TODO: 개발 후에는 1로 초기화 할 것
 	setCurrentPage: function(page) { this.currentPage = page; },
-	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba", "#166152" ],
+	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba", "transparent" ],
 	frameColor: [ "#897777", "#be8985", "#537187", "#207e55", "#426361", "#1c3130", "#5f494b", "#f1b9c3", "#166152" ],
 	nextButtonColor: [ "#536866", "#8e5955", "#595657", "#946e00", "#234f47", "#15a65a", "#aa7b3a", "#793247" ],
 	q7_holeColor: {
@@ -762,6 +762,7 @@ ColorPan.prototype = {
 				oldAnswer.returnToOrigin();
 				$(oldAnswer.element).css("display", "block");
 			} else {
+				$(".holeArrow").css("display", "none");
 				Page.showNextButton();
 			}
 			

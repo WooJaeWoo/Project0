@@ -77,7 +77,7 @@ html, body {
 	height: 100%;
 	min-height: 480px;
 	overflow: hidden;
-	
+	touch-action: none;
 	font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;
 }
 
@@ -232,8 +232,7 @@ html, body {
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
-	border: 20px solid;
-	border-color: #166152;
+	border: 20px solid transparent;
 	transition: 2s;
 	z-index: 888;
 	pointer-events: none;
@@ -338,6 +337,7 @@ html, body {
 	height: 100%;
 	transition: 1s;
 	transition-timing-function: ease;
+	touch-action: none;
 }
 
 #main > section {
@@ -348,6 +348,7 @@ html, body {
 	box-sizing: border-box;
 	padding: 20px;
 	overflow: hidden;
+	touch-action: none;
 }
 
 #main > section img {
@@ -429,7 +430,7 @@ html, body {
 }
 
 /** Section 2 **/
-#section2 { background-color: #f8c8b8; color: #5e4d47; }
+#section2 { background-color: #fbb8a8; color: #5e4d47; }
 #section2 .aBox { width: 55%; }
 #section2 .clock {
 	position: absolute;
@@ -561,7 +562,7 @@ html, body {
 }
 
 /** Section 4 **/
-#section4 { background-color: #ffdf60; color: #223d54; }
+#section4 { background-color: #fac34e; color: #223d54; }
 #section4 .aBox {
 	left: 0;
 	right: auto;
@@ -575,7 +576,9 @@ html, body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #ffe68c; 
+	background-color: #fac34e;
+	background-image: url(/img/q4_indoor.png);
+	background-size: 40%;
 }
 #section4 .outside {
 	position: absolute;
@@ -583,7 +586,9 @@ html, body {
 	left: 0;
 	width: 100%;
 	height: 50%;
-	background-color: #ffdf60;
+	background-color: #ffdd57;
+	background-image: url(/img/q4_outdoor.png);
+	background-size: 40%;
 }
 #section4 .gauge {
 	position: absolute;
@@ -593,12 +598,12 @@ html, body {
 #section4 .inside .gauge {
 	bottom: 0;
 	height: 50%;
-	background-color: #f8d864;
+	background-color: #ffb61a;
 }
 #section4 .outside .gauge {
 	top: 0;
 	height: 100%;
-	background-color: #f8d440;
+	background-color: #ffd011;
 }
 #section4 .gaugeText {
 	position: absolute;
@@ -998,6 +1003,7 @@ html, body {
 	#section3 #marriageButton {
 		width: 80%;
 		height: 60%;
+		top: -15%;
 	}
 
 	/** Section 4 **/
@@ -1072,7 +1078,7 @@ html, body {
 
 @media all and (max-width : 767px) {	
 	/** frame **/
-	#frame { border: 10px solid; }
+	#frame { border: 10px solid transparent; }
 
 	#logo {
 		transform: scale(0.6);
