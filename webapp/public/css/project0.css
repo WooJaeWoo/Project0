@@ -110,9 +110,10 @@ html, body {
 	transition: 3s;
 	transition-timing-function: ease;
 	z-index: 999;
+	transform: translateY(0%);
 }
 #index.up {
-	top: -200%;
+	transform: translateY(-200%);
 }
 #index .spotlight {
 	position: absolute;
