@@ -207,7 +207,7 @@ var Page =  {
 	limitPage: 9,  // TODO: 개발 후에는 1로 초기화 할 것
 	setCurrentPage: function(page) { this.currentPage = page; },
 	logoColor: [ "#fff", "#a88174", "#fff", "#fff", "#9ffff9", "#cce7bd", "#aa9981", "#ffd3ba", "#166152" ],
-	frameColor: [ "#897777", "#be8985", "#537187", "#2e4f6c", "#426361", "#1c3130", "#5f494b", "#f1b9c3", "#166152" ],
+	frameColor: [ "#897777", "#be8985", "#537187", "#207e55", "#426361", "#1c3130", "#5f494b", "#f1b9c3", "#166152" ],
 	nextButtonColor: [ "#536866", "#8e5955", "#595657", "#946e00", "#234f47", "#15a65a", "#aa7b3a", "#793247" ],
 	q7_holeColor: {
 		default: ["#4C4142", "#514546", "#625354"],
@@ -309,7 +309,7 @@ var Page =  {
 		if (this.currentPage === $("#main").children().length) return;
 		
 		$("#nav").find("li").eq(this.currentPage - 1).find(".dot").addClass("on");
-		var progressWidth = (this.currentPage - 1) * 30 + 24;
+		var progressWidth = (this.currentPage - 1) * 24 + 18;
 		$("#navProgress").css("width", progressWidth + "px");
 	}
 };
@@ -361,8 +361,6 @@ var SectionInit = {
 		});
 	},
 	section4: function() {
-		Answer.answerObj.a4 = "C";
-		
 		var Handle = function() {
 			this.element = document.getElementById("handle");
 			this.start;
@@ -432,9 +430,7 @@ var SectionInit = {
 			}
 		});
 	},
-	section6: function() {
-		Answer.answerObj.a6 = "C";
-		
+	section6: function() {		
 		var Line = function() {
 			this.element = document.getElementById("tapelineLine");
 			this.start;
@@ -550,7 +546,11 @@ var SectionIn = {
 		}
 		section.find("#marriageButton").animateCSS("fadeInUpBig");
 		
-		if (Answer.answerObj.a3 === "yes" || Answer.answerObj.a3 === "no") { Page.showNextButton(); }
+		if (Answer.answerObj.a3 === "yes" || Answer.answerObj.a3 === "no") {
+			Page.showNextButton();
+		} else {
+			Page.hideNextButton();
+		}
 	},
 	section4: function(section) {
 		section.find(".gaugeText").fadeIn(1500);

@@ -106,6 +106,7 @@ section > div {
 }
 .mag .magCover img {
 	position: relative;
+	box-shadow: 2px 2px 12px #aaa
 }
 .mag .magShadow {
 	position: absolute;
