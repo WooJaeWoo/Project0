@@ -76,7 +76,7 @@ section {
 	width: 65%;
 	height: 70%;
 	background-color: #fff;
-	padding: 15px;
+	padding: 10px;
 	opacity: 0;
 }
 section > div {
@@ -145,7 +145,7 @@ section > div {
 }
 .type .typeTitle {
 	padding: 12px 0;
-	font-size: 35px;
+	font-size: 32px;
 	font-weight: 200;
 	color: #4d566c;
 }
@@ -168,8 +168,8 @@ section > div {
 	padding-top: 10px;
 }
 .type .replay > div {
-	width: 200px;
-	height: 50px;
+	width: 250px;
+	height: 60px;
 	background-color: #475168;
 	padding: 5px;
 	box-sizing: border-box;
