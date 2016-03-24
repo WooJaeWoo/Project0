@@ -411,6 +411,8 @@ var SectionInit = {
 			var mc = new Hammer(this.element);
 			mc.on("panstart panmove panend", function(event) {
 				event.preventDefault();
+				event.stopPropagation();
+				
 				var target = $(event.target);
 				
 				if (event.type === "panstart") {
@@ -481,6 +483,8 @@ var SectionInit = {
 			var mc = new Hammer(this.element);
 			mc.on("panstart panmove panend", function(event) {
 				event.preventDefault();
+				event.stopPropagation();
+				
 				var target = $(event.target);
 
 				if (event.type === "panstart") {
@@ -717,6 +721,8 @@ ColorPan.prototype = {
 		var mc = new Hammer(this.element);
 		mc.on("panstart panmove panend", function(event) {
 			event.preventDefault();
+			event.stopPropagation();
+			
 			var target = $(event.target);
 			
 			if (event.type === "panstart") {
