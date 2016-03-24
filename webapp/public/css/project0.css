@@ -635,6 +635,7 @@ html, body {
 	background-size: contain;
 	background-repeat: no-repeat;
 	opacity: 0;
+	touch-action: none;
 }
 
 /** Section 5 **/
