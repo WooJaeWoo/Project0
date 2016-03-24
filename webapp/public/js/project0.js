@@ -759,7 +759,7 @@ ColorPan.prototype = {
 
 var Answer = {
 	// TODO: fake answer
-	answerObj: {
+	/*answerObj: {
 		a1: "M",
 		a2: 10,
 		a3: "yes",
@@ -768,8 +768,7 @@ var Answer = {
 		a6: "B",
 		a7: "red",
 		a8: ["DIY", "travel"]
-	},
-	/*
+	},*/
 	answerObj: {
 		a1: null,
 		a2: null,
@@ -779,7 +778,7 @@ var Answer = {
 		a6: null,
 		a7: null,
 		a8: []
-	},*/
+	},
 	submitAnswer: function() {
 		$.ajax({
 			url: "/score",
@@ -799,10 +798,10 @@ var Answer = {
 					console.log(res.responseText);
 				}
 				if (res.status == "400") {
-					console.log("비정상적인 답변이 제출되었습니다.\n 첫 페이지로 이동합니다.");
+					$("#section9").find(".loading").html("비정상적인 답변이 제출되었습니다.\n 첫 페이지로 이동합니다.");
 					setTimeout(function() {
 						location.reload();
-					}, 3000);
+					}, 5000);
 				}
 			}
 		});

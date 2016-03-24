@@ -42,14 +42,24 @@ var Util = {
 
 var Result = {
 	init: function() {
-		Util.extendAnimateCSS();
 		$(".sideBg").animateCSS("slideInLeft");
 		setTimeout(function() {
 			$("section").animateCSS("fadeInUp");
+			setTimeout(function() {
+				$(".magShadow").addClass("tilt");
+				$(".typeWrap").animateCSS("fadeIn");
+			}, 800);
 		}, 600);
+		
+		$("#replayButton").on("touchClick", function() {
+			location.href = "/";
+		});
 	}
 }
 
 $(document).on("ready", function() {
+	Util.extendAnimateCSS();
+	Util.extendClickEvent();
+	
 	Result.init();
 });
