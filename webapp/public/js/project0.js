@@ -166,7 +166,6 @@ var Util = {
 		document.addEventListener('touchstart', function (event) {
 			if (event.touches.length != 1) return;
 			lastTouchY = event.touches[0].clientY;
-			
 			maybePreventPullToRefresh = window.pageYOffset == 0;
 		}, false);
 		
@@ -380,8 +379,10 @@ var SectionInit = {
 			var btnImg = $("#marriageButtonImg");
 			if (value === "yes") {
 				$("#frame").css("borderColor", "#ffb5d1");
+				$("#section3").find(".redDots").removeClass("hide");
 			} else {
 				$("#frame").css("borderColor", "#537187");
+				$("#section3").find(".redDots").addClass("hide");
 			}
 			$("#section3").removeClass().addClass(value);
 			Answer.answerObj.a3 = value;

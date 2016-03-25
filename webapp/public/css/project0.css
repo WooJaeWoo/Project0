@@ -529,6 +529,59 @@ html, body {
 	width: 50%;
 	height: 50%;
 }
+#section3 .redDots {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+}
+#section3 .redDots > div {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color: #d66071;
+	
+	transform: rotateX(12px);
+	transform-origin: left top;
+	
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-name: spin;
+}
+#section3 .redDots > div:nth-of-type(1) {
+	top: 30%;
+	left: 20%;
+	animation-duration: 10s;
+}
+#section3 .redDots > div:nth-of-type(2) {
+	top: 10%;
+	left: 80%;
+	animation-duration: 12s;
+}
+#section3 .redDots > div:nth-of-type(3) {
+	top: 76%;
+	left: 24%;
+	animation-duration: 6s;
+}
+#section3 .redDots > div:nth-of-type(4) {
+	top: 86%;
+	left: 79%;
+	animation-duration: 8s;
+}
+#section3 .redDots > div:nth-of-type(5) {
+	top: 36%;
+	left: 72%;
+	animation-duration: 11s;
+}
+#section3 .redDots > div:nth-of-type(6) {
+	top: 50%;
+	left: 50%;
+	animation-duration: 9s;
+}
+
 
 /** Section 4 **/
 #section4 { background-color: #443a0e; color: #605319; }
