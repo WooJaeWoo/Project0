@@ -4,13 +4,14 @@
 	<%- include('./common/head') %>
 </head>
 <body>
-	<div id="winOuterHeight"></div>
-	<div id="winHeight"></div>
-	<div id="winInnerHeight"></div>
+	
+	outer: <div id="winOuterHeight"></div>
+	no: <div id="winHeight"></div>
+	inner: <div id="winInnerHeight"></div>
 	<script>
-		$("#winOuterHeight").text($(window).outerHeight());
-		$("#winHeight").text($(window).height());
-		$("#winInnerHeight").text($(window).innerHeight());
+		$("#winOuterHeight").text(window.outerHeight);
+		$("#winHeight").text(window.height);
+		$("#winInnerHeight").text(window.innerHeight);
 	</script>
 </body>
 </html>
