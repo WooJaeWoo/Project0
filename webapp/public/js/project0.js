@@ -410,7 +410,11 @@ var SectionInit = {
                     var top = this.start + event.deltaY;
                     target.css("top", top + "px");
                     
-					var borderHeight = top + this.halfHeight + 20;
+					var borderHeight = top + this.halfHeight;
+                    if (Util.isMobile()) {
+                        borderHeight = top + this.halfHeight + 20;
+                    }
+                    
 					this.section.find(".outside").css("height", borderHeight + "px");
 					this.section.find(".inside").find(".gauge").css("height", ($(window).height() - borderHeight) + "px");
 					
