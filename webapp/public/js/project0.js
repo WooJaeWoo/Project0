@@ -360,15 +360,28 @@ var SectionInit = {
 		});
 	},
 	section2: function() {
-		$("#section2").find(".aBox").on("touchClick", ".age", function(event) {
-			var age = $(event.currentTarget)
+		$("#section2").find(".aBox").on("touchClick", ".clock", function(event) {
 			$("#section2").find(".age").removeClass("on");
-			age.addClass("on");
+						
+			var clock = $("#section2").find("#clockBody");
+			var offset = clock.offset();
 			
-			var value = age.data("value");
+			
+			var center = {
+				left: offset.left + clock.width() / 2,
+				top: offset.top + clock.height() / 2
+			}
+			
+			var angleDeg = Math.atan2(event.clientY - center.top, event.clientX - center.left) * 180 / Math.PI;
+			
+			angleDeg += 100;
+			if (angleDeg < 0) angleDeg += 360;
+			
+			var value = parseInt(angleDeg / 60) * 10 + 10;
+			
 			Answer.answerObj.a2 = value;
-			var angle = (value / 10 - 1) * 60;
-			$("#section2 #clockNeedle1").css("transform", "rotate(" + angle + "deg)");
+			$("#section2").find("#clockNeedle1").removeClass().addClass("clockFace").addClass("a" + value);
+			$("#section2").find("#age" + value).addClass("on");
 			
 			Page.showNextButton();
 		});
@@ -479,6 +492,7 @@ var SectionInit = {
 				if (event.type === "panstart") {
 					this.start = parseInt(target.css("left"));
 					Page.hideNextButton();
+					this.section.find("#tapelineArrow").remove();
 				} else if (event.type === "panmove") {
                     var left = this.start + event.deltaX;
                     if (left >= 0 && left < this.width - 20) {
