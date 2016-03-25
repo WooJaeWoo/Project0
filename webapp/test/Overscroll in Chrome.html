@@ -11,6 +11,7 @@
 <input id="preventOverscrollGlow" type="checkbox">Prevent overscroll glow?
 <br>
 <input id="preventScroll" type="checkbox">Prevent scroll?
+
 <div style="height:4000px">
 <br>
 <script>
@@ -26,33 +27,28 @@ window.addEventListener('load', function() {
 		lastTouchY = e.touches[0].clientY;
 		// Pull-to-refresh will only trigger if the scroll begins when the
 		// document's Y offset is zero.
-		maybePreventPullToRefresh = 
-			preventPullToRefreshCheckbox.checked && window.pageYOffset == 0;
+		maybePreventPullToRefresh = window.pageYOffset == 0;
 	}
 
-	var touchmoveHandler = function(e) {
-		var touchY = e.touches[0].clientY;
+	var touchmoveHandler = function(event) {
+		var touchY = event.touches[0].clientY;
 		var touchYDelta = touchY - lastTouchY;
 		lastTouchY = touchY;
-
+		
+		event.preventDefault();
+		return;
+		
 		if (maybePreventPullToRefresh) {
-		// To suppress pull-to-refresh it is sufficient to preventDefault the
-		// first overscrolling touchmove.
 			maybePreventPullToRefresh = false;
 			if (touchYDelta > 0) {
-				e.preventDefault();
+				event.preventDefault();
 				return;
 			}
 		}
 
-		if (preventScrollCheckbox.checked) {
-			e.preventDefault();
-			return;
-		}
-
 		if (preventOverscrollGlowCheckbox.checked) {
 			if (window.pageYOffset == 0 && touchYDelta > 0) {
-				e.preventDefault();
+				event.preventDefault();
 				return;
 			}
 		}

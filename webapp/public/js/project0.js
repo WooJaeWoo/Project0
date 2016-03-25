@@ -160,8 +160,30 @@ var Util = {
 		}
 	},
 	preventScrolling : function () {
-		document.addEventListener('touchmove', function () {
-			e.preventDefault();
+		var maybePreventPullToRefresh = false;
+		var lastTouchY = 0;
+		
+		document.addEventListener('touchstart', function (event) {
+			if (event.touches.length != 1) return;
+			lastTouchY = event.touches[0].clientY;
+			
+			maybePreventPullToRefresh = window.pageYOffset == 0;
+		}, false);
+		
+		document.addEventListener('touchmove', function (event) {
+			var touchY = event.touches[0].clientY;
+			var touchYDelta = touchY - lastTouchY;
+			lastTouchY = touchY;
+			
+			if (maybePreventPullToRefresh) {
+				maybePreventPullToRefresh = false;
+				if (touchYDelta > 0) {
+					event.preventDefault();
+					return;
+				}
+			}
+			
+			event.preventDefault();
 			return;
 		}, false);
 	},
