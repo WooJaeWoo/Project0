@@ -40,6 +40,16 @@ html, body {
 .m-show_inline { display: none; }
 .animated { opacity: 1 !important; }
 
+#info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    font-weight: 800;
+    z-index: 1000;
+}
+
+
 #noise {
 	position: fixed;
 	top: 0;
@@ -63,7 +73,7 @@ html, body {
 	text-align: center;
 	transition: 3s;
 	transition-timing-function: ease;
-	z-index: 999;
+	z-index: 998;
 	transform: translateY(0%);
 }
 #index.up {
@@ -211,7 +221,7 @@ html, body {
 	position: fixed;
 	top: 8%;
 	left: 8%;
-	z-index: 1000;
+	z-index: 998;
 }
 #logo svg path {
 	transition: .5s;

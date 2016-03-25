@@ -1,3 +1,6 @@
+function info(i) {
+    $("#info").text(i);
+}
 var Util = {
     rand : function (limit) {
         return Math.floor(Math.random() * limit);
@@ -160,11 +163,7 @@ var Util = {
 		}
 	},
 	preventScrolling : function () {
-		document.addEventListener('touchstart', function (event) {
-		}, false);
-		
 		document.addEventListener('touchmove', function (event) {
-			
 			event.preventDefault();
 			return;
 		}, false);
@@ -353,10 +352,15 @@ var SectionInit = {
 			var center = {
 				left: offset.left + clock.width() / 2,
 				top: offset.top + clock.height() / 2
-			}
+			};
 			
-			var angleDeg = Math.atan2(event.clientY - center.top, event.clientX - center.left) * 180 / Math.PI;
-			
+            var coord = {
+                left: event.clientX || event.originalEvent.touches[0].clientX,
+                top: event.clientY || event.originalEvent.touches[0].clientY
+            };
+            
+			var angleDeg = Math.atan2(coord.top - center.top, coord.left - center.left) * 180 / Math.PI;
+            
 			angleDeg += 100;
 			if (angleDeg < 0) angleDeg += 360;
 			
