@@ -400,7 +400,6 @@ var SectionInit = {
 			var mc = new Hammer(this.element);
 			mc.on("panstart panmove panend", function(event) {
 				event.preventDefault();
-				event.srcEvent.stopPropagation();
 				
 				var target = $(event.target);
 				
@@ -408,8 +407,10 @@ var SectionInit = {
 					this.start = parseInt(target.css("top"));
 					Page.hideNextButton();
 				} else if (event.type === "panmove") {
-					target.css("top", (this.start + event.deltaY) + "px");
-					var borderHeight = parseInt(target.css("top")) + this.halfHeight;
+                    var top = this.start + event.deltaY;
+                    target.css("top", top + "px");
+                    
+					var borderHeight = top + this.halfHeight + 20;
 					this.section.find(".outside").css("height", borderHeight + "px");
 					this.section.find(".inside").find(".gauge").css("height", ($(window).height() - borderHeight) + "px");
 					

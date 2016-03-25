@@ -418,6 +418,7 @@ html, body {
 	width: 700px;
 	height: 700px;
 	opacity: 0;
+    cursor: pointer;
 }
 #section2 .clockFace {
 	position: absolute;
@@ -467,7 +468,6 @@ html, body {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 25px;
 	color: #bc8582;
-	cursor: pointer;
 }
 #section2 #age10 {
 	top: 15px;
@@ -1106,7 +1106,16 @@ html, body {
 	#section5 .grid > li.on { background-color: #ffb797; }
 
 	#section6 .aBox { width: 100%; }
-
+    #section6 #tapelineLine {
+        position: absolute;
+        left: 70%;
+        bottom: 30px;
+    }
+    #section6 #tapelineArrow {
+        bottom: 30px;
+        left: 40px;
+    }
+    
 	#section7 .aBox { width: 100%; }
 	#section7 .floor > div {
 		position: absolute;
