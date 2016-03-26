@@ -238,8 +238,8 @@ html, body {
 #nav > div {
 	position: relative;
 	margin: 0 auto;
-	width: 240px;
-	height: 30px;
+	width: 192px;
+	height: 24px;
 }
 #nav ul {
 	position: relative;
@@ -890,7 +890,7 @@ html, body {
 	margin: auto 0;
 	width: 50%;
 	height: 70%;
-	padding-right: 0;
+	padding: 0;
 	opacity: 0;
 }
 #section8 .stuff {
@@ -1174,7 +1174,10 @@ html, body {
 		transform: scale(0.6);
 		transform-origin: top left;
 	}
-	
+
+    #index .coverLayer {
+        height: 50%;
+    }
 	#index #spotlight1 {
 		font-size: 15em;
 		animation-name: spotlighting1_mobile;
@@ -1186,7 +1189,7 @@ html, body {
 		animation-duration: 20s;
 	}
 	#index .coverLayer .title {
-		top: 15%;
+		top: 8%;
 		font-size: 60px;
 	}
 	#index .coverLayer .desc {
@@ -1221,13 +1224,119 @@ html, body {
 	}
 	.qBox .question .qEn { font-size: 32px; }
 	.qBox .question .qKr {
-		font-size: 20px;
-		line-height: 27px;
+		font-size: 16px;
+		line-height: 24px;
 	}
-	
+    .qBox .qDesc {
+        width: 68%;
+        font-size: 12px;
+        margin-top: 10px;
+    }
 	
 	#nextButton.on {
 		bottom: 10px;
 	}
 	
+    /** Section 2 **/
+    #section2 .aBox { width: 100%; padding: 0; }
+    #section2 .clock {
+        top: 10%;
+        right: 0;
+        width: 300px;
+        height: 300px;
+    }
+    #section2 .age {
+        width: 50px;
+        height: 30px;
+        font-size: 16px;
+    }
+    #section2 #age10 {
+        top: 10px;
+    }
+    #section2 #age20 {
+        top: -123px;
+        right: 2px;
+    }
+    #section2 #age30 {
+        top: 135px;
+        right: 2px;
+    }
+    #section2 #age50 {
+        top: 135px;
+        left: 2px;
+    }
+    #section2 #age60 {
+        top: -123px;
+        left: 2px;
+    }
+    #section2 .age > span {
+        font-size: 24px;
+    }
+
+    /** Section 3 **/
+    #section3 .aBox { width: 100%; padding: 0; }
+    #section3 .leftSide { float: left; width: 100%; height: 32%; }
+    #section3 .leftSide .upperDiv { float: left; width: 65%; height: 100%; }
+    #section3 .leftSide .lowerDiv { float: left; width: 35%; height: 100%; }
+    #section3 .rightSide { position: relative; float: left; width: 100%; height: 68%; }
+    #section3 #marriageButton {
+        width: 80%;
+        height: 60%;
+        top: -15%;
+    }
+
+    /** Section 4 **/
+    #section4 .aBox { width: 100%; }
+    #section4 #handle {
+        position: relative;
+        top: 42.5%;
+        right: auto;
+    }
+
+    /** Section 5 **/
+    #section5 .aBox { padding: 10px; }
+
+    /** Section 4 **/
+    #section6 .tapeline {
+        bottom: 24%;
+    }
+    #section6 #tapelineArrow {
+        bottom: 24px;
+        left: 4px;
+    }
+
+    #section7 .floor .holeArrow {
+        transform: scale(0.8);
+        transform-origin: center;
+    }
+    #section7 .colors #yellow {
+        top: 32%;
+        width: 70px;
+        height: 70px;
+    }
+    #section7 .colors #red {
+        top: 26%;
+        width: 40px;
+        height: 120px;
+    }
+    #section7 .colors #cyan {
+        top: 13%;
+        width: 60px;
+        height: 100px;
+    }
+    #section7 .colors #purple {
+        top: 42%;
+        width: 90px;
+        height: 90px;
+    }
+    #section7 .colors #green {
+        top: 48%;
+        width: 85px;
+        height: 85px;
+    }
+    
+    /** Section 8 **/
+    #section8 #exhibition {
+        top: 64%;
+    }
 }
