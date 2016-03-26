@@ -1339,4 +1339,9 @@ html, body {
     #section8 #exhibition {
         top: 64%;
     }
+	
+	/** Section 9 **/
+	#section9 .loadingBar {
+		width: 240px;
+	}
 }
