@@ -15,9 +15,10 @@ function saveAnswer(ua, answers) {
 	answer.color = answers.a7;
 	answer.culture = answers.a8;
 	answer.save(function(err) {
-		logger.info("Answer is saved!");
 		if (err) {
 			logger.error("DB error: saving Answer!");
+		} else {
+			logger.info("Answer is saved!");
 		}
 	});
 }
