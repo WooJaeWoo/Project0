@@ -3,19 +3,23 @@ var router = express.Router();
 var Answer = require(config.root.MODEL_ROOT).answer;
 
 router.get("/", function(req, res, next) {
+	res.render("data");
+});
+
+
+router.post("/:field", function(req, res, next) {
+	var field = "$" + req.params.field;
 	
-	var data = new Answer();
-	Answer.find().exec(function(err, data) {
+	Answer.aggregate([
+		{ $group: { _id: field, count: { $sum: 1 } } }
+	], function (err, result) {
 		if (err) {
-			logger.error(err);
-			throw err;
+			console.log(err);
+			return;
 		}
 		
-		res.render("data", {
-			data: data
-		});
+		res.send(result);
 	});
-	
 });
 
 module.exports = router;
