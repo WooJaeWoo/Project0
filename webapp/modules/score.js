@@ -12,7 +12,6 @@ scoreMod.prototype.addScores = function(scoreArray) {
 }
 scoreMod.prototype.calculate = function(answer) {
 	
-	// TODO: verify answer first!!!
 	if (!(answer.a1 && answer.a2 && answer.a3 && answer.a4
 	   && answer.a5[0] && answer.a5[1] && answer.a6
 	   && answer.a7 && answer.a8[0] && answer.a8[1])) {

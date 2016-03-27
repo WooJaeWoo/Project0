@@ -102,6 +102,10 @@ section > div {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
 .mag .magCover img {
@@ -116,11 +120,27 @@ section > div {
 	height: 95%;
 	background-color: #aaa;
 	opacity: 0.6;
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
 	transform: rotate(0deg);
+	-ms-transition: .7s;
+	-o-transition: .7s;
+	-moz-transition: .7s;
+	-webkit-transition: .7s;
 	transition: .7s;
 }
 .mag .magShadow.tilt {
+	-ms-transform: rotate(10deg);
+	-o-transform: rotate(10deg);
+	-moz-transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
 	transform: rotate(10deg);
+	-ms-transform-origin: bottom left;
+	-o-transform-origin: bottom left;
+	-moz-transform-origin: bottom left;
+	-webkit-transform-origin: bottom left;
 	transform-origin: bottom left;
 }
 .type {
@@ -135,6 +155,10 @@ section > div {
 	width: 100%;
 	padding-left: 2%;
 	padding-right: 12%;
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 	box-sizing: border-box;
 	opacity: 0;
@@ -194,7 +218,15 @@ section > div {
 		display: none;
 	}
 	.dhLogo {
+		-ms-transform: scale(0.6);
+		-o-transform: scale(0.6);
+		-moz-transform: scale(0.6);
+		-webkit-transform: scale(0.6);
 		transform: scale(0.6);
+		-ms-transform-origin: top right;
+		-o-transform-origin: top right;
+		-moz-transform-origin: top right;
+		-webkit-transform-origin: top right;
 		transform-origin: top right;
 	}
 	section {
@@ -206,7 +238,15 @@ section > div {
 		height: 40%;
 	}
 	.mag .magCover {
+		-ms-transform: scale(0.3) translate(-50%, -50%);
+		-o-transform: scale(0.3) translate(-50%, -50%);
+		-moz-transform: scale(0.3) translate(-50%, -50%);
+		-webkit-transform: scale(0.3) translate(-50%, -50%);
 		transform: scale(0.3) translate(-50%, -50%);
+		-ms-transform-origin: top left;
+		-o-transform-origin: top left;
+		-moz-transform-origin: top left;
+		-webkit-transform-origin: top left;
 		transform-origin: top left;
 	}
 	
@@ -218,6 +258,10 @@ section > div {
 		top: 0;
 		height: 100%;
 		padding: 0 15px;
+		-ms-transform: none;
+		-o-transform: none;
+		-moz-transform: none;
+		-webkit-transform: none;
 		transform: none;
 	}
 	.type .yt {

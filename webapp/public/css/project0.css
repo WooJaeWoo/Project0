@@ -71,12 +71,28 @@ html, body {
 	background-color: #166152;
 	font-size: 1em;
 	text-align: center;
+	-ms-transition: 3s;
+	-o-transition: 3s;
+	-moz-transition: 3s;
+	-webkit-transition: 3s;
 	transition: 3s;
+	-ms-transition-timing-function: ease;
+	-o-transition-timing-function: ease;
+	-moz-transition-timing-function: ease;
+	-webkit-transition-timing-function: ease;
 	transition-timing-function: ease;
 	z-index: 998;
+	-ms-transform: translateY(0%);
+	-o-transform: translateY(0%);
+	-moz-transform: translateY(0%);
+	-webkit-transform: translateY(0%);
 	transform: translateY(0%);
 }
 #index.up {
+	-ms-transform: translateY(-200%);
+	-o-transform: translateY(-200%);
+	-moz-transform: translateY(-200%);
+	-webkit-transform: translateY(-200%);
 	transform: translateY(-200%);
 }
 #index .spotlight {
@@ -96,17 +112,27 @@ html, body {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+	-webkit-animation-timing-function: linear;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-direction: alternate;
+	-moz-animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 	animation-timing-function: linear;
 }
 #index #spotlight1 {
 	font-size: 20em;
+	-webkit-animation-duration: 16s;
+	-moz-animation-duration: 16s;
 	animation-duration: 16s;
 	1animation-name: spotlighting1;
 }
 #index #spotlight2 {
 	font-size: 36em;
+	-webkit-animation-duration: 24s;
+	-moz-animation-duration: 24s;
 	animation-duration: 24s;
 	1animation-name: spotlighting2;
 }
@@ -211,6 +237,10 @@ html, body {
 	width: 100%;
 	height: 100%;
 	border: 20px solid transparent;
+	-ms-transition: 2s;
+	-o-transition: 2s;
+	-moz-transition: 2s;
+	-webkit-transition: 2s;
 	transition: 2s;
 	z-index: 888;
 	pointer-events: none;
@@ -224,6 +254,10 @@ html, body {
 	z-index: 998;
 }
 #logo svg path {
+	-ms-transition: .5s;
+	-o-transition: .5s;
+	-moz-transition: .5s;
+	-webkit-transition: .5s;
 	transition: .5s;
 }
 
@@ -266,6 +300,10 @@ html, body {
 	height: 6px;
 	border-radius: 50%;
 	background-color: #999;
+	-ms-transition: .5s;
+	-o-transition: .5s;
+	-moz-transition: .5s;
+	-webkit-transition: .5s;
 	transition: .5s;
 }
 #nav li:hover .dot{
@@ -279,6 +317,10 @@ html, body {
 	height: 18px;
 	border-radius: 9px;
 	background-color: #999;
+	-ms-transition: .5s;
+	-o-transition: .5s;
+	-moz-transition: .5s;
+	-webkit-transition: .5s;
 	transition: .5s;
 }
 #nav .dot.on {
@@ -297,6 +339,10 @@ html, body {
 	background-color: #536866;
 	text-indent: 10px;
 	z-index: 777;
+	-ms-transition: .5s;
+	-o-transition: .5s;
+	-moz-transition: .5s;
+	-webkit-transition: .5s;
 	transition: .5s;
 }
 #nextButton.on {
@@ -313,7 +359,15 @@ html, body {
 	left: -1px;
 	width: 900%;
 	height: 100%;
+	-ms-transition: 1s;
+	-o-transition: 1s;
+	-moz-transition: 1s;
+	-webkit-transition: 1s;
 	transition: 1s;
+	-ms-transition-timing-function: ease;
+	-o-transition-timing-function: ease;
+	-moz-transition-timing-function: ease;
+	-webkit-transition-timing-function: ease;
 	transition-timing-function: ease;
 }
 
@@ -395,11 +449,19 @@ html, body {
 #section1 #genderTagF { top: 22%; }
 #section1 .genderTag .tag {
 	cursor: pointer;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-duration: 1.2s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-duration: 1.2s;
 	animation-iteration-count: infinite;
 	animation-duration: 1.2s;
 }
 #section1 .genderTag .line {
 	position: absolute;
+	-ms-transform: translate(786%, -97%);
+	-o-transform: translate(786%, -97%);
+	-moz-transform: translate(786%, -97%);
+	-webkit-transform: translate(786%, -97%);
 	transform: translate(786%, -97%);
 	width: 6%;
 	z-index: 666;
@@ -430,25 +492,57 @@ html, body {
 	vertical-align: middle;
 }
 #section2 #clockNeedle1 {
+	-ms-transition: transform 1s;
+	-o-transition: transform 1s;
+	-moz-transition: transform 1s;
+	-webkit-transition: transform 1s;
 	transition: transform 1s;
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
 	transform: rotate(0deg);
 }
 #section2 #clockNeedle1.a10 {
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
 	transform: rotate(0deg);
 }
 #section2 #clockNeedle1.a20 {
+	-ms-transform: rotate(60deg);
+	-o-transform: rotate(60deg);
+	-moz-transform: rotate(60deg);
+	-webkit-transform: rotate(60deg);
 	transform: rotate(60deg);
 }
 #section2 #clockNeedle1.a30 {
+	-ms-transform: rotate(120deg);
+	-o-transform: rotate(120deg);
+	-moz-transform: rotate(120deg);
+	-webkit-transform: rotate(120deg);
 	transform: rotate(120deg);
 }
 #section2 #clockNeedle1.a40 {
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
 	transform: rotate(180deg);
 }
 #section2 #clockNeedle1.a50 {
+	-ms-transform: rotate(240deg);
+	-o-transform: rotate(240deg);
+	-moz-transform: rotate(240deg);
+	-webkit-transform: rotate(240deg);
 	transform: rotate(240deg);
 }
 #section2 #clockNeedle1.a60 {
+	-ms-transform: rotate(300deg);
+	-o-transform: rotate(300deg);
+	-moz-transform: rotate(300deg);
+	-webkit-transform: rotate(300deg);
 	transform: rotate(300deg);
 }
 #section2 #clockNeedle2 {
@@ -569,9 +663,23 @@ html, body {
 	border-radius: 50%;
 	background-color: #d66071;
 	
+	-ms-transform: rotateX(12px);
+	-o-transform: rotateX(12px);
+	-moz-transform: rotateX(12px);
+	-webkit-transform: rotateX(12px);
 	transform: rotateX(12px);
+	-ms-transform-origin: left top;
+	-o-transform-origin: left top;
+	-moz-transform-origin: left top;
+	-webkit-transform-origin: left top;
 	transform-origin: left top;
 	
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-name: spin;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-moz-animation-name: spin;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	animation-name: spin;
@@ -579,31 +687,43 @@ html, body {
 #section3 .redDots > div:nth-of-type(1) {
 	top: 30%;
 	left: 20%;
+	-webkit-animation-duration: 7s;
+	-moz-animation-duration: 7s;
 	animation-duration: 7s;
 }
 #section3 .redDots > div:nth-of-type(2) {
 	top: 10%;
 	left: 80%;
+	-webkit-animation-duration: 15s;
+	-moz-animation-duration: 15s;
 	animation-duration: 15s;
 }
 #section3 .redDots > div:nth-of-type(3) {
 	top: 76%;
 	left: 24%;
+	-webkit-animation-duration: 6s;
+	-moz-animation-duration: 6s;
 	animation-duration: 6s;
 }
 #section3 .redDots > div:nth-of-type(4) {
 	top: 86%;
 	left: 79%;
+	-webkit-animation-duration: 8s;
+	-moz-animation-duration: 8s;
 	animation-duration: 8s;
 }
 #section3 .redDots > div:nth-of-type(5) {
 	top: 36%;
 	left: 72%;
+	-webkit-animation-duration: 11s;
+	-moz-animation-duration: 11s;
 	animation-duration: 11s;
 }
 #section3 .redDots > div:nth-of-type(6) {
 	top: 50%;
 	left: 50%;
+	-webkit-animation-duration: 9s;
+	-moz-animation-duration: 9s;
 	animation-duration: 9s;
 }
 
@@ -684,6 +804,10 @@ html, body {
 	right: auto;
 	width: 150px;
 	height: 150px;
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
 #section4 #handle {
@@ -788,6 +912,10 @@ html, body {
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: bottom;
+	-ms-transform: translateX(96%);
+	-o-transform: translateX(96%);
+	-moz-transform: translateX(96%);
+	-webkit-transform: translateX(96%);
 	transform: translateX(96%);
 	pointer-events: none;
 }
@@ -850,6 +978,8 @@ html, body {
 	position: absolute;
 	cursor: pointer;
 	opacity: 0;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -992,6 +1122,10 @@ html, body {
 	height: 100%;
 	width: 0%;
 	background-color: #ffc559;
+	-ms-transition: 6s;
+	-o-transition: 6s;
+	-moz-transition: 6s;
+	-webkit-transition: 6s;
 	transition: 6s;
 }
 #section9 .barProgress.isLoading {
@@ -1178,7 +1312,15 @@ html, body {
 	#frame { border: 10px solid transparent; }
 
 	#logo {
+		-ms-transform: scale(0.6);
+		-o-transform: scale(0.6);
+		-moz-transform: scale(0.6);
+		-webkit-transform: scale(0.6);
 		transform: scale(0.6);
+		-ms-transform-origin: top left;
+		-o-transform-origin: top left;
+		-moz-transform-origin: top left;
+		-webkit-transform-origin: top left;
 		transform-origin: top left;
 	}
 
@@ -1187,13 +1329,9 @@ html, body {
     }
 	#index #spotlight1 {
 		font-size: 15em;
-		animation-name: spotlighting1_mobile;
-		animation-duration: 22s;
 	}
 	#index #spotlight2 {
 		font-size: 25em;
-		animation-name: spotlighting2_mobile;
-		animation-duration: 20s;
 	}
 	#index .coverLayer .title {
 		top: 8%;
@@ -1311,7 +1449,15 @@ html, body {
     }
 
     #section7 .floor .holeArrow {
+		-ms-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-moz-transform: scale(0.8);
+		-webkit-transform: scale(0.8);
         transform: scale(0.8);
+		-ms-transform-origin: center;
+		-o-transform-origin: center;
+		-moz-transform-origin: center;
+		-webkit-transform-origin: center;
         transform-origin: center;
     }
     #section7 .colors #yellow {
