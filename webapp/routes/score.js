@@ -32,10 +32,8 @@ router.post("/", function(req, res, next) {
 	if (!myscore) {
 		res.status(400).send("Wrong answer type");
 	} else {
-		// TODO: result first와 second 값으로 결과 페이지 구성하기!
 		// DB: save answer
-		// TODO: uncomment to save answer to DB
-		//saveAnswer(req.headers['user-agent'], req.body);
+		saveAnswer(req.headers['user-agent'], req.body);
 		
 		res.send({
 			url: "/result/" + result.first
