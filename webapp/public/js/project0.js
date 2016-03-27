@@ -238,6 +238,7 @@ var Page =  {
 		SectionOut.clean(SectionOut.section1);
 		
 		// nav로 페이지 이동
+		/*
 		$("#nav").on("touchClick", "li", function(event) {
 			var page = $(event.currentTarget).find(".dot").data("page");
 			
@@ -251,6 +252,7 @@ var Page =  {
 				this.goPage(page);
 			}
 		}.bind(this));
+		*/
 		
 		// next 버튼으로 페이지 이동		
 		$("#nextButton").on("touchClick", function(event) {
