@@ -394,14 +394,13 @@ var SectionInit = {
 		var Handle = function() {
 			this.element = document.getElementById("handle");
 			this.start;
-			this.halfHeight = $(this.element).height() / 2;
 			this.section = $("#section4");
 			
 			var mc = new Hammer(this.element);
 			mc.on("panstart panmove panend", function(event) {
 				event.preventDefault();
 				
-				var target = $(event.target);
+				var target = $(event.target).parent();
 				
 				if (event.type === "panstart") {
 					this.start = parseInt(target.css("top"));
@@ -410,10 +409,7 @@ var SectionInit = {
                     var top = this.start + event.deltaY;
                     target.css("top", top + "px");
                     
-					var borderHeight = top + this.halfHeight;
-                    if (Util.isMobile()) {
-                        borderHeight = top + this.halfHeight + 20;
-                    }
+					var borderHeight = top;
                     
 					this.section.find(".outside").css("height", borderHeight + "px");
 					this.section.find(".inside").find(".gauge").css("height", ($(window).height() - borderHeight) + "px");

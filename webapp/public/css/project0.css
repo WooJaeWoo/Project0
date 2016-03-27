@@ -677,12 +677,21 @@ html, body {
 #section4 .gaugeText span {
 	font-size: 40px;
 }
-#section4 #handle {
+#section4 .handleWrap {
 	position: absolute;
-	top: 42%;
-	right: 18%;
+	top: 50%;
+	left: 80%;
+	right: auto;
 	width: 150px;
 	height: 150px;
+	transform: translate(-50%, -50%);
+}
+#section4 #handle {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	background-image: url(/img/q4_handle.png);
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -1089,10 +1098,8 @@ html, body {
 
 	/** Section 4 **/
 	#section4 .aBox { width: 100%; }
-	#section4 #handle {
-		position: relative;
-		top: 42.5%;
-		right: auto;
+	#section4 .handleWrap {
+		left: 50%;
 	}
 	
 	/** Section 5 **/
@@ -1287,11 +1294,9 @@ html, body {
 
     /** Section 4 **/
     #section4 .aBox { width: 100%; }
-    #section4 #handle {
-        position: relative;
-        top: 42.5%;
-        right: auto;
-    }
+	#section4 .gauge {
+		width: 50%;
+	}
 
     /** Section 5 **/
     #section5 .aBox { padding: 10px; }
