@@ -38,6 +38,24 @@ header {
 	box-shadow: 0 2px 5px #555;
 }
 
+main svg {
+	width: 1000px;
+	height: 800px;
+	margin-top: 30px;
+}
+
+path.slice{
+	stroke-width:2px;
+}
+
+polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+}
+
+
 #logo {
 	position: absolute;
 	top: 20px;
@@ -67,4 +85,5 @@ main {
 	box-sizing: border-box;
 	padding: 30px;
 	padding-left: 210px;
+	height: 100%;
 }
