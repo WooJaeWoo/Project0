@@ -5,10 +5,10 @@ var answer = new Schema({
 		ua: { type: String },
 		gender: { type: String },
 		age: { type: Number, min: 10, max: 60 },
-		married: { type: Boolean },
-		atHome: { type: Number },
+		married: { type: String },
+		atHome: { type: String },
 		needs: { type: [String] },
-		interiorRatio: { type: Number, min: 0, max: 100 },
+		interiorRatio: { type: String },
 		color: { type: String },
 		culture: { type: [String] }
 	}, {
