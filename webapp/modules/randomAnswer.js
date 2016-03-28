@@ -38,7 +38,7 @@ function makeFakeAnswer() {
 	
 	return answer;
 }
-var limitCnt = 1000;
+var limitCnt = 10000;
 var cnt = 0;
 function saveAnswer(answers) {
 	var answer = new Answer();
