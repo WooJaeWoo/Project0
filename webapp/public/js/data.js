@@ -30,7 +30,6 @@ var Data = {
 				}
 			}
 		});
-		
 	},
 	refineResult: function(result) {
 		var rResult = {};
@@ -76,7 +75,7 @@ var Data = {
 		function randomData (){
 			var labels = color.domain();
 			return labels.map(function(label){
-				return { label: label, value: result[label] }
+				return { label: label + ": " + result[label], value: result[label] }
 			});
 		}
 
@@ -172,7 +171,5 @@ var Data = {
 			polyline.exit()
 				.remove();
 		};
-		
-		
 	}
 }
