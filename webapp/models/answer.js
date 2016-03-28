@@ -10,7 +10,8 @@ var answer = new Schema({
 		needs: { type: [String] },
 		interiorRatio: { type: String },
 		color: { type: String },
-		culture: { type: [String] }
+		culture: { type: [String] },
+		type: { type: String }
 	}, {
 		collection: "answer",
 		versionKey: false

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var path = require('path');
 var Answer = require('../models/index.js').answer;
+var scoreMod = require('./').score;
 
 mongoose.connect("mongodb://localhost:27017/project0");
 
@@ -41,6 +42,10 @@ var limitCnt = 1000;
 var cnt = 0;
 function saveAnswer(answers) {
 	var answer = new Answer();
+	var score = new scoreMod();
+	score.calculate(answers);
+	var type = score.getResult();
+	
 	answer.ua = "Fake user";
 	answer.gender = answers.a1;
 	answer.age = answers.a2;
@@ -50,6 +55,7 @@ function saveAnswer(answers) {
 	answer.interiorRatio = answers.a6;
 	answer.color = answers.a7;
 	answer.culture = answers.a8;
+	answer.type = type.first;
 	answer.save(function(err) {
 		if (err) {
 			console.error("DB error: saving Answer!");

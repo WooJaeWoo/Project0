@@ -1,3 +1,5 @@
+var config = require('../../config/index.js');
+
 var magazine = config.service.magazine;
 
 var scoreMatrix = config.service.scoreMatrix;
